@@ -1,0 +1,43 @@
+{
+  "common": {
+    "brand": "Ponto Socorro",
+    "tagline": "Centro Eclético da Fluente Luz Universal"
+  },
+  "nav": {
+    "home": "Home",
+    "foundation": "Foundation",
+    "library": "Library",
+    "archive": "Archive",
+    "shop": "Shop"
+  },
+  "home": {
+    "hero": {
+      "title": "Ponto Socorro",
+      "subtitle": "Faith, Music and Community",
+      "cta": "Explore"
+    },
+    "manifesto": {
+      "title": "Our Faith",
+      "description": "A space for spiritual seeking through music and oral tradition."
+    },
+    "coordinates": {
+      "title": "Coordinates",
+      "founded": "Founded",
+      "location": "Location",
+      "community": "Global Community"
+    }
+  },
+  "library": {
+    "title": "Music Library",
+    "subtitle": "Hymns and Songs",
+    "search": "Search hymn...",
+    "filter": "Filter by notebook",
+    "all": "All"
+  },
+  "footer": {
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "email": "Email",
+    "copyright": "© {year} Ponto Socorro. All rights reserved."
+  }
+}

@@ -1,0 +1,146 @@
+---
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder.astro';
+---
+
+<div
+  id="cart-drawer"
+  class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-surface shadow-xl transform translate-x-full transition-transform duration-300"
+  transition:persist="cart-drawer"
+>
+  <div class="flex flex-col h-full">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-subtle">
+      <h2 class="font-serif text-xl font-semibold text-primary">Carrito</h2>
+      <button
+        id="close-cart"
+        class="p-2 text-secondary hover:text-primary transition-colors"
+        aria-label="Cerrar carrito"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Items -->
+    <div id="cart-items" class="flex-1 overflow-y-auto px-6 py-4">
+      <p class="text-center text-secondary py-12">Tu carrito está vacío</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t border-subtle px-6 py-4">
+      <div class="flex justify-between mb-4">
+        <span class="text-secondary">Total:</span>
+        <span id="cart-total" class="font-semibold text-primary">$0</span>
+      </div>
+      <button
+        id="checkout-btn"
+        class="w-full bg-primary text-surface py-3 font-medium hover:opacity-80 transition-opacity disabled:opacity-50"
+        disabled
+      >
+        Proceder al Checkout
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Backdrop -->
+<div
+  id="cart-backdrop"
+  class="fixed inset-0 z-40 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-300"
+  transition:persist="cart-backdrop"
+></div>
+
+<script>
+  import { cartItems, cartCount, cartTotal, removeFromCart, updateQuantity, clearCart, formatUSD } from '@/stores/cartStore';
+
+  const drawer = document.getElementById('cart-drawer');
+  const backdrop = document.getElementById('cart-backdrop');
+  const closeBtn = document.getElementById('close-cart');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  function openCart() {
+    drawer?.classList.remove('translate-x-full');
+    backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCart() {
+    drawer?.classList.add('translate-x-full');
+    backdrop?.classList.add('opacity-0', 'pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  function updateCartUI() {
+    const items = cartItems.get();
+    const total = cartTotal.get();
+    const count = cartCount.get();
+    
+    const itemsContainer = document.getElementById('cart-items');
+    const totalEl = document.getElementById('cart-total');
+    
+    if (itemsContainer) {
+      if (items.length === 0) {
+        itemsContainer.innerHTML = '<p class="text-center text-secondary py-12">Tu carrito está vacío</p>';
+      } else {
+        itemsContainer.innerHTML = items.map(item => `
+          <div class="flex gap-4 py-4 border-b border-subtle">
+            <div class="w-20 h-20 bg-canvas rounded">
+              <img src="${item.imagen}" alt="${item.nombre}" class="w-full h-full object-cover rounded" />
+            </div>
+            <div class="flex-1">
+              <h3 class="font-medium text-primary text-sm">${item.nombre}</h3>
+              <p class="text-xs text-secondary">${formatUSD(item.precio)}</p>
+              <div class="flex items-center gap-2 mt-2">
+                <button class="quantity-btn text-xs px-2 py-1 border border-subtle rounded" data-action="decrease" data-id="${item.variantId}">-</button>
+                <span class="text-sm">${item.cantidad}</span>
+                <button class="quantity-btn text-xs px-2 py-1 border border-subtle rounded" data-action="increase" data-id="${item.variantId}">+</button>
+                <button class="ml-auto text-danger text-xs" data-action="remove" data-id="${item.variantId}">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+    
+    if (totalEl) {
+      totalEl.textContent = formatUSD(total);
+    }
+    
+    if (checkoutBtn) {
+      checkoutBtn.disabled = items.length === 0;
+    }
+  }
+
+  // Event listeners
+  closeBtn?.addEventListener('click', closeCart);
+  backdrop?.addEventListener('click', closeCart);
+  
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.id === 'cart-btn' || target.closest('#cart-btn')) {
+      openCart();
+    }
+    
+    const btn = target.closest('.quantity-btn');
+    if (btn) {
+      const action = btn.getAttribute('data-action');
+      const id = btn.getAttribute('data-id');
+      if (action === 'increase') {
+        const item = cartItems.get().find(i => i.variantId === id);
+        if (item) updateQuantity(id!, item.cantidad + 1);
+      } else if (action === 'decrease') {
+        const item = cartItems.get().find(i => i.variantId === id);
+        if (item) updateQuantity(id!, item.cantidad - 1);
+      } else if (action === 'remove') {
+        removeFromCart(id!);
+      }
+    }
+  });
+
+  // Listen to store changes
+  cartItems.listen(updateCartUI);
+  
+  // Initial render
+  updateCartUI();
+</script>

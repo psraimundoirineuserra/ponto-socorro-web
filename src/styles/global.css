@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-canvas: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-primary: #1A1A1A;
+  --color-secondary: #737373;
+  --color-accent-nature: #2C4C3B;
+  --color-border-subtle: rgba(0, 0, 0, 0.06);
+
+  /* Fonts */
+  --font-serif: 'Newsreader', 'Cormorant', Georgia, serif;
+  --font-sans: 'Inter', 'Geist', system-ui, sans-serif;
+
+  /* Spacing */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+  }
+}

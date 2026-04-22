@@ -1,0 +1,42 @@
+<div
+  class="fixed bottom-0 left-0 right-0 z-50 bg-surface border-t border-border-subtle h-20 px-6 flex items-center gap-6"
+  transition:persist="audio-player"
+>
+  <div class="flex items-center gap-4 min-w-0 w-64">
+    <div class="w-12 h-12 bg-canvas rounded flex items-center justify-center">
+      <span class="text-xs text-secondary">♪</span>
+    </div>
+    <div class="min-w-0">
+      <p class="text-sm font-medium text-primary truncate" id="player-title">
+        Sin selección
+      </p>
+      <p class="text-xs text-secondary truncate" id="player-author">
+        -
+      </p>
+    </div>
+  </div>
+
+  <div class="flex-1 flex flex-col items-center gap-2">
+    <div class="flex items-center gap-6">
+      <button id="play-btn" class="w-10 h-10 rounded-full bg-primary text-surface flex items-center justify-center hover:opacity-80 transition-opacity" aria-label="Reproducir">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="w-full max-w-xl flex items-center gap-2">
+      <span class="text-xs text-secondary w-10 text-right" id="current-time">0:00</span>
+      <div class="flex-1 h-1 bg-canvas rounded-full overflow-hidden">
+        <div class="h-full bg-secondary w-0" id="progress-bar"></div>
+      </div>
+      <span class="text-xs text-secondary w-10" id="total-time">0:00</span>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 w-32">
+    <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+    </svg>
+    <input type="range" min="0" max="100" value="80" class="w-20 h-1 bg-canvas rounded-full appearance-none cursor-pointer" id="volume-slider" />
+  </div>
+</div>
