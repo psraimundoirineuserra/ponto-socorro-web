@@ -1,0 +1,38 @@
+---
+import { useTranslations } from '@/i18n';
+import { hymns } from '@/data/hymns';
+
+const t = useTranslations('es');
+
+const previewHymns = hymns.slice(0, 3);
+---
+
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-end justify-between mb-12">
+      <h2 class="font-serif text-3xl font-semibold text-primary">
+        {t.library.title}
+      </h2>
+      <a href="/library" class="text-sm text-secondary hover:text-primary transition-colors">
+        Ver todos →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {previewHymns.map((hymn) => (
+        <a
+          href={`/library/${hymn.slug}`}
+          class="group block p-6 bg-surface border border-subtle hover:border-accent-nature/30 transition-colors"
+        >
+          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center mb-4 group-hover:bg-accent-nature/10 transition-colors">
+            <span class="text-lg">♪</span>
+          </div>
+          <h3 class="font-serif text-lg font-medium text-primary mb-1">
+            {hymn.title}
+          </h3>
+          <p class="text-sm text-secondary">{hymn.author}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

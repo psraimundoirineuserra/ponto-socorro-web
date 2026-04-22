@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#FAFAFA"/>
+  <rect x="50" y="50" width="300" height="300" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+  <text x="200" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#737373">Farda Blanca</text>
+  <text x="200" y="200" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#A3A3A3">Textil tradicional</text>
+  <circle cx="200" cy="250" r="30" fill="#2C4C3B" opacity="0.1"/>
+</svg>

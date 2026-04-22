@@ -1,0 +1,13 @@
+---
+import HymnCard from './HymnCard.astro';
+
+interface Props {
+  hymns: Array<{slug: string; title: string; author: string; caderno: string; duration: string}>;
+}
+
+const { hymns } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {hymns.map((hymn) => <HymnCard {...hymn} />)}
+</div>

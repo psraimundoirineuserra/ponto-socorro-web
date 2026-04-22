@@ -1,0 +1,34 @@
+---
+interface Props {
+  slug: string;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  requiresMeasurement?: boolean;
+}
+
+const { slug, name, category, price, image, requiresMeasurement } = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0,
+}).format(price);
+---
+
+<a href={`/shop/${slug}`} class="group block bg-surface border border-border-subtle hover:border-accent-nature/30 transition-colors">
+  <div class="aspect-square bg-canvas overflow-hidden">
+    <img src={image} alt={name} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+  </div>
+  <div class="p-6">
+    <p class="text-xs uppercase tracking-wider text-secondary mb-2">{category}</p>
+    <h3 class="font-medium text-primary mb-2">{name}</h3>
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-primary">{formattedPrice}</span>
+      {requiresMeasurement && (
+        <span class="text-xs text-accent-nature">Con medidas</span>
+      )}
+    </div>
+  </div>
+</a>

@@ -1,0 +1,20 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  author: string;
+  caderno: string;
+  duration: string;
+}
+---
+
+<a href={`/library/${slug}`} class="group flex items-center gap-4 p-4 bg-surface border border-border-subtle hover:border-accent-nature/30 transition-colors">
+  <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center group-hover:bg-accent-nature/10 transition-colors">
+    <span class="text-lg">♪</span>
+  </div>
+  <div class="flex-1 min-w-0">
+    <h3 class="font-medium text-primary truncate">{title}</h3>
+    <p class="text-sm text-secondary">{author}</p>
+  </div>
+  <span class="text-xs text-secondary">{duration}</span>
+</a>

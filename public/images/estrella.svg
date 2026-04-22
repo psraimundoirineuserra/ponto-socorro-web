@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#FAFAFA"/>
+  <rect x="50" y="50" width="300" height="300" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+  <text x="200" y="180" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#737373">Estrella</text>
+  <text x="200" y="200" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#A3A3A3">Grado</text>
+  <polygon points="200,220 215,260 260,260 225,285 240,330 200,305 160,330 175,285 140,260 185,260" fill="#D97706" opacity="0.3"/>
+</svg>
