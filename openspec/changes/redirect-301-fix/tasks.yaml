@@ -1,0 +1,18 @@
+# Tasks: Redirect 301 Fix
+
+## Phase 1: Implementation
+
+1. [x] Edit `src/pages/index.astro` - remove redirect code
+2. [x] Edit `astro.config.mjs` - add redirects config
+3. [x] Create SDD artifacts
+
+## Phase 2: Deploy
+
+4. [ ] Commit changes
+5. [ ] Push to develop
+6. [ ] Merge to main
+7. [ ] Deploy to Vercel
+
+## Phase 3: Verify
+
+8. [ ] Check HTTP response on root URL (expect 301)
