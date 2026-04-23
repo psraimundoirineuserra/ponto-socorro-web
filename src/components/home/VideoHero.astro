@@ -101,14 +101,17 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
   /* Grid stacking - Eliminates ghosting */
   .sound-toggle-btn svg {
     grid-area: 1 / 1;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.85rem;
+    height: 1.85rem;
+    fill: none;
+    stroke: #1A1A1A;
+    stroke-width: 1.5;
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
     transition:
-      opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
-      transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity 250ms ease,
+      transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .icon-audio-muted {
@@ -118,18 +121,18 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
 
   .icon-audio-on {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
 
   /* Active state (unmuted) - Asymmetric scaling */
   .sound-toggle-btn.is-active .icon-audio-on {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1.1);
   }
 
   .sound-toggle-btn.is-active .icon-audio-muted {
     opacity: 0;
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
 
   @media (max-width: 768px) {
