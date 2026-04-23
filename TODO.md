@@ -1,5 +1,16 @@
 # TODO: Future Improvements
 
+## Completed
+
+- [x] VideoHero Component - Immersive video hero with YouTube background
+  - Implemented in `src/components/home/VideoHero.astro`
+  - Sound toggle with glassmorphism design
+  - Grid stacking CSS for icon transitions (no ghosting)
+- [x] Navbar Logo Update
+  - Logo image + "CEPSERIS" brand name
+  - Static alt text for accessibility
+- [x] Design System V2 - Enhanced with Linear-inspired structure
+
 ## Known Issues (Low Priority)
 
 ### 1. Himnarios hardcoded
@@ -14,12 +25,16 @@
 ### 3. Foundation and Archive pages
 - Should verify existing [lang]/foundation.astro and [lang]/archive.astro still work
 
+### 4. Duplicate route pages
+- Consider removing duplicated pages: pt/loja, es/tienda, pt/fundacao, es/fundacion, etc.
+- Keep only [lang]/ dynamic routes after verifying they work
+- Lower priority - works fine as-is
+
 ## Future Features
 
-### PalafitHero Component Reference
-- See reference/palafit-hero-astro.md for a video hero component with YouTube background
-- Includes immersive video background with sound toggle
-- Glassmorphism UI elements
+- [ ] Footer component with full navigation
+- [ ] Mobile menu polish
+- [ ] Product pages with cart integration
 
 ## Architecture Notes
 
@@ -30,9 +45,14 @@
 | Shop | /loja | /tienda | /shop |
 | Foundation | /fundacao | /fundacion | /foundation |
 | Library | /hinarios | /himnarios | /library |
-| Archive | /arquivo | /archivo | /archive |
+| Archive | /arquivo | /arquivo | /archive |
 
 ### i18n Navigation
 - Navbar.astro maps locale → translated path name
 - Footer.astro same mapping
 - changeLanguage() handles URL switching
+
+### Brand Update (2026-04-23)
+- Project renamed from "Ponto Socorro" to "CEPSERIS"
+- Logo and brand name updated in Navbar
+- VideoHero component for homepage background
