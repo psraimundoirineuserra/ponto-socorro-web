@@ -75,7 +75,9 @@
 | ReligiousOrganizationSchema | ✅ | JSON-LD ReligiousOrganization |
 | BreadcrumbJsonLd | ✅ | BreadcrumbList schema |
 | sitemap.xml | ✅ | Auto-generated via @astrojs/sitemap |
+| sitemap-index.xml | ✅ | https://cepseris.org/sitemap-index.xml |
 | robots.txt | ✅ | Configured with sitemap reference |
+| Google Search Console | 🔄 | Indexación solicitada /en/ /pt/ /es/ |
 
 **SEO Data:**
 - Name: Centro e Pronto Socorro Espiritual Raimundo Irineu Serra
@@ -127,9 +129,19 @@ See `redes-sociais-cepseris.md` for:
 
 ## Current Branches
 
-| Branch | Commit |
-|--------|--------|
-| main | 6f9e9a0 |
-| develop | 6f9e9a0 |
+| Branch | Commit | Status |
+|--------|--------|--------|
+| main | fa489f5 | Al día |
+| develop | fa489f5 | Al día |
 
 **Sync**: main and develop are synchronized.
+
+---
+
+## Schema Zero Errors (2026-04-23)
+
+| Fix | Details |
+|-----|---------|
+| @type | Removed ReligiousOrganization → ["Organization", "Church"] |
+| URL cleaning | .replace(/\/$/, '') → .slice(0, -1) for robust trailing slash removal |
+| Deploy | Vercel production ✅ cepseris.org |

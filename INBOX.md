@@ -50,6 +50,7 @@
 | 10 | robots.txt fix | ✅ Removed Disallow: /_astro/ | 2026-04-23 |
 | 11 | Schema @id linking | ✅ Added @id for cross-schema reference | 2026-04-23 |
 | 12 | MetaSocial no Twitter | ✅ Removed Twitter tags (CEPSERIS no usa) | 2026-04-23 |
+| 13 | Schema validator error | ✅ Removed ReligiousOrganization, .slice URL cleaning | 2026-04-23 |
 
 ---
 
