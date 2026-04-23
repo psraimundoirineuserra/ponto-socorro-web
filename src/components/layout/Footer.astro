@@ -2,17 +2,17 @@
 import { useTranslations } from '@/i18n';
 import type { Locale } from '@/i18n';
 
-const locale = Astro.props.locale as Locale || 'es';
+const locale = Astro.props.locale as Locale || 'pt';
 const t = useTranslations(locale);
 
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { key: 'home', href: `/${locale === 'es' ? '' : locale}` },
-  { key: 'foundation', href: `/${locale}/fundacion` },
-  { key: 'library', href: `/${locale}/biblioteca` },
-  { key: 'archive', href: `/${locale}/archivo` },
-  { key: 'shop', href: `/${locale}/tienda` },
+  { key: 'home', href: '/' },
+  { key: 'foundation', href: '/foundation' },
+  { key: 'library', href: '/library' },
+  { key: 'archive', href: '/archive' },
+  { key: 'shop', href: '/shop' },
 ];
 ---
 

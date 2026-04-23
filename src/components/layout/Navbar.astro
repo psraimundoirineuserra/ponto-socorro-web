@@ -2,8 +2,9 @@
 import { useTranslations, changeLanguage, languageNames } from '@/i18n';
 import type { Locale } from '@/i18n';
 
-const locale = Astro.props.locale as Locale || 'es';
+const locale = Astro.props.locale as Locale || 'pt';
 const t = useTranslations(locale);
+const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { key: 'home', href: '/' },
@@ -34,8 +35,8 @@ const navLinks = [
     <div class="flex items-center gap-4">
       <div class="hidden md:flex items-center gap-2 text-xs">
         {(['es', 'en', 'pt'] as Locale[]).map((lang) => (
-          <a 
-            href={changeLanguage(lang)} 
+          <a
+            href={changeLanguage(lang, currentPath)}
             class={`${lang === locale ? 'text-primary font-medium' : 'text-secondary hover:text-primary'} transition-colors`}
           >
             {lang.toUpperCase()}
@@ -79,8 +80,8 @@ const navLinks = [
       ))}
       <div class="flex items-center gap-4 pt-4 border-t border-subtle">
         {(['es', 'en', 'pt'] as Locale[]).map((lang) => (
-          <a 
-            href={changeLanguage(lang)} 
+          <a
+            href={changeLanguage(lang, currentPath)}
             class={`${lang === locale ? 'text-primary font-medium' : 'text-secondary hover:text-primary'} text-sm transition-colors`}
           >
             {languageNames[lang]}

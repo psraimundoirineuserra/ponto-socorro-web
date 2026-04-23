@@ -5,7 +5,7 @@ import pt from './pt.json';
 export type Locale = 'es' | 'en' | 'pt';
 
 export const locales: Locale[] = ['es', 'en', 'pt'];
-export const defaultLocale: Locale = 'es';
+export const defaultLocale: Locale = 'pt';
 
 const translations = { es, en, pt };
 
@@ -35,8 +35,10 @@ export function getLocaleFromUrl(url: URL): Locale {
   return defaultLocale;
 }
 
-export function changeLanguage(lang: Locale): string {
-  return `/${lang}`;
+export function changeLanguage(lang: Locale, pathname?: string): string {
+  const path = pathname ?? '/';
+  const cleanPath = path.replace(/^\/(es|en|pt)/, '');
+  return `/${lang}${cleanPath || '/'}`;
 }
 
 export const languageNames: Record<Locale, string> = {
