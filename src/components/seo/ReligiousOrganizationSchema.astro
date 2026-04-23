@@ -1,16 +1,19 @@
 ---
-const siteUrl = Astro.site?.href || 'https://cepseris.org';
+const siteUrl = Astro.site?.href.replace(/\/$/, '') || 'https://cepseris.org';
 
 const schema = {
   "@context": "https://schema.org",
   "@id": `${siteUrl}/#organization`,
-  "@type": ["ReligiousOrganization", "Church"],
+  "@type": ["Organization", "ReligiousOrganization", "Church"],
   "name": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
   "alternateName": ["CEPSERIS", "Pronto Socorro"],
-  "url": siteUrl,
-  "logo": new URL('/images/logo_prontosocorro.webp', siteUrl).href,
-  "image": new URL('/images/logo_prontosocorro.webp', siteUrl).href,
-  
+  "url": `${siteUrl}/`,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/images/logo_prontosocorro.webp`
+  },
+  "image": `${siteUrl}/images/logo_prontosocorro.webp`,
+  "description": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra - Igreja da Doutrina de Santo Daime. Himnarios, cânticos e cura espiritual.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "010, KM04, Ramal 5, R. da Vila dos Carneiros, 000",
@@ -18,28 +21,20 @@ const schema = {
     "addressRegion": "AC",
     "addressCountry": "BR"
   },
-  
   "sameAs": [
     "https://www.facebook.com/ProntoSocorrroEspiritual/",
     "https://www.instagram.com/ps.raimundoirineuserra/",
     "https://share.google/8FMQmaWrE8rfLZFtu"
   ],
-  
   "foundingDate": "1932",
   "founder": {
     "@type": "Person",
     "name": "Raimundo Irineu Serra"
   },
-  
-  "areaServed": {
-    "@type": "Country",
-    "name": "Brasil"
-  },
-  
-  "description": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra - Igreja da Doutrina de Santo Daime. Himnarios, cânticos e cura espiritual."
+  "areaServed": "BR"
 };
 
-const schemaString = JSON.stringify(schema, null, 0);
+const schemaString = JSON.stringify(schema);
 ---
 
 <script type="application/ld+json" set:html={schemaString} is:inline />
