@@ -1,10 +1,11 @@
 ---
-const siteUrl = Astro.site?.href.replace(/\/$/, '') || 'https://cepseris.org';
+const rawSiteUrl = Astro.site?.href || 'https://cepseris.org';
+const siteUrl = rawSiteUrl.endsWith('/') ? rawSiteUrl.slice(0, -1) : rawSiteUrl;
 
 const schema = {
   "@context": "https://schema.org",
   "@id": `${siteUrl}/#organization`,
-  "@type": ["Organization", "ReligiousOrganization", "Church"],
+  "@type": ["Organization", "Church"],
   "name": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
   "alternateName": ["CEPSERIS", "Pronto Socorro"],
   "url": `${siteUrl}/`,
@@ -13,7 +14,7 @@ const schema = {
     "url": `${siteUrl}/images/logo_prontosocorro.webp`
   },
   "image": `${siteUrl}/images/logo_prontosocorro.webp`,
-  "description": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra - Igreja da Doutrina de Santo Daime. Himnarios, cânticos e cura espiritual.",
+  "description": "Igreja da Doutrina de Santo Daime. Himnários, cânticos e cura espiritual.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "010, KM04, Ramal 5, R. da Vila dos Carneiros, 000",

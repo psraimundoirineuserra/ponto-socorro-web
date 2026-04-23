@@ -1,0 +1,13 @@
+# Tasks: Schema Zero Errors
+
+## Phase 1: Implementation
+1. [x] Update ReligiousOrganizationSchema.astro
+2. [x] Create SDD artifacts
+
+## Phase 2: Deploy
+3. [ ] Commit and push to develop
+4. [ ] Merge to main
+5. [ ] Deploy to Vercel
+
+## Phase 3: Verify
+6. [ ] Test at validator.schema.org
