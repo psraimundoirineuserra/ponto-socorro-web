@@ -6,7 +6,11 @@ interface Props {
 const { videoId = 'CYlTJPG2vK0' } = Astro.props;
 ---
 
-<section class="relative h-[80vh] w-full overflow-hidden bg-[#0a0a0a]">
+<section
+  id="hero-video-container"
+  data-video-id={videoId}
+  class="relative h-[80vh] w-full overflow-hidden bg-[#0a0a0a]"
+>
   <div class="hero-video-bg">
     <div id="hero-video-player"></div>
     <div class="video-overlay-minimal"></div>
@@ -103,70 +107,101 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
   }
 </style>
 
-<script define:vars={{ videoId }}>
-  let player;
+<script>
+  function initHeroVideo() {
+    const container = document.getElementById('hero-video-container');
+    const videoId = container?.dataset.videoId;
 
-  function initYouTubeAPI() {
-    if (window.YT && window.YT.Player) {
-      createPlayer();
-    } else {
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      window.onYouTubeIframeAPIReady = createPlayer;
+    if (!videoId) {
+      console.warn('VideoHero: No videoId found');
+      return;
     }
-  }
 
-  function createPlayer() {
-    player = new YT.Player('hero-video-player', {
-      videoId: videoId,
-      playerVars: {
-        autoplay: 1,
-        mute: 1,
-        controls: 0,
-        loop: 1,
-        playlist: videoId,
-        showinfo: 0,
-        modestbranding: 1,
-        rel: 0,
-        playsinline: 1,
-        disablekb: 1,
-        fs: 0
-      },
-      events: {
-        onReady: (event) => {
-          event.target.playVideo();
-          const iframe = document.querySelector('.hero-video-bg iframe');
-          if (iframe) iframe.classList.add('video-loaded');
-          setupSoundToggle();
-        }
-      }
-    });
-  }
+    let player;
+    let isMuted = true;
 
-  function setupSoundToggle() {
-    const btn = document.getElementById('soundToggle');
-    const iconOn = btn.querySelector('.icon-audio-on');
-    const iconMuted = btn.querySelector('.icon-audio-muted');
-
-    btn.addEventListener('click', () => {
-      if (player.isMuted()) {
-        player.unMute();
-        iconOn.style.display = 'block';
-        iconMuted.style.display = 'none';
+    function initYouTubeAPI() {
+      if (window.YT && window.YT.Player) {
+        createPlayer();
       } else {
-        player.mute();
-        iconOn.style.display = 'none';
-        iconMuted.style.display = 'block';
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        window.onYouTubeIframeAPIReady = createPlayer;
       }
-    });
+    }
+
+    function createPlayer() {
+      player = new YT.Player('hero-video-player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          loop: 1,
+          playlist: videoId,
+          showinfo: 0,
+          modestbranding: 1,
+          rel: 0,
+          playsinline: 1,
+          disablekb: 1,
+          fs: 0
+        },
+        events: {
+          onReady: (event) => {
+            event.target.mute();
+            event.target.playVideo();
+
+            const iframe = document.querySelector('.hero-video-bg iframe');
+            if (iframe) iframe.classList.add('video-loaded');
+
+            setupSoundToggle();
+          },
+          onStateChange: (event) => {
+            if (event.data === YT.PlayerState.PLAYING) {
+              if (isMuted) {
+                player.mute();
+              } else {
+                player.unMute();
+                player.setVolume(80);
+              }
+            }
+          }
+        }
+      });
+    }
+
+    function setupSoundToggle() {
+      const btn = document.getElementById('soundToggle');
+      if (!btn) return;
+
+      const iconOn = btn.querySelector('.icon-audio-on');
+      const iconMuted = btn.querySelector('.icon-audio-muted');
+
+      const newBtn = btn.cloneNode(true) as HTMLElement;
+      btn.replaceWith(newBtn);
+
+      newBtn.addEventListener('click', () => {
+        if (!player || typeof player.unMute !== 'function') return;
+
+        if (isMuted) {
+          player.unMute();
+          player.setVolume(80);
+          iconOn.style.display = 'block';
+          iconMuted.style.display = 'none';
+          isMuted = false;
+        } else {
+          player.mute();
+          iconOn.style.display = 'none';
+          iconMuted.style.display = 'block';
+          isMuted = true;
+        }
+      });
+    }
+
+    initYouTubeAPI();
   }
 
-  document.addEventListener('astro:page-load', initYouTubeAPI);
-  if (!window.astroPageLoadEventAdded) {
-    initYouTubeAPI();
-    window.astroPageLoadEventAdded = true;
-  }
+  document.addEventListener('astro:page-load', initHeroVideo);
 </script>
