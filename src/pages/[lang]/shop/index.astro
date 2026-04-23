@@ -6,26 +6,31 @@ import { products } from '@/data/products';
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
+    // Portuguese - both /shop and /loja
+    { params: { lang: 'pt', '*': 'shop' } },
+    { params: { lang: 'pt', '*': 'loja' } },
+    // Spanish - both /shop and /tienda
+    { params: { lang: 'es', '*': 'shop' } },
+    { params: { lang: 'es', '*': 'tienda' } },
+    // English - only /shop (standard)
+    { params: { lang: 'en', '*': 'shop' } },
   ];
 }
 
 const { lang } = Astro.params;
 const t = useTranslations(lang as 'pt' | 'es' | 'en');
-
-const categories = ['Todos', 'Textil', 'Instrumento', 'Libro', 'Estrella'];
 ---
 
-<Layout locale={lang} title="Tienda" description="Tienda Ponto Socorro">
+<Layout locale={lang} title="Shop" description="Ponto Socorro Shop">
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <h1 class="font-serif text-4xl font-semibold text-primary mb-4">
         {t.nav.shop}
       </h1>
       <p class="text-secondary mb-12">
-        Textiles, instrumentos y publicaciones de la comunidad
+        {lang === 'pt' ? 'Textiles, instrumentos e publicações da comunidade' :
+         lang === 'es' ? 'Textiles, instrumentos y publicaciones de la comunidad' :
+         'Textiles, instruments and community publications'}
       </p>
       
       <ProductGrid products={products} />

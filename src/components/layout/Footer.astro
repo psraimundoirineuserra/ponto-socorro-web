@@ -7,12 +7,19 @@ const t = useTranslations(locale);
 
 const currentYear = new Date().getFullYear();
 
+const pageNames: Record<string, Record<Locale, string>> = {
+  foundation: { pt: 'fundacao', es: 'fundacion', en: 'foundation' },
+  library: { pt: 'hinarios', es: 'himnarios', en: 'library' },
+  archive: { pt: 'arquivo', es: 'archivo', en: 'archive' },
+  shop: { pt: 'loja', es: 'tienda', en: 'shop' },
+};
+
 const navLinks = [
   { key: 'home', href: `/${locale}/` },
-  { key: 'foundation', href: `/${locale}/foundation` },
-  { key: 'library', href: `/${locale}/library` },
-  { key: 'archive', href: `/${locale}/archive` },
-  { key: 'shop', href: `/${locale}/shop` },
+  { key: 'foundation', href: `/${locale}/${pageNames.foundation[locale]}` },
+  { key: 'library', href: `/${locale}/${pageNames.library[locale]}` },
+  { key: 'archive', href: `/${locale}/${pageNames.archive[locale]}` },
+  { key: 'shop', href: `/${locale}/${pageNames.shop[locale]}` },
 ];
 ---
 

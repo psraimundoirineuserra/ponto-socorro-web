@@ -1,0 +1,41 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n';
+import ptContent from '@/i18n/content/archive/content-pt.json';
+import esContent from '@/i18n/content/archive/content-es.json';
+import enContent from '@/i18n/content/archive/content-en.json';
+
+const locale = 'es';
+const t = useTranslations(locale);
+
+const content = locale === 'pt' ? ptContent : locale === 'es' ? esContent : enContent;
+---
+
+<Layout locale={locale} title={content.title} description={content.description}>
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="font-serif text-4xl font-semibold text-primary mb-12">
+        {content.title}
+      </h1>
+      
+      <div class="prose prose-lg text-secondary">
+        <p>
+          {content.description}
+        </p>
+        
+        <div class="mt-8 grid gap-4">
+          {content.cards.map((card: { title: string; description: string }) => (
+            <div class="p-6 bg-surface border border-border-subtle">
+              <h3 class="font-medium text-primary mb-2">{card.title}</h3>
+              <p class="text-sm text-secondary">{card.description}</p>
+            </div>
+          ))}
+        </div>
+        
+        <p class="mt-8 text-sm">
+          {content.comingSoon}
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

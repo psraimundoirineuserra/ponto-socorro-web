@@ -1,0 +1,33 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ptContent from '@/i18n/content/foundation/content-pt.json';
+import esContent from '@/i18n/content/foundation/content-es.json';
+import enContent from '@/i18n/content/foundation/content-en.json';
+
+const locale = 'pt';
+
+const content = ptContent;
+---
+
+<Layout locale={locale} title="Fundação" description="História da Fundação Ponto Socorro">
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="font-serif text-4xl font-semibold text-primary mb-12">
+        {content.title}
+      </h1>
+      
+      <div class="prose prose-lg text-secondary space-y-6">
+        {content.sections.map((section: { type: string; content: string; author?: string }) => (
+          section.type === 'paragraph' ? (
+            <p set:html={section.content} />
+          ) : section.type === 'quote' ? (
+            <blockquote class="border-l-4 border-accent-nature pl-6 my-8">
+              <p class="font-serif text-xl italic">"{section.content}"</p>
+              <cite class="text-sm">— {section.author}</cite>
+            </blockquote>
+          ) : null
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
