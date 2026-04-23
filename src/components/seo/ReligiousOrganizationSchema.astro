@@ -3,6 +3,7 @@ const siteUrl = Astro.site?.href || 'https://cepseris.org';
 
 const schema = {
   "@context": "https://schema.org",
+  "@id": `${siteUrl}/#organization`,
   "@type": ["ReligiousOrganization", "Church"],
   "name": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
   "alternateName": ["CEPSERIS", "Pronto Socorro"],
