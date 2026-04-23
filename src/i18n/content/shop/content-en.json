@@ -1,0 +1,53 @@
+{
+  "title": "Store",
+  "description": "Textiles, instruments and publications from the community",
+  "categories": {
+    "all": "All",
+    "textil": "Textile",
+    "instrumento": "Instrument",
+    "libro": "Book",
+    "star": "Star"
+  },
+  "products": {
+    "farda-blanca": {
+      "name": "Farda Branca",
+      "description": "Traditional white Farda made of fine linen"
+    },
+    "farda-azul": {
+      "name": "Farda Azul",
+      "description": "Traditional blue Farda made of fine linen"
+    },
+    "farda-negra": {
+      "name": "Farda Negra",
+      "description": "Traditional black Farda made of fine linen"
+    },
+    "kuripe-curupira": {
+      "name": "Kuripe Curupira",
+      "description": "Handcrafted Kuripe carved in wood"
+    },
+    "rape-tapir": {
+      "name": "Rapé Tapir",
+      "description": "Traditional Rapé from the Tukano tradition"
+    },
+    "himnario-impreso": {
+      "name": "Hinário Impresso",
+      "description": "Complete collection of hymns in Portuguese"
+    },
+    "estrella-grado-1": {
+      "name": "Estrela Grau 1",
+      "description": "Insignia of the first degree of the community"
+    },
+    "estrella-grado-2": {
+      "name": "Estrela Grau 2",
+      "description": "Insignia of the second degree of the community"
+    },
+    "estrella-grado-3": {
+      "name": "Estrela Grau 3",
+      "description": "Insignia of the third degree of the community"
+    },
+    "maraca-sagrada": {
+      "name": "Maraca Sagrada",
+      "description": "Ceremonial maraca with ancestral symbols"
+    }
+  }
+}

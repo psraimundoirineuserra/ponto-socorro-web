@@ -1,0 +1,19 @@
+{
+  "title": "Historical Archive",
+  "description": "The Historical Archive of Ponto Socorro contains documents, photographs, and records of the community since its foundation.",
+  "cards": [
+    {
+      "title": "Foundational Documents",
+      "description": "Official records of the foundation of CEFLUWCS"
+    },
+    {
+      "title": "Historical Photographs",
+      "description": "Images of events and gatherings over the years"
+    },
+    {
+      "title": "Ancient Hinários",
+      "description": "Collection of traditional hinários"
+    }
+  ],
+  "comingSoon": "The complete archive will be available soon."
+}

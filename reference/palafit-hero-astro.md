@@ -1,0 +1,232 @@
+// PalafitHero.astro - Video hero component with YouTube background
+// Reference: Use this pattern for immersive video hero sections
+
+---
+section class="pipod-hero-immersive">
+  <div class="hero-video-bg">
+    <div id="hero-video-player"></div>
+    <div class="video-overlay-pro"></div>
+  </div>
+
+  <button class="sound-toggle-btn" id="soundToggle" aria-label="Toggle sound">
+    <svg class="icon-audio-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+      <path d="M15.54 3.54a9 9 0 0 1 0 12.73M18.91 7.09a15 15 0 0 1 0 9.82" stroke-linecap="round"></path>
+    </svg>
+    <svg class="icon-audio-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+  </button>
+
+  <div class="pipod-hud-top">
+    <div class="glass-tag-impact">IMPACTO SOCIAL PIPOD</div>
+    <div class="title-glass-area">
+      <h1 class="hero-title-impact">
+        El Palafito de<br/><span>Don Gu</span>
+      </h1>
+    </div>
+  </div>
+
+  <div class="pipod-hud-bottom">
+    <div class="hero-actions-grid">
+       <a href="#historia" class="btn-pipod-glass-secondary">Conocer Historia</a>
+      <a href="#donar" class="btn-pipod-glass-primary">
+        Hacer Donación
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pipod-hero-immersive {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-video-bg :global(iframe) {
+    width: 100vw;
+    height: 100vh;
+    min-width: 177.77vh;
+    min-height: 56.25vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .hero-video-bg :global(.video-loaded) {
+    opacity: 1;
+  }
+
+  .video-overlay-pro {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(0,0,0,0.4) 0%, transparent 70%),
+                linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6));
+    z-index: 2;
+  }
+
+  .pipod-hud-top { position: absolute; top: 60px; left: 80px; z-index: 10; }
+  .glass-tag-impact {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.85px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 3px;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .hero-title-impact {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: #FFF;
+    margin: 0;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .hero-title-impact span { color: #4A90E2; }
+
+  .pipod-hud-bottom { position: absolute; bottom: 60px; right: 80px; z-index: 10; }
+  .hero-actions-grid { display: flex; gap: 16px; }
+
+  .btn-pipod-glass-primary, .btn-pipod-glass-secondary {
+    padding: 18px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 0.85px solid rgba(255,255,255,0.25);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn-pipod-glass-primary { background: rgba(255, 255, 255, 0.2); color: #FFF; }
+  .btn-pipod-glass-secondary { background: rgba(255, 255, 255, 0.08); color: #FFF; }
+
+  .btn-pipod-glass-primary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+
+  .sound-toggle-btn {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    z-index: 15;
+    width: 54px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    transition: all 0.3s ease;
+  }
+
+  .sound-toggle-btn:hover { background: rgba(255, 255, 255, 0.2); scale: 1.05; }
+
+  @media (max-width: 768px) {
+    .pipod-hud-top { top: 40px; left: 20px; }
+    .pipod-hud-bottom { bottom: 40px; right: 20px; left: 20px; }
+    .hero-actions-grid { flex-direction: column; }
+    .sound-toggle-btn { top: 20px; right: 20px; }
+  }
+</style>
+
+<script>
+  let player;
+  const videoId = 'OVfZtrxdM-c';
+
+  function initYouTubeAPI() {
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+    } else {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+      window.onYouTubeIframeAPIReady = createPlayer;
+    }
+  }
+
+  function createPlayer() {
+    player = new YT.Player('hero-video-player', {
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        controls: 0,
+        loop: 1,
+        playlist: videoId,
+        showinfo: 0,
+        modestbranding: 1,
+        rel: 0,
+        playsinline: 1
+      },
+      events: {
+        onReady: (event) => {
+          event.target.playVideo();
+          const iframe = document.querySelector('.hero-video-bg iframe');
+          if (iframe) iframe.classList.add('video-loaded');
+          setupSoundToggle();
+        }
+      }
+    });
+  }
+
+  function setupSoundToggle() {
+    const btn = document.getElementById('soundToggle');
+    const iconOn = btn.querySelector('.icon-audio-on');
+    const iconMuted = btn.querySelector('.icon-audio-muted');
+
+    btn.addEventListener('click', () => {
+      if (player.isMuted()) {
+        player.unMute();
+        iconOn.style.display = 'block';
+        iconMuted.style.display = 'none';
+      } else {
+        player.mute();
+        iconOn.style.display = 'none';
+        iconMuted.style.display = 'block';
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initYouTubeAPI);
+  if (!window.astroPageLoadEventAdded) {
+    initYouTubeAPI();
+    window.astroPageLoadEventAdded = true;
+  }
+</script>

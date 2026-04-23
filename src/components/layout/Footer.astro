@@ -2,17 +2,24 @@
 import { useTranslations } from '@/i18n';
 import type { Locale } from '@/i18n';
 
-const locale = Astro.props.locale as Locale || 'es';
+const locale = Astro.props.locale as Locale || 'pt';
 const t = useTranslations(locale);
 
 const currentYear = new Date().getFullYear();
 
+const pageNames: Record<string, Record<Locale, string>> = {
+  foundation: { pt: 'fundacao', es: 'fundacion', en: 'foundation' },
+  library: { pt: 'hinarios', es: 'himnarios', en: 'library' },
+  archive: { pt: 'arquivo', es: 'archivo', en: 'archive' },
+  shop: { pt: 'loja', es: 'tienda', en: 'shop' },
+};
+
 const navLinks = [
-  { key: 'home', href: `/${locale === 'es' ? '' : locale}` },
-  { key: 'foundation', href: `/${locale}/fundacion` },
-  { key: 'library', href: `/${locale}/biblioteca` },
-  { key: 'archive', href: `/${locale}/archivo` },
-  { key: 'shop', href: `/${locale}/tienda` },
+  { key: 'home', href: `/${locale}/` },
+  { key: 'foundation', href: `/${locale}/${pageNames.foundation[locale]}` },
+  { key: 'library', href: `/${locale}/${pageNames.library[locale]}` },
+  { key: 'archive', href: `/${locale}/${pageNames.archive[locale]}` },
+  { key: 'shop', href: `/${locale}/${pageNames.shop[locale]}` },
 ];
 ---
 
@@ -20,7 +27,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-6 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       <div>
-        <a href="/" class="font-serif text-xl font-semibold tracking-tight text-primary block mb-4">
+        <a href={`/${locale}/`} class="font-serif text-xl font-semibold tracking-tight text-primary block mb-4">
           {t.common.brand}
         </a>
         <p class="text-sm text-secondary max-w-xs">

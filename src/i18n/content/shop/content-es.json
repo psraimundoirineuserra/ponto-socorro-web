@@ -1,0 +1,53 @@
+{
+  "title": "Tienda",
+  "description": "Textiles, instrumentos y publicaciones de la comunidad",
+  "categories": {
+    "all": "Todos",
+    "textil": "Textil",
+    "instrumento": "Instrumento",
+    "libro": "Libro",
+    "star": "Estrella"
+  },
+  "products": {
+    "farda-blanca": {
+      "name": "Farda Blanca",
+      "description": "Farda tradicional blanca de lino fino"
+    },
+    "farda-azul": {
+      "name": "Farda Azul",
+      "description": "Farda tradicional azul de lino fino"
+    },
+    "farda-negra": {
+      "name": "Farda Negra",
+      "description": "Farda tradicional negra de lino fino"
+    },
+    "kuripe-curupira": {
+      "name": "Kuripe Curupira",
+      "description": "Kuripe artesanal tallado en madera"
+    },
+    "rape-tapir": {
+      "name": "Rapé Tapir",
+      "description": "Rapé tradicional de la tradición Tukano"
+    },
+    "himnario-impreso": {
+      "name": "Hinario Impreso",
+      "description": "Colección completa de himnos en portugués"
+    },
+    "estrella-grado-1": {
+      "name": "Estrella Grado 1",
+      "description": "Insignia del primer grado de la comunidad"
+    },
+    "estrella-grado-2": {
+      "name": "Estrella Grado 2",
+      "description": "Insignia del segundo grado de la comunidad"
+    },
+    "estrella-grado-3": {
+      "name": "Estrella Grado 3",
+      "description": "Insignia del tercer grado de la comunidad"
+    },
+    "maraca-sagrada": {
+      "name": "Maraca Sagrada",
+      "description": "Maraca ceremonial con símbolos ancestrales"
+    }
+  }
+}

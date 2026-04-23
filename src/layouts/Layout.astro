@@ -15,7 +15,7 @@ interface Props {
 const {
   title = 'Ponto Socorro',
   description = 'Centro Eclético da Fluente Luz Universal',
-  locale = 'es',
+  locale = 'pt',
 } = Astro.props;
 
 const fullTitle = title === 'Ponto Socorro' ? title : `${title} | Ponto Socorro`;
@@ -34,12 +34,12 @@ const fullTitle = title === 'Ponto Socorro' ? title : `${title} | Ponto Socorro`
     <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col bg-canvas text-primary antialiased">
-    <Navbar />
+    <Navbar locale={locale} />
     <CartDrawer />
     <main class="flex-1">
       <slot />
     </main>
     <PersistentPlayer />
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

@@ -1,0 +1,172 @@
+---
+interface Props {
+  videoId?: string;
+}
+
+const { videoId = 'CYlTJPG2vK0' } = Astro.props;
+---
+
+<section class="relative h-[80vh] w-full overflow-hidden bg-[#0a0a0a]">
+  <div class="hero-video-bg">
+    <div id="hero-video-player"></div>
+    <div class="video-overlay-minimal"></div>
+  </div>
+
+  <button class="sound-toggle-btn" id="soundToggle" aria-label="Toggle sound">
+    <svg class="icon-audio-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: none;">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+      <path d="M15.54 3.54a9 9 0 0 1 0 12.73" stroke-linecap="round"></path>
+      <path d="M18.91 7.09a15 15 0 0 1 0 9.82" stroke-linecap="round"></path>
+    </svg>
+    <svg class="icon-audio-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+      <line x1="23" y1="9" x2="17" y2="15" stroke-linecap="round"></line>
+      <line x1="17" y1="9" x2="23" y2="15" stroke-linecap="round"></line>
+    </svg>
+  </button>
+</section>
+
+<style>
+  .hero-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-video-bg :global(iframe) {
+    width: 100vw;
+    height: 100vh;
+    min-width: 177.77vh;
+    min-height: 56.25vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1000ms ease-in-out;
+  }
+
+  .hero-video-bg :global(.video-loaded) {
+    opacity: 1;
+  }
+
+  .video-overlay-minimal {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: 2;
+  }
+
+  .sound-toggle-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 15;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1A1A1A;
+    transition:
+      transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+      background 300ms ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .sound-toggle-btn:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .sound-toggle-btn:focus-visible {
+    outline: 2px solid #1A1A1A;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .sound-toggle-btn {
+      top: 1.25rem;
+      right: 1.25rem;
+    }
+  }
+</style>
+
+<script define:vars={{ videoId }}>
+  let player;
+
+  function initYouTubeAPI() {
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+    } else {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = createPlayer;
+    }
+  }
+
+  function createPlayer() {
+    player = new YT.Player('hero-video-player', {
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        controls: 0,
+        loop: 1,
+        playlist: videoId,
+        showinfo: 0,
+        modestbranding: 1,
+        rel: 0,
+        playsinline: 1,
+        disablekb: 1,
+        fs: 0
+      },
+      events: {
+        onReady: (event) => {
+          event.target.playVideo();
+          const iframe = document.querySelector('.hero-video-bg iframe');
+          if (iframe) iframe.classList.add('video-loaded');
+          setupSoundToggle();
+        }
+      }
+    });
+  }
+
+  function setupSoundToggle() {
+    const btn = document.getElementById('soundToggle');
+    const iconOn = btn.querySelector('.icon-audio-on');
+    const iconMuted = btn.querySelector('.icon-audio-muted');
+
+    btn.addEventListener('click', () => {
+      if (player.isMuted()) {
+        player.unMute();
+        iconOn.style.display = 'block';
+        iconMuted.style.display = 'none';
+      } else {
+        player.mute();
+        iconOn.style.display = 'none';
+        iconMuted.style.display = 'block';
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initYouTubeAPI);
+  if (!window.astroPageLoadEventAdded) {
+    initYouTubeAPI();
+    window.astroPageLoadEventAdded = true;
+  }
+</script>

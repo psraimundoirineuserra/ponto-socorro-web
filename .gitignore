@@ -1,32 +1,33 @@
-# dependencies
+# Dependencies
 node_modules/
 
-# build output
+# Build output
 dist/
-.astro/
 
-# environment files
+# Environment files (contain API keys)
 .env
-.env.*
-!.env.example
+.env.local
+.env.*.local
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Vite cache
+.vite/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# editor directories
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
-*~
 
-# optional npm
-package-lock.json
-bun.lockb
+# Astro
+.astro/
+
+# openspec (SDD artifacts)
+openspec/changes/*/state.yaml

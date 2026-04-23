@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { getHymnBySlug, hymns } from '@/data/hymns';
+
+export function getStaticPaths() {
+  return hymns.flatMap(h => [
+    { params: { lang: 'pt', slug: h.slug } },
+    { params: { lang: 'es', slug: h.slug } },
+    { params: { lang: 'en', slug: h.slug } },
+  ]);
+}
+
+const { lang, slug } = Astro.params;
+const hymn = getHymnBySlug(slug!);
+---
+
+<Layout locale={lang} title={hymn?.title || 'Himno'} description={hymn?.author}>
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+      <a href={`/${lang}/library`} class="text-sm text-secondary hover:text-primary mb-8 inline-block">
+        ← Volver a la biblioteca
+      </a>
+      
+      <h1 class="font-serif text-4xl font-semibold text-primary mb-4">
+        {hymn?.title}
+      </h1>
+      
+      <div class="flex items-center gap-4 text-secondary mb-12">
+        <span>{hymn?.author}</span>
+        <span>•</span>
+        <span>{hymn?.caderno}</span>
+        <span>•</span>
+        <span>{hymn?.duration}</span>
+      </div>
+      
+      <div class="text-center text-secondary py-12">
+        <p> Reproductor de audio con sincronización LRC</p>
+        <p class="text-sm mt-2"> (UI lista, archivos de audio no incluidos)</p>
+      </div>
+    </div>
+  </section>
+</Layout>

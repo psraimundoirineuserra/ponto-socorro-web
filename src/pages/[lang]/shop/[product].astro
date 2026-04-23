@@ -1,0 +1,90 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { products } from '@/data/products';
+
+export function getStaticPaths() {
+  return products.flatMap(p => [
+    { params: { lang: 'pt', product: p.slug } },
+    { params: { lang: 'es', product: p.slug } },
+    { params: { lang: 'en', product: p.slug } },
+  ]);
+}
+
+const { lang, product: slug } = Astro.params;
+const product = products.find(p => p.slug === slug);
+
+const formattedPrice = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+}).format(product?.price || 0);
+---
+
+<Layout locale={lang} title={product?.name || 'Producto'} description={product?.description}>
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <a href="/{lang}/shop" class="text-sm text-secondary hover:text-primary mb-8 inline-block">
+        ← Volver a la tienda
+      </a>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="aspect-square bg-canvas">
+          <img src={product?.image} alt={product?.name} class="w-full h-full object-cover" />
+        </div>
+        
+        <div>
+          <p class="text-xs uppercase tracking-wider text-secondary mb-2">{product?.category}</p>
+          <h1 class="font-serif text-3xl font-semibold text-primary mb-4">{product?.name}</h1>
+          <p class="text-2xl font-bold text-primary mb-6">{formattedPrice}</p>
+          <p class="text-secondary mb-8">{product?.description}</p>
+          
+          {product?.requiresMeasurement && (
+            <div class="p-4 bg-canvas border border-subtle mb-6">
+              <p class="text-sm font-medium mb-2">Este producto requiere medidas personalizadas</p>
+              <p class="text-xs text-secondary">Complete sus medidas durante el checkout</p>
+            </div>
+          )}
+          
+          <button
+            id="add-to-cart-btn"
+            class="w-full bg-primary text-surface py-3 px-6 font-medium hover:opacity-80 transition-opacity"
+            data-product={JSON.stringify(product)}
+          >
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import { addToCart } from '@/stores/cartStore';
+
+  const btn = document.getElementById('add-to-cart-btn');
+  
+  btn?.addEventListener('click', () => {
+    const productData = btn.getAttribute('data-product');
+    if (!productData) return;
+    
+    const product = JSON.parse(productData);
+    
+    addToCart({
+      id: product.id,
+      variantId: product.slug,
+      nombre: product.name,
+      nombreEn: product.nameEn || product.name,
+      nombrePt: product.namePt || product.name,
+      categoria: product.category,
+      tipo: product.requiresMeasurement ? 'custom' : 'standard',
+      precio: product.price,
+      cantidad: 1,
+      imagen: product.image,
+      slug: product.slug,
+    });
+    
+    const cartDrawer = document.getElementById('cart-drawer');
+    const cartBackdrop = document.getElementById('cart-backdrop');
+    cartDrawer?.classList.remove('translate-x-full');
+    cartBackdrop?.classList.remove('opacity-0', 'pointer-events-none');
+  });
+</script>

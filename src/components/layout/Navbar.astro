@@ -2,15 +2,23 @@
 import { useTranslations, changeLanguage, languageNames } from '@/i18n';
 import type { Locale } from '@/i18n';
 
-const locale = Astro.props.locale as Locale || 'es';
+const locale = Astro.props.locale as Locale || 'pt';
 const t = useTranslations(locale);
+const currentPath = Astro.url.pathname;
+
+const pageNames: Record<string, Record<Locale, string>> = {
+  foundation: { pt: 'fundacao', es: 'fundacion', en: 'foundation' },
+  library: { pt: 'hinarios', es: 'himnarios', en: 'library' },
+  archive: { pt: 'arquivo', es: 'archivo', en: 'archive' },
+  shop: { pt: 'loja', es: 'tienda', en: 'shop' },
+};
 
 const navLinks = [
-  { key: 'home', href: '/' },
-  { key: 'foundation', href: '/foundation' },
-  { key: 'library', href: '/library' },
-  { key: 'archive', href: '/archive' },
-  { key: 'shop', href: '/shop' },
+  { key: 'home', href: `/${locale}/` },
+  { key: 'foundation', href: `/${locale}/${pageNames.foundation[locale]}` },
+  { key: 'library', href: `/${locale}/${pageNames.library[locale]}` },
+  { key: 'archive', href: `/${locale}/${pageNames.archive[locale]}` },
+  { key: 'shop', href: `/${locale}/${pageNames.shop[locale]}` },
 ];
 ---
 
@@ -34,8 +42,8 @@ const navLinks = [
     <div class="flex items-center gap-4">
       <div class="hidden md:flex items-center gap-2 text-xs">
         {(['es', 'en', 'pt'] as Locale[]).map((lang) => (
-          <a 
-            href={changeLanguage(lang)} 
+          <a
+            href={changeLanguage(lang, currentPath)}
             class={`${lang === locale ? 'text-primary font-medium' : 'text-secondary hover:text-primary'} transition-colors`}
           >
             {lang.toUpperCase()}
@@ -79,8 +87,8 @@ const navLinks = [
       ))}
       <div class="flex items-center gap-4 pt-4 border-t border-subtle">
         {(['es', 'en', 'pt'] as Locale[]).map((lang) => (
-          <a 
-            href={changeLanguage(lang)} 
+          <a
+            href={changeLanguage(lang, currentPath)}
             class={`${lang === locale ? 'text-primary font-medium' : 'text-secondary hover:text-primary'} text-sm transition-colors`}
           >
             {languageNames[lang]}

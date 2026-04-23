@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "title": "Ponto Socorro",
+    "subtitle": "Faith, Music and Community",
+    "cta": "Explore"
+  },
+  "manifesto": {
+    "title": "Our Faith",
+    "body": "<p>Ponto Socorro is a sacred space where faith is lived through music and community. Founded in the tradition of Santo Daime, our community gathers to sing hymns that connect us with the divine and with each other.</p><p>The hymns we share are messages of love, light, and hope. Each chant carries the wisdom of generations of seekers who walked this path before us. Through music, we find a direct connection with the spiritual realm.</p><p>Our mission is to preserve and share this rich musical heritage, making these sacred songs accessible to all who seek their light. In our community, every voice matters and every heart is welcome.</p>"
+  },
+  "coordinates": {
+    "title": "Coordinates",
+    "founded": "Founded",
+    "location": "Location",
+    "community": "Global Community"
+  }
+}

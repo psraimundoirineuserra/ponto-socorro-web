@@ -6,7 +6,7 @@
   "nav": {
     "home": "Inicio",
     "foundation": "Fundación",
-    "library": "Biblioteca",
+    "library": "Himnarios",
     "archive": "Archivo",
     "shop": "Tienda"
   },
@@ -16,6 +16,9 @@
       "subtitle": "Fe, Música y Comunidad",
       "cta": "Explorar"
     },
+    "preview": {
+      "seeAll": "Ver todos →"
+    },
     "manifesto": {
       "title": "Nuestra Fe",
       "description": "Un espacio para la búsqueda espiritual a través de la música y la tradición oral."
@@ -24,11 +27,12 @@
       "title": "Coordenadas",
       "founded": "Fundada",
       "location": "Ubicación",
-      "community": "Comunidad Global"
+      "community": "Comunidad Global",
+      "languages": "Idiomas"
     }
   },
   "library": {
-    "title": "Biblioteca Musical",
+    "title": "Himnarios Musical",
     "subtitle": "Himnos y Cantos",
     "search": "Buscar himno...",
     "filter": "Filtrar por caderno",
