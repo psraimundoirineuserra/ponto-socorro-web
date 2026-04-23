@@ -1,14 +1,14 @@
 ---
+const siteUrl = Astro.site?.href || 'https://cepseris.org';
+
 const schema = {
   "@context": "https://schema.org",
   "@type": ["ReligiousOrganization", "Church"],
   "name": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
   "alternateName": ["CEPSERIS", "Pronto Socorro"],
-  "description": "Igreja da Doutrina de Santo Daime. Centro Espiritual Raimundo Irineu Serra.",
-  "keywords": "Santo Daime, Centro Espiritual, Himnarios, Cânticos, Cura, Doutrina de Santo Daime, CEPSERIS, Pronto Socorro",
-  "url": "https://cepseris.org",
-  "logo": "https://cepseris.org/images/logo_prontosocorro.webp",
-  "image": "https://cepseris.org/images/logo_prontosocorro.webp",
+  "url": siteUrl,
+  "logo": new URL('/images/logo_prontosocorro.webp', siteUrl).href,
+  "image": new URL('/images/logo_prontosocorro.webp', siteUrl).href,
   
   "address": {
     "@type": "PostalAddress",

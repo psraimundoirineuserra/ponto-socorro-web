@@ -7,6 +7,8 @@ interface Props {
   locale?: 'pt' | 'es' | 'en';
 }
 
+const siteUrl = Astro.site?.href || 'https://cepseris.org';
+
 const { 
   title = 'CEPSERIS',
   description = 'Centro e Pronto Socorro Espiritual Raimundo Irineu Serra. Igreja da Doutrina de Santo Daime.',
@@ -15,8 +17,8 @@ const {
   locale = 'pt'
 } = Astro.props;
 
-const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, 'https://cepseris.org').href;
-const absoluteUrl = url.startsWith('http') ? url : new URL(url, 'https://cepseris.org').href;
+const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+const absoluteUrl = url.startsWith('http') ? url : new URL(url, siteUrl).href;
 ---
 
 <meta property="og:type" content="website" />
@@ -28,9 +30,3 @@ const absoluteUrl = url.startsWith('http') ? url : new URL(url, 'https://cepseri
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : locale === 'es' ? 'es_CO' : 'en_US'} />
 <meta property="og:site_name" content="CEPSERIS" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={absoluteUrl} />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={absoluteImageUrl} />
