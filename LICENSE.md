@@ -1,4 +1,4 @@
-© 2026 Centro Eclético da Fluente Luz Universal
+© 2026 Centro Eclético da Fluente Luz Universal Wilson Carneiro de Souza (CEFLUWCS)
 Desenvolvido por NavioAzul
 
 Todos os direitos reservados.
