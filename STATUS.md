@@ -25,9 +25,11 @@
 |---------|--------|-------|
 | VideoHero | ✅ | YouTube background + audio toggle glassmorphism |
 | Audio toggle CSS | ✅ | Grid stacking - no ghosting |
+| Audio toggle scaling | ✅ | 1.85rem, asymmetric 0.8/1.05/1.3 |
 | Navbar logo + CEPSERIS | ✅ | Image + brand name static |
 | Design System V2 | ✅ | Linear-inspired structure |
 | Navbar c/ URLs simples | ✅ | /foundation, /library, etc. |
+| Mobile menu JS | ✅ | transition:persist working |
 | favicon.svg | ✅ | Created |
 | Placeholder SVG images | ✅ | 10 products |
 | CartDrawer | ✅ | Slide-out cart |
@@ -36,6 +38,8 @@
 | nanostores c/ localStorage | ✅ | Persistence active |
 | i18n URLs PT/ES/EN | ✅ | All pages translated |
 | SDD configured | ✅ | openspec + engram (hybrid) |
+| Footer con dirección | ✅ | Rio Branco - AC, Brasil |
+| Footer redes sociales | ✅ | Facebook, Instagram, Google |
 
 ---
 
@@ -58,6 +62,16 @@
 | Foundation content expansion | 🟡 Media |
 | Archive external resources | 🟡 Media |
 | Mobile menu polish | 🟢 Baja |
+
+---
+
+## Contact Info (Private)
+
+See `redes-sociais-cepseris.md` for:
+- Dirección: 010, KM04, Ramal 5, R. da Vila dos Carneiros, 000, Rio Branco - AC, Brasil
+- Facebook: https://www.facebook.com/ProntoSocorrroEspiritual/
+- Instagram: https://www.instagram.com/ps.raimundoirineuserra/
+- Google: https://share.google/8FMQmaWrE8rfLZFtu
 
 ---
 
@@ -95,7 +109,7 @@
 
 | Branch | Commit |
 |--------|--------|
-| main | 630e7e5 |
-| develop | d814b99 |
+| main | 17b1a5f |
+| develop | 17b1a5f |
 
 **Sync**: main and develop are synchronized.

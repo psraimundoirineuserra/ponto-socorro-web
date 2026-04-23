@@ -41,7 +41,7 @@
   "footer": {
     "navigation": "Navegación",
     "contact": "Contacto",
-    "email": "Email",
-    "copyright": "© {year} Ponto Socorro. Todos los derechos reservados."
+    "address": "010, KM04, Ramal 5, R. da Vila dos Carneiros, 000, Rio Branco - AC, Brasil",
+    "copyright": "© {year} CEPSERIS. Todos los derechos reservados."
   }
 }

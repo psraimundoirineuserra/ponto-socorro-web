@@ -1,6 +1,6 @@
 {
   "common": {
-    "brand": "Ponto Socorro",
+    "brand": "CEPSERIS",
     "tagline": "Centro Eclético da Fluente Luz Universal"
   },
   "nav": {
@@ -12,7 +12,7 @@
   },
   "home": {
     "hero": {
-      "title": "Ponto Socorro",
+      "title": "CEPSERIS",
       "subtitle": "Fé, Música e Comunidade",
       "cta": "Explorar"
     },
@@ -38,10 +38,10 @@
     "filter": "Filtrar por caderno",
     "all": "Todos"
   },
-  "footer": {
+"footer": {
     "navigation": "Navegação",
     "contact": "Contato",
-    "email": "Email",
-    "copyright": "© {year} Ponto Socorro. Todos os direitos reservados."
+    "address": "010, KM04, Ramal 5, R. da Vila dos Carneiros, 000, Rio Branco - AC, Brasil",
+    "copyright": "© {year} CEPSERIS. Todos os direitos reservados."
   }
 }
