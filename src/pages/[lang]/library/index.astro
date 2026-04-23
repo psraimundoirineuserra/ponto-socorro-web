@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params;
-const t = useTranslations('pt');
+const t = useTranslations(lang as 'pt' | 'es' | 'en');
 const currentFilter = Astro.url.searchParams.get('filter') || 'all';
 
 const categories = [
@@ -22,12 +22,12 @@ const categories = [
   ...cadernos.map(c => ({ name: c.name, value: c.slug, count: hymns.filter(h => h.caderno === c.slug).length }))
 ];
 
-const filteredHymns = currentFilter === 'all' 
-  ? hymns 
+const filteredHymns = currentFilter === 'all'
+  ? hymns
   : hymns.filter(h => h.caderno === currentFilter);
 ---
 
-<Layout locale="pt" title={t.library.title} description={t.library.subtitle}>
+<Layout locale={lang} title={t.library.title} description={t.library.subtitle}>
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <h1 class="font-serif text-4xl font-semibold text-primary mb-4">

@@ -9,6 +9,18 @@ export interface Hymn {
   durationSeconds: number;
 }
 
+export interface Caderno {
+  slug: string;
+  name: string;
+}
+
+export const cadernos: Caderno[] = [
+  { slug: 'fundacional', name: 'Fundacional' },
+  { slug: 'cura', name: 'Cura' },
+  { slug: 'instrucciones', name: 'Instrucciones' },
+  { slug: 'especial', name: 'Especial' },
+];
+
 export const hymns: Hymn[] = [
   { slug: 'gloria-a-ti', title: 'Gloria a Ti Señor', titleEn: 'Glory to You Lord', titlePt: 'Glória a Ti Senhor', author: 'Mestre Irineu', caderno: 'fundacional', duration: '3:45', durationSeconds: 225 },
   { slug: 'voz-del-cielo', title: 'Voz del Cielo', titleEn: 'Voice of Heaven', titlePt: 'Voz do Céu', author: 'Tradicional', caderno: 'cura', duration: '4:12', durationSeconds: 252 },

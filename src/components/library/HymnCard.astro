@@ -6,9 +6,11 @@ interface Props {
   caderno: string;
   duration: string;
 }
+
+const { slug, title, author, duration } = Astro.props;
 ---
 
-<a href={`/library/${slug}`} class="group flex items-center gap-4 p-4 bg-surface border border-border-subtle hover:border-accent-nature/30 transition-colors">
+<a href={`/${slug}`} class="group flex items-center gap-4 p-4 bg-surface border border-border-subtle hover:border-accent-nature/30 transition-colors">
   <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center group-hover:bg-accent-nature/10 transition-colors">
     <span class="text-lg">♪</span>
   </div>

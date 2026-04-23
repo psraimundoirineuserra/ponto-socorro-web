@@ -10,14 +10,14 @@ export function getStaticPaths() {
   ]);
 }
 
-const { slug } = Astro.params;
+const { lang, slug } = Astro.params;
 const hymn = getHymnBySlug(slug!);
 ---
 
-<Layout locale="pt" title={hymn?.title || 'Himno'} description={hymn?.author}>
+<Layout locale={lang} title={hymn?.title || 'Himno'} description={hymn?.author}>
   <section class="py-16 px-6">
     <div class="max-w-2xl mx-auto">
-      <a href="/pt/library" class="text-sm text-secondary hover:text-primary mb-8 inline-block">
+      <a href={`/${lang}/library`} class="text-sm text-secondary hover:text-primary mb-8 inline-block">
         ← Volver a la biblioteca
       </a>
       

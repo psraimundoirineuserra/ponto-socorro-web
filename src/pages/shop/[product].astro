@@ -1,3 +1,9 @@
 ---
+import { products } from '@/data/products';
+
+export function getStaticPaths() {
+  return products.map(p => ({ params: { product: p.slug } }));
+}
+
 return Astro.redirect(`/pt/shop/${Astro.params.product}`, 301);
 ---
