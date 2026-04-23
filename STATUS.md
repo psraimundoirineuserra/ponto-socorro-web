@@ -1,6 +1,6 @@
 # STATUS.md - CEPSERIS Project Tracker
 
-**Project**: CEPSERIS - Centro Eclético da Fluente Luz Universal Wilson Carneiro de Souza
+**Project**: CEPSERIS - Centro e Pronto Socorro Espiritual Raimundo Irineu Serra
 **Path**: /Users/calderonjosue_/clientes/ponto-socorro/protosocorro/
 **Stack**: Astro 6.x + Tailwind v4 + Nanostores + i18n PT/ES/EN
 **Updated**: 2026-04-23
@@ -40,6 +40,7 @@
 | SDD configured | ✅ | openspec + engram (hybrid) |
 | Footer con dirección | ✅ | Rio Branco - AC, Brasil |
 | Footer redes sociales | ✅ | Facebook, Instagram, Google |
+| **SEO Implementation** | ✅ | ReligiousOrganization schema, BaseSeo, MetaSocial, sitemap, robots.txt |
 
 ---
 
@@ -62,6 +63,25 @@
 | Foundation content expansion | 🟡 Media |
 | Archive external resources | 🟡 Media |
 | Mobile menu polish | 🟢 Baja |
+
+---
+
+## SEO Implementation (2026-04-23)
+
+| Component | Status | File |
+|-----------|--------|------|
+| BaseSeo.astro | ✅ | Meta tags base, canonical, keywords |
+| MetaSocial.astro | ✅ | Open Graph tags (no Twitter) |
+| ReligiousOrganizationSchema | ✅ | JSON-LD ReligiousOrganization |
+| BreadcrumbJsonLd | ✅ | BreadcrumbList schema |
+| sitemap.xml | ✅ | Auto-generated via @astrojs/sitemap |
+| robots.txt | ✅ | Configured with sitemap reference |
+
+**SEO Data:**
+- Name: Centro e Pronto Socorro Espiritual Raimundo Irineu Serra
+- Alias: CEPSERIS, Pronto Socorro
+- Keywords: Santo Daime, Centro Espiritual, Himnarios, etc.
+- Address: Rio Branco - AC, Brasil
 
 ---
 
@@ -109,7 +129,7 @@ See `redes-sociais-cepseris.md` for:
 
 | Branch | Commit |
 |--------|--------|
-| main | 17b1a5f |
-| develop | 17b1a5f |
+| main | 6f9e9a0 |
+| develop | 6f9e9a0 |
 
 **Sync**: main and develop are synchronized.

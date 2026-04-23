@@ -46,6 +46,10 @@
 | 6 | Footer address + redes | ✅ Rio Branco, FB/IG/Google | 2026-04-23 |
 | 7 | Task files consolidation | ✅ STATUS.md + INBOX.md + ARCHIVE.md | 2026-04-23 |
 | 8 | Brand name CEPSERIS | ✅ Static text in navbar | 2026-04-23 |
+| 9 | SEO Implementation | ✅ ReligiousOrganization + BaseSeo + MetaSocial + sitemap + robots | 2026-04-23 |
+| 10 | robots.txt fix | ✅ Removed Disallow: /_astro/ | 2026-04-23 |
+| 11 | Schema @id linking | ✅ Added @id for cross-schema reference | 2026-04-23 |
+| 12 | MetaSocial no Twitter | ✅ Removed Twitter tags (CEPSERIS no usa) | 2026-04-23 |
 
 ---
 
@@ -64,4 +68,5 @@
 - `Padrinho Wilson Carneiro...md` - Ensayo 306 líneas
 - `reference/palafit-hero-astro.md` - Video hero pattern
 - `redes-sociais-cepseris.md` - Contacto y redes (privado)
+- `openspec/changes/archive/2026-04-23-cepseris-seo-implementation/` - SDD archive
 - Video: "Histórias de Papai" - https://youtube.com/embed/CYlTJPG2vK0
