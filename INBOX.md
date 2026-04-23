@@ -11,6 +11,7 @@
 | # | Task | Severity | Notes |
 |---|------|----------|-------|
 | 1 | Audio player connection | 🔴 Alta | Conectar UI del player al audioStore |
+| 2 | Audio player tapa footer | 🔴 Alta | z-index o margin-bottom para evitar solapamiento |
 | 2 | Shop filters | 🟡 Media | Category pills + URL params |
 | 3 | Measurement form | 🟡 Media | Para fardas (requiresMeasurement) |
 
