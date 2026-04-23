@@ -8,11 +8,11 @@ const t = useTranslations(locale);
 const currentYear = new Date().getFullYear();
 
 const navLinks = [
-  { key: 'home', href: '/' },
-  { key: 'foundation', href: '/foundation' },
-  { key: 'library', href: '/library' },
-  { key: 'archive', href: '/archive' },
-  { key: 'shop', href: '/shop' },
+  { key: 'home', href: `/${locale}/` },
+  { key: 'foundation', href: `/${locale}/foundation` },
+  { key: 'library', href: `/${locale}/library` },
+  { key: 'archive', href: `/${locale}/archive` },
+  { key: 'shop', href: `/${locale}/shop` },
 ];
 ---
 
@@ -20,7 +20,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-6 py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       <div>
-        <a href="/" class="font-serif text-xl font-semibold tracking-tight text-primary block mb-4">
+        <a href={`/${locale}/`} class="font-serif text-xl font-semibold tracking-tight text-primary block mb-4">
           {t.common.brand}
         </a>
         <p class="text-sm text-secondary max-w-xs">

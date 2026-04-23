@@ -1,7 +1,12 @@
 ---
 import { useTranslations } from '@/i18n';
 
-const t = useTranslations('es');
+interface Props {
+  locale: 'pt' | 'es' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <section class="py-24 px-6 bg-surface border-y border-subtle">
@@ -23,7 +28,7 @@ const t = useTranslations('es');
 
       <div>
         <p class="font-serif text-4xl font-semibold text-primary">3</p>
-        <p class="text-sm text-secondary mt-2">Idiomas</p>
+        <p class="text-sm text-secondary mt-2">{t.home.coordinates.languages}</p>
       </div>
 
       <div>

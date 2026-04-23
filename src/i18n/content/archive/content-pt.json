@@ -1,0 +1,19 @@
+{
+  "title": "Arquivo Histórico",
+  "description": "O Arquivo Histórico do Ponto Socorro contém documentos, fotografias e registros da comunidade desde sua fundação.",
+  "cards": [
+    {
+      "title": "Documentos Fundacionais",
+      "description": "Registros oficiais da fundação do CEFLUWCS"
+    },
+    {
+      "title": "Fotografias Históricas",
+      "description": "Imagens de eventos e reuniões ao longo dos anos"
+    },
+    {
+      "title": "Hinários Antigos",
+      "description": "Coleção de hinários tradicionais"
+    }
+  ],
+  "comingSoon": "O arquivo completo estará disponível em breve."
+}

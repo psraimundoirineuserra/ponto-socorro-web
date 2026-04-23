@@ -1,0 +1,24 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/home/Hero.astro';
+import Manifesto from '@/components/home/Manifesto.astro';
+import Coordinates from '@/components/home/Coordinates.astro';
+import HinarioPreview from '@/components/home/HinarioPreview.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout locale={lang} title="Ponto Socorro" description="Iglesia y Fundación Ponto Socorro">
+  <Hero locale={lang} />
+  <Manifesto locale={lang} />
+  <Coordinates locale={lang} />
+  <HinarioPreview locale={lang} />
+</Layout>

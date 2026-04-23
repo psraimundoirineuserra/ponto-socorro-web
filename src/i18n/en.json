@@ -6,7 +6,7 @@
   "nav": {
     "home": "Home",
     "foundation": "Foundation",
-    "library": "Library",
+    "library": "Hymnals",
     "archive": "Archive",
     "shop": "Shop"
   },
@@ -16,6 +16,9 @@
       "subtitle": "Faith, Music and Community",
       "cta": "Explore"
     },
+    "preview": {
+      "seeAll": "See all →"
+    },
     "manifesto": {
       "title": "Our Faith",
       "description": "A space for spiritual seeking through music and oral tradition."
@@ -24,11 +27,12 @@
       "title": "Coordinates",
       "founded": "Founded",
       "location": "Location",
-      "community": "Global Community"
+      "community": "Global Community",
+      "languages": "Languages"
     }
   },
   "library": {
-    "title": "Music Library",
+    "title": "Music Hymnals",
     "subtitle": "Hymns and Songs",
     "search": "Search hymn...",
     "filter": "Filter by notebook",

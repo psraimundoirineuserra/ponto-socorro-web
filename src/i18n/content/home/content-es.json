@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "title": "Punto Socorro",
+    "subtitle": "Fe, Música y Comunidad",
+    "cta": "Explorar"
+  },
+  "manifesto": {
+    "title": "Nuestra Fe",
+    "body": "<p>Punto Socorro es un espacio sagrado donde la fe se vive a través de la música y la comunidad. Fundados en la tradición del Santo Daime, nuestra comunidad se reúne para cantar himnos que nos conectan con lo divino y unos con otros.</p><p>Los himnos que compartimos son mensajes de amor, luz y esperanza. Cada canto lleva la sabiduría de generaciones de buscadores que recorrieron este camino antes que nosotros. A través de la música, encontramos una conexión directa con el reino espiritual.</p><p>Nuestra misión es preservar y compartir este rico patrimonio musical, haciendo estas canciones sagradas accesibles a todos los que buscan su luz. En nuestra comunidad, cada voz importa y cada corazón es bienvenido.</p>"
+  },
+  "coordinates": {
+    "title": "Coordenadas",
+    "founded": "Fundada",
+    "location": "Ubicación",
+    "community": "Comunidad Global"
+  }
+}

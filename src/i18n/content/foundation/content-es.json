@@ -1,0 +1,26 @@
+{
+  "title": "Nuestra Historia",
+  "sections": [
+    {
+      "type": "paragraph",
+      "content": "<strong>Padrinho Wilson Carneiro de Souza</strong> nació en los sertones de Acre el 18 de julio de 1920. Trabajó como seringueiro desde niño y luego se convirtió en un comerciante exitoso en Rio Branco."
+    },
+    {
+      "type": "paragraph",
+      "content": "En 1962, llegó al Centro de Irradiación Mental Luz Divina buscando cura para su hijo, donde conoció al Mestre Irineu Serra y a la Doctrina del Daime."
+    },
+    {
+      "type": "paragraph",
+      "content": "Se convirtió en jefe de los trabajos de cura y, en 1988, fundó el CEFLUWCS - Centro Ecléctico de la Fluente Luz Universal Wilson Carneiro de Souza."
+    },
+    {
+      "type": "quote",
+      "content": "Mi misión realmente es cuidar de los enfermos",
+      "author": "Padrinho Wilson"
+    },
+    {
+      "type": "paragraph",
+      "content": "Falleció el 26 de junio de 1998, a los 77 años, dejando un legado de fe, conciliación y observancia de las tradiciones rituales."
+    }
+  ]
+}

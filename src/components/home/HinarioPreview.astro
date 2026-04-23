@@ -2,7 +2,12 @@
 import { useTranslations } from '@/i18n';
 import { hymns } from '@/data/hymns';
 
-const t = useTranslations('es');
+interface Props {
+  locale: 'pt' | 'es' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 
 const previewHymns = hymns.slice(0, 3);
 ---
@@ -14,7 +19,7 @@ const previewHymns = hymns.slice(0, 3);
         {t.library.title}
       </h2>
       <a href="/library" class="text-sm text-secondary hover:text-primary transition-colors">
-        Ver todos →
+        {t.home.preview.seeAll}
       </a>
     </div>
 

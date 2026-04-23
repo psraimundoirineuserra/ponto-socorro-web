@@ -1,0 +1,53 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { useTranslations } from '@/i18n';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as 'pt' | 'es' | 'en');
+---
+
+<Layout locale={lang} title="Archivo" description="Archivo Histórico Ponto Socorro">
+  <section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="font-serif text-4xl font-semibold text-primary mb-12">
+        Archivo Histórico
+      </h1>
+      
+      <div class="prose prose-lg text-secondary">
+        <p>
+          El Archivo Histórico de Ponto Socorro contiene documentos, fotografías y registros 
+          de la comunidad desde su fundación.
+        </p>
+        
+        <div class="mt-8 grid gap-4">
+          <div class="p-6 bg-surface border border-border-subtle">
+            <h3 class="font-medium text-primary mb-2">Documentos Fundacionales</h3>
+            <p class="text-sm text-secondary">Registros oficiales de la fundación del CEFLUWCS</p>
+          </div>
+          
+          <div class="p-6 bg-surface border border-border-subtle">
+            <h3 class="font-medium text-primary mb-2">Fotografías Históricas</h3>
+            <p class="text-sm text-secondary">Imágenes de eventos y reuniones a lo largo de los años</p>
+          </div>
+          
+          <div class="p-6 bg-surface border border-border-subtle">
+            <h3 class="font-medium text-primary mb-2">Hinarios Antiguos</h3>
+            <p class="text-sm text-secondary">Colección de himnarios tradicionales</p>
+          </div>
+        </div>
+        
+        <p class="mt-8 text-sm">
+          El archivo completo estará disponible próximamente.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

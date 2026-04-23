@@ -7,11 +7,11 @@ const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { key: 'home', href: '/' },
-  { key: 'foundation', href: '/foundation' },
-  { key: 'library', href: '/library' },
-  { key: 'archive', href: '/archive' },
-  { key: 'shop', href: '/shop' },
+  { key: 'home', href: `/${locale}/` },
+  { key: 'foundation', href: `/${locale}/foundation` },
+  { key: 'library', href: `/${locale}/library` },
+  { key: 'archive', href: `/${locale}/archive` },
+  { key: 'shop', href: `/${locale}/shop` },
 ];
 ---
 

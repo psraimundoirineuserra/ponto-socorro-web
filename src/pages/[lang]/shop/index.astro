@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ProductGrid from '@/components/shop/ProductGrid.astro';
+import { useTranslations } from '@/i18n';
+import { products } from '@/data/products';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as 'pt' | 'es' | 'en');
+
+const categories = ['Todos', 'Textil', 'Instrumento', 'Libro', 'Estrella'];
+---
+
+<Layout locale={lang} title="Tienda" description="Tienda Ponto Socorro">
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="font-serif text-4xl font-semibold text-primary mb-4">
+        {t.nav.shop}
+      </h1>
+      <p class="text-secondary mb-12">
+        Textiles, instrumentos y publicaciones de la comunidad
+      </p>
+      
+      <ProductGrid products={products} />
+    </div>
+  </section>
+</Layout>

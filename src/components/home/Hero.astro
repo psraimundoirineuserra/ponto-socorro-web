@@ -1,7 +1,12 @@
 ---
 import { useTranslations } from '@/i18n';
 
-const t = useTranslations('es');
+interface Props {
+  locale: 'pt' | 'es' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <section class="relative h-[80vh] flex items-center justify-center bg-canvas overflow-hidden">

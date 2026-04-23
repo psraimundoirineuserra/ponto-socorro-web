@@ -1,0 +1,17 @@
+{
+  "hero": {
+    "title": "Ponto Socorro",
+    "subtitle": "Fé, Música e Comunidade",
+    "cta": "Explorar"
+  },
+  "manifesto": {
+    "title": "Nossa Fé",
+    "body": "<p>Ponto Socorro é um espaço sagrado onde a fé é vivida através da música e da comunidade. Fundados na tradição do Santo Daime, nossa comunidade se reúne para cantar hinos que nos conectam com o divino e uns com os outros.</p><p>Os hinos que compartilhamos são mensagens de amor, luz e esperança. Cada canto carrega a sabedoria de gerações de buscaadores que trilharam este caminho antes de nós. Através da música, encontramos uma conexão direta com o realm espiritual.</p><p>Nuestra missão é preservar e compartilhar este rico patrimônio musical, tornando estas canções sagradas acessíveis a todos que buscam sua luz. Em nossa comunidade, cada voz importa e cada coração é bem-vindo.</p>"
+  },
+  "coordinates": {
+    "title": "Coordenadas",
+    "founded": "Fundada",
+    "location": "Localização",
+    "community": "Comunidade Global"
+  }
+}
