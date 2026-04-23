@@ -17,7 +17,7 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
   </div>
 
   <button class="sound-toggle-btn" id="soundToggle" aria-label="Toggle sound">
-    <svg class="icon-audio-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: none;">
+    <svg class="icon-audio-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
       <path d="M15.54 3.54a9 9 0 0 1 0 12.73" stroke-linecap="round"></path>
       <path d="M18.91 7.09a15 15 0 0 1 0 9.82" stroke-linecap="round"></path>
@@ -79,9 +79,8 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 9999px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     color: #1A1A1A;
     transition:
       transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
@@ -97,6 +96,40 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
   .sound-toggle-btn:focus-visible {
     outline: 2px solid #1A1A1A;
     outline-offset: 2px;
+  }
+
+  /* Grid stacking - Eliminates ghosting */
+  .sound-toggle-btn svg {
+    grid-area: 1 / 1;
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    transition:
+      opacity 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .icon-audio-muted {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .icon-audio-on {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  /* Active state (unmuted) - Asymmetric scaling */
+  .sound-toggle-btn.is-active .icon-audio-on {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .sound-toggle-btn.is-active .icon-audio-muted {
+    opacity: 0;
+    transform: scale(1.4);
   }
 
   @media (max-width: 768px) {
@@ -176,9 +209,6 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
       const btn = document.getElementById('soundToggle');
       if (!btn) return;
 
-      const iconOn = btn.querySelector('.icon-audio-on');
-      const iconMuted = btn.querySelector('.icon-audio-muted');
-
       const newBtn = btn.cloneNode(true) as HTMLElement;
       btn.replaceWith(newBtn);
 
@@ -188,13 +218,11 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
         if (isMuted) {
           player.unMute();
           player.setVolume(80);
-          iconOn.style.display = 'block';
-          iconMuted.style.display = 'none';
+          newBtn.classList.add('is-active');
           isMuted = false;
         } else {
           player.mute();
-          iconOn.style.display = 'none';
-          iconMuted.style.display = 'block';
+          newBtn.classList.remove('is-active');
           isMuted = true;
         }
       });
