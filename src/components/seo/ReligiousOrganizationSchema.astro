@@ -1,0 +1,44 @@
+---
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["ReligiousOrganization", "Church"],
+  "name": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
+  "alternateName": ["CEPSERIS", "Pronto Socorro"],
+  "description": "Igreja da Doutrina de Santo Daime. Centro Espiritual Raimundo Irineu Serra.",
+  "keywords": "Santo Daime, Centro Espiritual, Himnarios, Cânticos, Cura, Doutrina de Santo Daime, CEPSERIS, Pronto Socorro",
+  "url": "https://cepseris.org",
+  "logo": "https://cepseris.org/images/logo_prontosocorro.webp",
+  "image": "https://cepseris.org/images/logo_prontosocorro.webp",
+  
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "010, KM04, Ramal 5, R. da Vila dos Carneiros, 000",
+    "addressLocality": "Rio Branco",
+    "addressRegion": "AC",
+    "addressCountry": "BR"
+  },
+  
+  "sameAs": [
+    "https://www.facebook.com/ProntoSocorrroEspiritual/",
+    "https://www.instagram.com/ps.raimundoirineuserra/",
+    "https://share.google/8FMQmaWrE8rfLZFtu"
+  ],
+  
+  "foundingDate": "1932",
+  "founder": {
+    "@type": "Person",
+    "name": "Raimundo Irineu Serra"
+  },
+  
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  
+  "description": "Centro e Pronto Socorro Espiritual Raimundo Irineu Serra - Igreja da Doutrina de Santo Daime. Himnarios, cânticos e cura espiritual."
+};
+
+const schemaString = JSON.stringify(schema, null, 0);
+---
+
+<script type="application/ld+json" set:html={schemaString} is:inline />

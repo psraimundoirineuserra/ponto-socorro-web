@@ -1,0 +1,17 @@
+# https://cepseris.org/robots.txt
+# CEPSERIS - Centro e Pronto Socorro Espiritual Raimundo Irineu Serra
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cepseris.org/sitemap-index.xml
+
+# Crawl-delay (optional, be kind to servers)
+Crawl-delay: 1
+
+# Block common bot traps and admin areas (if any)
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_astro/
+Disallow: /*.json$

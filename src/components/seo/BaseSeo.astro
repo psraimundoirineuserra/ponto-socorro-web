@@ -1,0 +1,47 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: 'pt' | 'es' | 'en';
+}
+
+const {
+  title = 'CEPSERIS',
+  description = 'Centro e Pronto Socorro Espiritual Raimundo Irineu Serra. Igreja da Doutrina de Santo Daime.',
+  locale = 'pt'
+} = Astro.props;
+
+const fullTitle = title === 'CEPSERIS' ? title : `${title} | CEPSERIS`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://cepseris.org');
+const ogImage = '/images/logo_prontosocorro.webp';
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="CEPSERIS" />
+<meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : locale === 'es' ? 'es_CO' : 'en_US'} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Keywords (optional but good for SEO) -->
+<meta name="keywords" content="Santo Daime, Centro Espiritual, Himnarios, Cânticos, Cura, Doutrina de Santo Daime, CEPSERIS, Pronto Socorro" />
+
+<!-- Robots -->
+<meta name="robots" content="index, follow" />

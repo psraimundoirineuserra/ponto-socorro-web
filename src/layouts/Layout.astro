@@ -5,6 +5,9 @@ import Footer from '@/components/layout/Footer.astro';
 import PersistentPlayer from '@/components/audio/PersistentPlayer.astro';
 import CartDrawer from '@/components/cart/CartDrawer.astro';
 import { ClientRouter } from 'astro:transitions';
+import BaseSeo from '@/components/seo/BaseSeo.astro';
+import ReligiousOrganizationSchema from '@/components/seo/ReligiousOrganizationSchema.astro';
+import MetaSocial from '@/components/seo/MetaSocial.astro';
 
 interface Props {
   title?: string;
@@ -13,12 +16,12 @@ interface Props {
 }
 
 const {
-  title = 'Ponto Socorro',
-  description = 'Centro Eclético da Fluente Luz Universal',
+  title = 'CEPSERIS',
+  description = 'Centro e Pronto Socorro Espiritual Raimundo Irineu Serra. Igreja da Doutrina de Santo Daime.',
   locale = 'pt',
 } = Astro.props;
 
-const fullTitle = title === 'Ponto Socorro' ? title : `${title} | Ponto Socorro`;
+const fullTitle = title === 'CEPSERIS' ? title : `${title} | CEPSERIS`;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +29,9 @@ const fullTitle = title === 'Ponto Socorro' ? title : `${title} | Ponto Socorro`
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <BaseSeo title={title} description={description} locale={locale} />
+    <MetaSocial title={fullTitle} description={description} locale={locale} />
+    <ReligiousOrganizationSchema />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

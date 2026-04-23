@@ -1,0 +1,36 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+  locale?: 'pt' | 'es' | 'en';
+}
+
+const { 
+  title = 'CEPSERIS',
+  description = 'Centro e Pronto Socorro Espiritual Raimundo Irineu Serra. Igreja da Doutrina de Santo Daime.',
+  image = '/images/logo_prontosocorro.webp',
+  url = Astro.url.href,
+  locale = 'pt'
+} = Astro.props;
+
+const absoluteImageUrl = image.startsWith('http') ? image : new URL(image, 'https://cepseris.org').href;
+const absoluteUrl = url.startsWith('http') ? url : new URL(url, 'https://cepseris.org').href;
+---
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={absoluteUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : locale === 'es' ? 'es_CO' : 'en_US'} />
+<meta property="og:site_name" content="CEPSERIS" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={absoluteUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteImageUrl} />
