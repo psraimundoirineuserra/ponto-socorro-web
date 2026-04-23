@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.astro/
+
+# environment files
+.env
+.env.*
+!.env.example
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# optional npm
+package-lock.json
+bun.lockb
