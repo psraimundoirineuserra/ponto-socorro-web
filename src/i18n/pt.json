@@ -25,10 +25,10 @@
     },
     "coordinates": {
       "title": "Coordenadas",
+      "mandato": "Mandato",
       "founded": "Fundada",
       "location": "Localização",
-      "community": "Comunidade Global",
-      "languages": "Idiomas"
+      "cura": "Linha de Arrochim"
     }
   },
   "library": {
