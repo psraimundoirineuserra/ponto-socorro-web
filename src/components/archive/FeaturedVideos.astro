@@ -1,0 +1,54 @@
+---
+import { archiveVideos, getVideoThumbnailUrl, getVideoYoutubeUrl, formatViews } from '@/data/archive-videos';
+
+interface Props {
+  activeDimension?: 'I' | 'II' | 'III' | 'IV';
+}
+
+const { activeDimension = 'II' } = Astro.props;
+
+const featuredVideos = archiveVideos.filter(v => v.featured);
+---
+
+<div class="space-y-8">
+  <h3 class="font-serif text-2xl font-semibold text-primary">Videos em Destaque</h3>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {featuredVideos.map((video) => (
+      <a
+        href={getVideoYoutubeUrl(video)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block bg-surface border border-subtle rounded-lg overflow-hidden hover:border-accent-nature/30 hover:shadow-lg transition-all duration-150 hover:scale-[1.02]"
+      >
+        <div class="relative aspect-video bg-canvas">
+          <img
+            src={getVideoThumbnailUrl(video)}
+            alt={video.title}
+            loading="lazy"
+            class="w-full h-full object-cover"
+            onerror="this.src='/images/video-placeholder.svg'"
+          />
+          <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg class="w-5 h-5 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+          </div>
+          <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white text-xs rounded">
+            {video.duration}
+          </span>
+        </div>
+        <div class="p-4">
+          <h4 class="font-serif text-lg font-medium text-primary mb-1 line-clamp-2">
+            {video.title}
+          </h4>
+          <p class="text-sm text-secondary">
+            {formatViews(video.views)} visualizações · {video.year}
+          </p>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>

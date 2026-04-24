@@ -3,8 +3,16 @@ import Layout from '@/layouts/Layout.astro';
 import { useTranslations } from '@/i18n';
 import FeaturedVideos from '@/components/archive/FeaturedVideos.astro';
 
-const locale = 'pt';
-const t = useTranslations(locale as 'pt' | 'es' | 'en');
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as 'pt' | 'es' | 'en');
 
 const translations = {
   pt: {
@@ -87,10 +95,10 @@ const translations = {
   }
 };
 
-const content = translations[locale as keyof typeof translations];
+const content = translations[lang as keyof typeof translations];
 ---
 
-<Layout locale={locale} title={content.title} description={content.subtitle}>
+<Layout locale={lang} title={content.title} description={content.subtitle}>
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
       <header class="mb-16">
