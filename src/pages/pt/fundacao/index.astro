@@ -16,7 +16,7 @@ const content = ptContent;
         {content.title}
       </h1>
       
-      <div class="prose prose-lg text-secondary space-y-6 foundation-content">
+      <div class="prose prose-lg text-secondary space-y-6">
         {content.sections.map((section: { type: string; content: string; author?: string }) => (
           section.type === 'paragraph' ? (
             <p set:html={section.content} />
