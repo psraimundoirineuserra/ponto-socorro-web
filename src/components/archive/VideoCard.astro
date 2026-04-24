@@ -1,0 +1,106 @@
+---
+import { archiveVideos, getVideoThumbnailUrl, getVideoYoutubeUrl, formatViews } from '@/data/archive-videos';
+import type { ArchiveVideo } from '@/data/archive-videos';
+
+interface Props {
+  videos?: ArchiveVideo[];
+  dimension?: 'I' | 'II' | 'III' | 'IV' | 'all';
+  showAll?: boolean;
+  limit?: number;
+}
+
+const { 
+  videos = archiveVideos, 
+  dimension = 'all',
+  showAll = false,
+  limit
+} = Astro.props;
+
+// Filter by dimension if specified
+let filteredVideos = dimension === 'all' 
+  ? videos 
+  : videos.filter(v => v.dimension === dimension);
+
+// Apply limit if specified
+const displayVideos = limit ? filteredVideos.slice(0, limit) : filteredVideos;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {displayVideos.map((video) => (
+    <a
+      href={getVideoYoutubeUrl(video)}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group block bg-surface border border-subtle rounded-lg overflow-hidden hover:border-accent-nature/30 hover:shadow-lg hover:scale-[1.02] transition-all duration-200"
+    >
+      <div class="relative aspect-video bg-canvas overflow-hidden">
+        <img
+          src={getVideoThumbnailUrl(video)}
+          alt={video.title}
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          onerror="this.src='/images/video-placeholder.svg'"
+        />
+        
+        {/* Play button overlay */}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+          <div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
+            <svg class="w-6 h-6 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+        
+        {/* Duration badge */}
+        <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white text-xs font-medium rounded">
+          {video.duration}
+        </span>
+        
+        {/* Featured badge */}
+        {video.featured && (
+          <span class="absolute top-2 left-2 px-2 py-0.5 bg-accent-nature text-white text-xs font-medium rounded-full">
+            ⭐
+          </span>
+        )}
+      </div>
+      
+      <div class="p-4">
+        <h4 class="font-serif text-base font-medium text-primary mb-1 line-clamp-2 group-hover:text-accent-nature transition-colors">
+          {video.title}
+        </h4>
+        
+        <div class="flex items-center justify-between text-xs text-secondary mt-2">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+            <span>{formatViews(video.views)}</span>
+          </div>
+          
+          <div class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>{video.year}</span>
+          </div>
+        </div>
+        
+        {/* Category badge */}
+        <div class="mt-3 flex items-center gap-2">
+          <span class={`px-2 py-0.5 text-xs rounded-full ${
+            video.category === 'hinario' ? 'bg-blue-100 text-blue-700' :
+            video.category === 'homenagem' ? 'bg-amber-100 text-amber-700' :
+            video.category === 'memoria' ? 'bg-green-100 text-green-700' :
+            'bg-gray-100 text-gray-700'
+          }`}>
+            {video.category === 'hinario' && 'Hinário'}
+            {video.category === 'homenagem' && 'Homenagem'}
+            {video.category === 'memoria' && 'Memória'}
+            {video.category === 'oficio' && 'Oficio'}
+          </span>
+        </div>
+      </div>
+    </a>
+  ))}
+</div>

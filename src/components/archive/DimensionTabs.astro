@@ -1,0 +1,66 @@
+---
+interface DimensionTab {
+  id: 'I' | 'II' | 'III' | 'IV';
+  label: string;
+  count: number;
+}
+
+interface Props {
+  dimensions: DimensionTab[];
+  activeDimension?: 'I' | 'II' | 'III' | 'IV';
+}
+
+const { dimensions, activeDimension = 'II' } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-3 border-b border-subtle pb-4">
+  {dimensions.map((dim) => {
+    const isActive = activeDimension === dim.id;
+    
+    return (
+      <button
+        type="button"
+        data-dimension={dim.id}
+        class={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 border ${
+          isActive
+            ? 'bg-accent-nature text-white border-accent-nature shadow-sm'
+            : 'bg-surface text-secondary border-subtle hover:border-accent-nature/30 hover:text-primary'
+        }`}
+      >
+        <span class="mr-1.5 opacity-60">{dim.id}.</span>
+        {dim.label}
+        <span class={`ml-2 px-1.5 py-0.5 text-xs rounded-full ${
+          isActive ? 'bg-white/20' : 'bg-canvas'
+        }`}>
+          {dim.count}
+        </span>
+      </button>
+    );
+  })}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('[data-dimension]');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const dimension = btn.getAttribute('data-dimension');
+        
+        // Update active state
+        buttons.forEach(b => {
+          b.classList.remove('bg-accent-nature', 'text-white', 'border-accent-nature');
+          b.classList.add('bg-surface', 'text-secondary', 'border-subtle');
+        });
+        
+        btn.classList.remove('bg-surface', 'text-secondary', 'border-subtle');
+        btn.classList.add('bg-accent-nature', 'text-white', 'border-accent-nature');
+        
+        // Dispatch custom event for content filtering
+        window.dispatchEvent(new CustomEvent('dimensionChange', { 
+          detail: { dimension } 
+        }));
+      });
+    });
+  });
+</script>

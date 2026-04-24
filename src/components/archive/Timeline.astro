@@ -1,0 +1,53 @@
+---
+interface TimelineNode {
+  year: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  nodes: TimelineNode[];
+  activeYear?: string;
+}
+
+const { nodes, activeYear } = Astro.props;
+---
+
+<div class="relative">
+  <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-subtle"></div>
+  
+  <div class="space-y-8">
+    {nodes.map((node, i) => {
+      const isActive = activeYear === node.year;
+      const isFeatured = i === 2; // 2012 is featured year
+      
+      return (
+        <div class="relative pl-8">
+          <div 
+            class={`absolute -left-[9px] top-1 w-4 h-4 rounded-full border-2 transition-all duration-300 ${
+              isActive 
+                ? 'bg-accent-nature border-accent-nature scale-125 shadow-lg shadow-accent-nature/30' 
+                : isFeatured 
+                  ? 'bg-canvas border-accent-nature' 
+                  : 'bg-canvas border-primary'
+            }`}
+          />
+          
+          <div class={`transition-all duration-200 ${isActive ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}>
+            <p class={`text-xs font-medium mb-1 ${isActive ? 'text-accent-nature' : 'text-secondary'}`}>
+              {node.year}
+            </p>
+            <h3 class={`font-serif text-lg font-medium mb-1 ${
+              isActive ? 'text-primary' : 'text-secondary'
+            }`}>
+              {node.title}
+            </h3>
+            <p class="text-sm text-secondary leading-relaxed">
+              {node.desc}
+            </p>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
