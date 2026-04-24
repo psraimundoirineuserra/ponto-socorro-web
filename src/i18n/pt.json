@@ -25,10 +25,10 @@
     },
     "coordinates": {
       "title": "Coordenadas",
-      "mandato": "Mandato",
-      "founded": "Fundada",
+      "mandato": "Mandato do Mestre",
+      "founded": "Fundação da Sede",
       "location": "Localização",
-      "cura": "Linha de Arrochim"
+      "cura": "Método de Cura"
     }
   },
   "library": {
