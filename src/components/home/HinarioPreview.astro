@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '@/i18n';
 import { hymns } from '@/data/hymns';
+import { Music } from 'lucide-react';
 
 interface Props {
   locale: 'pt' | 'es' | 'en';
@@ -30,7 +31,7 @@ const previewHymns = hymns.slice(0, 3);
           class="group block p-6 bg-surface border border-subtle hover:border-accent-nature/30 transition-colors"
         >
           <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center mb-4 group-hover:bg-accent-nature/10 transition-colors">
-            <span class="text-lg">♪</span>
+            <Music class="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
           </div>
           <h3 class="font-serif text-lg font-medium text-primary mb-1">
             {hymn.title}
