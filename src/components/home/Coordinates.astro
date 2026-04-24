@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '@/i18n';
-import { Flame, Sun, Church, MapPin, Flower2 } from 'lucide-react';
+import { Flame, Sun, Star, Church, MapPin, Flower2 } from 'lucide-react';
 
 interface Props {
   locale: 'pt' | 'es' | 'en';
@@ -21,6 +21,9 @@ const t = useTranslations(locale);
         <div class="flex gap-2 mb-4">
           <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center">
             <Flame class="w-5 h-5 text-primary" />
+          </div>
+          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center">
+            <Star class="w-5 h-5 text-primary" />
           </div>
           <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center">
             <Sun class="w-5 h-5 text-primary" />
