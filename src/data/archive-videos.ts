@@ -7,10 +7,12 @@ export interface ArchiveVideo {
   duration: string;
   dimension: 'I' | 'II' | 'III' | 'IV';
   featured: boolean;
-  category: 'hinario' | 'homenagem' | 'memoria' | 'oficio';
+  category: 'hinario' | 'homenagem' | 'memoria' | 'oficio' | 'outro';
+  source: 'canal' | 'outro';
 }
 
 export const archiveVideos: ArchiveVideo[] = [
+  // VIDEOS DEL CANAL @pd.raimundononato3780 (Dimension II)
   {
     id: 'academia-mestre-irineu',
     youtubeId: 'vMqyS2UTfKk',
@@ -20,7 +22,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '2:04',
     dimension: 'II',
     featured: true,
-    category: 'memoria'
+    category: 'memoria',
+    source: 'canal'
   },
   {
     id: 'o-mestre-nos-ensina',
@@ -31,7 +34,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:13',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'caboclo-guerreiro',
@@ -42,7 +46,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:34',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'sino-bateu',
@@ -53,7 +58,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:08',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'e-meio-dia',
@@ -64,7 +70,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:08',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'bandeira-limpa',
@@ -75,29 +82,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '3:02',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
-  },
-  {
-    id: 'lembranca-ceu-parana',
-    youtubeId: 'Na4Rhm2wl-8',
-    title: 'Lembrança Céu do Paraná',
-    views: 663,
-    year: 'hace 4 años',
-    duration: '1:17',
-    dimension: 'III',
-    featured: false,
-    category: 'memoria'
-  },
-  {
-    id: 'limpando-maracuja',
-    youtubeId: 'I8dpdJGzODI',
-    title: 'limpando maracujá e maxixe peruano!',
-    views: 217,
-    year: 'hace 4 años',
-    duration: '2:17',
-    dimension: 'III',
-    featured: false,
-    category: 'memoria'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'hino-padrinho-wilson',
@@ -108,7 +94,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '2:42',
     dimension: 'II',
     featured: true,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'meu-juramidam',
@@ -119,7 +106,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '3:23',
     dimension: 'II',
     featured: true,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'prenda-divina',
@@ -130,7 +118,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:52',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'enxotando-maus-fazejos',
@@ -141,7 +130,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '2:58',
     dimension: 'II',
     featured: true,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'os-pastorinhos',
@@ -152,40 +142,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '2:57',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
-  },
-  {
-    id: 'centenario-vo-wilson',
-    youtubeId: 'swsy42l9Yg4',
-    title: 'Comemoração Centenário Vô Wilson',
-    views: 3500,
-    year: 'hace 5 años',
-    duration: '11:04',
-    dimension: 'III',
-    featured: true,
-    category: 'homenagem'
-  },
-  {
-    id: 'homenagem-wilson-carneiro',
-    youtubeId: 'SMo8SX02erE',
-    title: 'Homenagem ao Padrinho Wilson Carneiro',
-    views: 799,
-    year: 'hace 5 años',
-    duration: '2:27',
-    dimension: 'III',
-    featured: false,
-    category: 'homenagem'
-  },
-  {
-    id: 'homenagem-wilson-centenario',
-    youtubeId: 'wXo3InKr_DI',
-    title: 'Homenagem Padrinho Wilson Centenário',
-    views: 848,
-    year: 'hace 5 años',
-    duration: '3:10',
-    dimension: 'III',
-    featured: false,
-    category: 'homenagem'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'deus-e-meu-pai',
@@ -196,7 +154,8 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:46',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
   },
   {
     id: 'amor-no-coracao',
@@ -207,7 +166,130 @@ export const archiveVideos: ArchiveVideo[] = [
     duration: '1:19',
     dimension: 'II',
     featured: false,
-    category: 'hinario'
+    category: 'hinario',
+    source: 'canal'
+  },
+
+  // VIDEOS DE OTRAS FUENTES (Dimension II - Olhar da Floresta)
+  {
+    id: 'historias-de-papai',
+    youtubeId: 'CYlTJPG2vK0',
+    title: 'Histórias de Papai – PD Wilson Carneiro',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'live-centenario-wilson',
+    youtubeId: 'rCnyIsR8yoY',
+    title: 'Live Centenário do Padrinho Wilson Carneiro',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'homenagem',
+    source: 'outro'
+  },
+  {
+    id: 'cura-linha-arrochim',
+    youtubeId: 'VvrZBpQ6RJI',
+    title: 'Cura – Linha de Arrochim',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'hinario-chave-ouro',
+    youtubeId: 'rw6Qa5Q2bhk',
+    title: 'Hinário Chave de Ouro – Pad. Wilson + Nonato',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
+    id: 'pronto-socorro-reportaje',
+    youtubeId: 'xpkVctGrVuk',
+    title: 'Pronto-Socorro Raimundo Irineu Serra, do Raimundo Nonato',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'hinario-peregrino-nonato',
+    youtubeId: 'nwib8pY9k0I',
+    title: 'Hinário O Peregrino – Padrinho Nonato',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
+    id: 'hinario-aconteceu-nonato',
+    youtubeId: 'mbCj5xHjUhU',
+    title: 'Hinário Aconteceu – Padrinho Nonato',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
+    id: 'centro-pronto-socorro-ris',
+    youtubeId: 'vP57ECXK6mc',
+    title: 'Centro e Pronto Socorro de Cura Espiritual R.I.S.',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'pronto-socorro-acre-2012',
+    youtubeId: 'Mbi_gZ_dD_8',
+    title: 'PRONTO SOCORRO - ACRE em 18 de julho de 2012',
+    views: 0,
+    year: '2012',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'hinos-novos-presidente',
+    youtubeId: 'Jw6dAxtm2dQ',
+    title: 'Hinos Novos com nosso Presidente',
+    views: 0,
+    year: 'hace años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'oficio',
+    source: 'outro'
   }
 ];
 
@@ -231,5 +313,17 @@ export function formatViews(views: number): string {
   if (views >= 1000) {
     return `${(views / 1000).toFixed(1)}K`;
   }
+  if (views === 0) {
+    return '-';
+  }
   return views.toString();
+}
+
+export function getVideoCountByDimension(): Record<string, number> {
+  return {
+    'I': archiveVideos.filter(v => v.dimension === 'I').length,
+    'II': archiveVideos.filter(v => v.dimension === 'II').length,
+    'III': archiveVideos.filter(v => v.dimension === 'III').length,
+    'IV': archiveVideos.filter(v => v.dimension === 'IV').length
+  };
 }

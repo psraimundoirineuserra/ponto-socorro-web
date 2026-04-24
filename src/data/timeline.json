@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "title": "Cronologia CEPSERIS (1892–2026)",
+    "description": "Timeline completo de todos os eventos do Centro e Pronto Socorro Espiritual Raimundo Irineu Serra",
+    "source": "/Users/calderonjosue_/Downloads/cepseris-timeline-pt.md",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-24"
+  },
+  "fases": [
+    {
+      "id": "I",
+      "nome": "Raiz",
+      "periodo": "1892–1971",
+      "categoria": "A Linhagem dos Mestres",
+      "resumo": "Fundação mística e consolidação da doutrina do Santo Daime sob Mestre Irineu Serra. Transição de prática xamânica indígena para prática cristã popular.",
+      "eventos": [
+        {
+          "ano": "1892",
+          "data": "15 Dez",
+          "evento": "Nascimento de Raimundo Irineu Serra",
+          "descricao": "Nascido em São Vicente Ferrer, Maranhão. Filho de ex-escravizados."
+        },
+        {
+          "ano": "1912",
+          "data": "—",
+          "evento": "Chegada ao Acre",
+          "descricao": "Chega durante o ciclo da borracha. Trabalhou em Xapuri e Brasiléia."
+        },
+        {
+          "ano": "1914",
+          "data": "—",
+          "evento": "Primeiro encontro com Ayahuasca",
+          "descricao": "Através dos irmãos Antonio e André Costa, na fronteira Brasil-Peru."
+        },
+        {
+          "ano": "1916",
+          "data": "—",
+          "evento": "Iniciação Xamânica",
+          "descricao": "O xamã peruano Pizango o reconhece como único capaz de \"zelar\" a bebida."
+        },
+        {
+          "ano": "1920",
+          "data": "02 Jan",
+          "evento": "Deslocamento para Rio Branco",
+          "descricao": "Ingresso na Guarda Territorial. Alcançou grau de cabo em 1932."
+        },
+        {
+          "ano": "1930",
+          "data": "—",
+          "evento": "Fundação do CRF",
+          "descricao": "Centro de Regeneração e Fé em Brasiléia. Primeira estrutura organizativa."
+        },
+        {
+          "ano": "1935",
+          "data": "23 Jun",
+          "evento": "Primeiro Hinário Oficial",
+          "descricao": "Na casa de Maria Damião. Oito hinos cantados até meia-noite."
+        },
+        {
+          "ano": "1945",
+          "data": "—",
+          "evento": "Estabelecimento no Alto Santo",
+          "descricao": "Terras doadas pelo governador Guiomard dos Santos para assentamento agrícola."
+        },
+        {
+          "ano": "1954",
+          "data": "—",
+          "evento": "Falecimento de João Pereira",
+          "descricao": "\"General do Conforto\". Autor do hinário \"Seis de Janeiro\"."
+        },
+        {
+          "ano": "1956",
+          "data": "15 Set",
+          "evento": "Casamento Civil",
+          "descricao": "Peregrina Gomes Serra. Custódia administrativa do Alto Santo."
+        },
+        {
+          "ano": "1962",
+          "data": "23 Jun",
+          "evento": "Ingresso de Wilson Carneiro de Souza",
+          "descricao": "Busca cura para seu filho José e saúde pulmonar. Cura confirmada."
+        },
+        {
+          "ano": "1963",
+          "data": "—",
+          "evento": "Fundação do CICLU",
+          "descricao": "Centro de Iluminação Cristã Luz Universal. Institucionalização religiosa."
+        },
+        {
+          "ano": "1966",
+          "data": "—",
+          "evento": "Criação do Pronto Socorro",
+          "descricao": "Mestre Irineu encarrega Wilson Carneiro de atender enfermos na cidade."
+        },
+        {
+          "ano": "1971",
+          "data": "06 Jul",
+          "evento": "Falecimento de Mestre Irineu",
+          "descricao": "Fim de era. Transição para família Gomes e Sebastião Mota."
+        }
+      ]
+    },
+    {
+      "id": "II",
+      "nome": "Transição e Especialização",
+      "periodo": "1972–2006",
+      "categoria": "Do Alto Santo à Vila Carneiro",
+      "resumo": "Expansão comunitária e formalização institucional. Surgimento da Colônia Cinco Mil e desenvolvimento do modelo terapêutico do Pronto Socorro.",
+      "eventos": [
+        {
+          "ano": "1974",
+          "data": "—",
+          "evento": "Fundação da Colônia Cinco Mil",
+          "descricao": "Padrinho Sebastião lidera nova linha. Wilson Carneiro se une após tensões."
+        },
+        {
+          "ano": "1975",
+          "data": "24 Jun",
+          "evento": "Primeira Igreja de Alvenaria",
+          "descricao": "Inauguração na Colônia Cinco Mil. Atrai primeiros viajantes nacionais."
+        },
+        {
+          "ano": "1986",
+          "data": "—",
+          "evento": "Publicação \"Santo Daime: Cultura Amazônica\"",
+          "descricao": "Vera Fróes. Primeiro registro bibliográfico massivo do Pronto Socorro."
+        },
+        {
+          "ano": "1988",
+          "data": "06 Out",
+          "evento": "Criação do CEFLUWCS",
+          "descricao": "Centro Eclético da Fluente Luz Universal Wilson Carneiro de Souza. Formalização jurídica."
+        },
+        {
+          "ano": "1989",
+          "data": "—",
+          "evento": "Administração Raimundo Nonato",
+          "descricao": "Padrinho Sebastião delega gestão da Colônia Cinco Mil a filho de Wilson."
+        },
+        {
+          "ano": "1992",
+          "data": "Dez",
+          "evento": "Centenário de Mestre Irineu",
+          "descricao": "Grande caravana ao Acre. União entre linhas daimistas (Alto Santo e Cinco Mil)."
+        },
+        {
+          "ano": "1997",
+          "data": "03 Jun",
+          "evento": "Inauguração do CEPSERIS",
+          "descricao": "Sede oficial em Vila Carneiro. Padrinho Nonato dedicado exclusivamente ao Pronto Socorro."
+        },
+        {
+          "ano": "1998",
+          "data": "26 Jun",
+          "evento": "Falecimento de Padrinho Wilson",
+          "descricao": "Sepultado frente à sede do CEPSERIS em Vila Carneiro."
+        },
+        {
+          "ano": "2002",
+          "data": "02 Fev",
+          "evento": "Centro \"Estrela do Mar\"",
+          "descricao": "Fundação em Natal, Rio Grande do Norte. Primeira expansão fora do Acre."
+        },
+        {
+          "ano": "2004",
+          "data": "—",
+          "evento": "I Encontro dos Prontos Socorros",
+          "descricao": "Coordenação litúrgica entre sedes em SP, MG, CE, SC e Acre."
+        }
+      ]
+    },
+    {
+      "id": "III",
+      "nome": "Acadêmica e Digital",
+      "periodo": "2007–2026",
+      "categoria": "O Reconhecimento Global",
+      "resumo": "Legitimação acadêmica, preservação de memória e implementação digital. Consolidação como instituição reconhecida globalmente.",
+      "eventos": [
+        {
+          "ano": "2012",
+          "data": "—",
+          "evento": "Tese de Henrique Fernandes Antunes",
+          "descricao": "USP. Legitimidade do uso de ayahuasca. Posicionamento acadêmico do CEPSERIS."
+        },
+        {
+          "ano": "2018",
+          "data": "—",
+          "evento": "Publicação de Julia Moura",
+          "descricao": "\"As origens de uma casa de cura do Daime\" na revista Marupiara. Historiografia oficial."
+        },
+        {
+          "ano": "2022",
+          "data": "—",
+          "evento": "Censo Comunitário",
+          "descricao": "UFAC mapeia Colônia Cinco Mil. Diagnóstico sociogeográfico oficial."
+        },
+        {
+          "ano": "2023",
+          "data": "18 Out",
+          "evento": "Tese de Julia Lobato Pinto de Moura",
+          "descricao": "UFAC. \"Territórios e memórias\": Estudo sobre Colônia Cinco Mil como lugar narrado."
+        },
+        {
+          "ano": "2025",
+          "data": "—",
+          "evento": "Reforma Integral da Sede Central",
+          "descricao": "Infraestrutura física para arquivo histórico concluída."
+        },
+        {
+          "ano": "2026",
+          "data": "—",
+          "evento": "Lançamento de cepseris.org",
+          "descricao": "Arquivo Digital, Galeria de Arte Histórica e Timeline interativa de alta precisão."
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "fases": 3,
+    "eventosTotal": 30
+  }
+}

@@ -1,99 +1,101 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { useTranslations } from '@/i18n';
-import Timeline from '@/components/archive/Timeline.astro';
-import DimensionTabs from '@/components/archive/DimensionTabs.astro';
-import VideoCard from '@/components/archive/VideoCard.astro';
-import GalleryPlaceholder from '@/components/archive/GalleryPlaceholder.astro';
-import { archiveVideos } from '@/data/archive-videos';
+import { archiveVideos, getVideoThumbnailUrl, getVideoYoutubeUrl, formatViews } from '@/data/archive-videos';
 
 const locale = 'pt';
 const t = useTranslations(locale as 'pt' | 'es' | 'en');
 
+const timelineFases = [
+  {
+    fase: 'I',
+    nome: 'Raiz',
+    periodo: '1892-1971',
+    categoria: 'A Linhagem dos Mestres',
+    eventos: [
+      { ano: '1892', data: '15 Dez', evento: 'Nascimento de Raimundo Irineu Serra', desc: 'Nascido em Sao Vicente Ferrer, Maranhao. Filho de ex-escravizados.' },
+      { ano: '1912', data: '-', evento: 'Chegada ao Acre', desc: 'Chega durante o ciclo da borracha. Trabalhou em Xapuri e Brasilia.' },
+      { ano: '1914', data: '-', evento: 'Primeiro encontro com Ayahuasca', desc: 'Atraves dos irmaos Antonio e Andre Costa, na fronteira Brasil-Peru.' },
+      { ano: '1916', data: '-', evento: 'Iniciacao Xamanica', desc: 'O xama peruano Pizango o reconhece como unico capaz de zelar a bebida.' },
+      { ano: '1920', data: '02 Jan', evento: 'Deslocamento para Rio Branco', desc: 'Ingresso na Guarda Territorial. Alcancou grau de cabo em 1932.' },
+      { ano: '1930', data: '-', evento: 'Fundacao do CRF', desc: 'Centro de Regeneracao e Fe em Brasilia. Primeira estrutura organizativa.' },
+      { ano: '1935', data: '23 Jun', evento: 'Primeiro Hinario Oficial', desc: 'Na casa de Maria Damiao. Oito hinos cantados ate meia-noite.' },
+      { ano: '1945', data: '-', evento: 'Estabelecimento no Alto Santo', desc: 'Terras doadas pelo governador Guiomard dos Santos para assentamento agricola.' },
+      { ano: '1954', data: '-', evento: 'Falecimento de Joao Pereira', desc: 'General do Conforto. Autor do hinario Seis de Janeiro.' },
+      { ano: '1956', data: '15 Set', evento: 'Casamento Civil', desc: 'Peregrina Gomes Serra. Custodia administrativa do Alto Santo.' },
+      { ano: '1962', data: '23 Jun', evento: 'Ingresso de Wilson Carneiro de Souza', desc: 'Busca cura para seu filho Jose e saude pulmonar. Cura confirmada.' },
+      { ano: '1963', data: '-', evento: 'Fundacao do CICLU', desc: 'Centro de Iluminacao Crista Luz Universal. Institucionalizacao religiosa.' },
+      { ano: '1966', data: '-', evento: 'Criacao do Pronto Socorro', desc: 'Mestre Irineu encarrega Wilson Carneiro de atender enfermos na cidade.' },
+      { ano: '1971', data: '06 Jul', evento: 'Falecimento de Mestre Irineu', desc: 'Fim de era. Transicao para familia Gomes e Sebastiao Mota.' }
+    ]
+  },
+  {
+    fase: 'II',
+    nome: 'Transicao e Especializacao',
+    periodo: '1972-2006',
+    categoria: 'Do Alto Santo a Vila Carneiro',
+    eventos: [
+      { ano: '1974', data: '-', evento: 'Fundacao da Colonia Cinco Mil', desc: 'Padrinho Sebastiao lidera nova linha. Wilson Carneiro se une tras tensoes.' },
+      { ano: '1975', data: '24 Jun', evento: 'Primeira Igreja de Alvenaria', desc: 'Inauguracao na Colonia Cinco Mil. Atrai primeiros viajantes nacionais.' },
+      { ano: '1986', data: '-', evento: 'Publicacao Santo Daime: Cultura Amazonica', desc: 'Vera Froes. Primeiro registro bibliografico massivo do Pronto Socorro.' },
+      { ano: '1988', data: '06 Out', evento: 'Criacao do CEFLUWCS', desc: 'Centro Ecletico da Fluente Luz Universal Wilson Carneiro de Souza. Formalizacao juridica.' },
+      { ano: '1989', data: '-', evento: 'Administracao Raimundo Nonato', desc: 'Padrinho Sebastiao delega gestao da Colonia Cinco Mil a filho de Wilson.' },
+      { ano: '1992', data: 'Dez', evento: 'Centenario de Mestre Irineu', desc: 'Grande caravana ao Acre. Uniao entre linhas daimistas (Alto Santo e Cinco Mil).' },
+      { ano: '1997', data: '03 Jun', evento: 'Inauguracao do CEPSERIS', desc: 'Sede oficial em Vila Carneiro. Padrinho Nonato dedicado exclusivamente ao Pronto Socorro.' },
+      { ano: '1998', data: '26 Jun', evento: 'Falecimento de Padrinho Wilson', desc: 'Sepultado frente a sede do CEPSERIS em Vila Carneiro.' },
+      { ano: '2002', data: '02 Fev', evento: 'Centro Estrela do Mar', desc: 'Fundacao em Natal, Rio Grande do Norte. Primeira expansao fora do Acre.' },
+      { ano: '2004', data: '-', evento: 'I Encontro dos Prontos Socorros', desc: 'Coordenacao liturgica entre sedes em SP, MG, CE, SC e Acre.' }
+    ]
+  },
+  {
+    fase: 'III',
+    nome: 'Academica e Digital',
+    periodo: '2007-2026',
+    categoria: 'O Reconhecimento Global',
+    eventos: [
+      { ano: '2012', data: '-', evento: 'Tese de Henrique Fernandes Antunes', desc: 'USP. Legitimidade do uso de ayahuasca. Posicionamento academico do CEPSERIS.' },
+      { ano: '2018', data: '-', evento: 'Publicacao de Julia Moura', desc: 'As origens de uma casa de cura do Daime na revista Marupiara. Historiografia oficial.' },
+      { ano: '2022', data: '-', evento: 'Censo Comunitaria', desc: 'UFAC mapeia Colonia Cinco Mil. Diagnostico sociogeografico oficial.' },
+      { ano: '2023', data: '18 Out', evento: 'Tese de Julia Lobato Pinto de Moura', desc: 'UFAC. Territorios e memorias: Estudo sobre Colonia Cinco Mil como lugar narrado.' },
+      { ano: '2025', data: '-', evento: 'Reforma Integral da Sede Central', desc: 'Infraestrutura fisica para arquivo historico concluida.' },
+      { ano: '2026', data: '-', evento: 'Lancamento de cepseris.org', desc: 'Arquivo Digital, Galeria de Arte Historica e Timeline interativa de alta precisao.' }
+    ]
+  }
+];
+
+const canalVideos = archiveVideos.filter(v => v.source === 'canal');
+const outroVideos = archiveVideos.filter(v => v.source === 'outro');
+
 const translations = {
   pt: {
     title: 'Arquivo',
-    subtitle: 'Preservação e Memória',
-    timelineTitle: 'O Fio da Memória',
+    subtitle: 'Preservacao e Memoria',
+    timelineTitle: 'O Fio da Memoria',
     videosTitle: 'Videos do Canal',
-    dimensionsTitle: 'Dimensões',
-    galleryTitle: 'A Arca das Imagens',
-    timelineNodes: [
-      { year: '2007', title: 'Fundação e Relato', desc: 'Chegada à Vila Carneiro e crónicas de O Peregrino. Início da documentação da história do CEPSERIS.' },
-      { year: '2011', title: 'Expansão Doutrinal', desc: 'Consolidação de blogs e registros do Padrinho Nonato. Presença digital começa a se formar.' },
-      { year: '2012', title: 'Ano Acadêmico', desc: 'Tese USP sobre controvérsia ayahuasca. Registros audiovisuais em Acre ganham força.' },
-      { year: '2016', title: 'Crescimento Digital', desc: 'Digitalização de calendários e expansão em redes sociais. Facebook e Instagram ativos.' },
-      { year: '2022', title: 'Consolidação Territorial', desc: 'Censo Comunitário da Colônia Cinco Mil. Diagnóstico oficial do território.' },
-      { year: '2023-25', title: 'Presente/Evolução', desc: 'Estudos etnográficos e processos contemporâneos. CEPSERIS reconhecido globalmente.' }
-    ],
-    dimensions: [
-      { id: 'I' as const, label: 'O Trono do Saber', count: 11 },
-      { id: 'II' as const, label: 'A Memória Viva', count: 4 },
-      { id: 'III' as const, label: 'O Olhar da Floresta', count: 5 },
-      { id: 'IV' as const, label: 'A Bitácora Digital', count: 14 }
-    ],
-    dimensionLabels: {
-      I: 'O Trono do Saber',
-      II: 'A Memória Viva',
-      III: 'O Olhar da Floresta',
-      IV: 'A Bitácora Digital'
-    }
+    faseLabel: 'Fase',
+    tabTodos: 'Todos',
+    tabCanal: 'Canal',
+    tabOutras: 'Outras Fontes'
   },
   es: {
     title: 'Archivo',
-    subtitle: 'Preservación y Memoria',
+    subtitle: 'Preservacion y Memoria',
     timelineTitle: 'El Hilo de la Memoria',
     videosTitle: 'Videos del Canal',
-    dimensionsTitle: 'Dimensiones',
-    galleryTitle: 'El Arca de las Imágenes',
-    timelineNodes: [
-      { year: '2007', title: 'Fundación y Relato', desc: 'Llegada a Vila Carneiro y crónicas de O Peregrino. Inicio de la documentación.' },
-      { year: '2011', title: 'Expansión Doctrinal', desc: 'Consolidación de blogs y registros de Padrinho Nonato.' },
-      { year: '2012', title: 'Año Académico', desc: 'Tesis USP sobre controversia ayahuasca. Registros en Acre.' },
-      { year: '2016', title: 'Crecimiento Digital', desc: 'Digitalización y expansión en redes sociales.' },
-      { year: '2022', title: 'Consolidación Territorial', desc: 'Censo Comunitario de Colônia Cinco Mil.' },
-      { year: '2023-25', title: 'Presente/Evolución', desc: 'Reconocimiento global del CEPSERIS.' }
-    ],
-    dimensions: [
-      { id: 'I' as const, label: 'El Trono del Saber', count: 11 },
-      { id: 'II' as const, label: 'La Memoria Viva', count: 4 },
-      { id: 'III' as const, label: 'La Mirada de la Selva', count: 5 },
-      { id: 'IV' as const, label: 'La Bitácora Digital', count: 14 }
-    ],
-    dimensionLabels: {
-      I: 'El Trono del Saber',
-      II: 'La Memoria Viva',
-      III: 'La Mirada de la Selva',
-      IV: 'La Bitácora Digital'
-    }
+    faseLabel: 'Fase',
+    tabTodos: 'Todos',
+    tabCanal: 'Canal',
+    tabOutras: 'Otras Fuentes'
   },
   en: {
     title: 'Archive',
     subtitle: 'Preservation and Memory',
     timelineTitle: 'The Thread of Memory',
     videosTitle: 'Channel Videos',
-    dimensionsTitle: 'Dimensions',
-    galleryTitle: 'The Image Ark',
-    timelineNodes: [
-      { year: '2007', title: 'Founding and Narrative', desc: 'Arrival at Vila Carneiro and chronicles of O Peregrino.' },
-      { year: '2011', title: 'Doctrinal Expansion', desc: 'Blog consolidation and Padrinho Nonato records.' },
-      { year: '2012', title: 'Academic Year', desc: 'USP thesis on ayahuasca controversy. Acre records.' },
-      { year: '2016', title: 'Digital Growth', desc: 'Calendar digitization and social media expansion.' },
-      { year: '2022', title: 'Territorial Consolidation', desc: 'Community Census of Colônia Cinco Mil.' },
-      { year: '2023-25', title: 'Present/Evolution', desc: 'Global recognition of CEPSERIS.' }
-    ],
-    dimensions: [
-      { id: 'I' as const, label: 'The Throne of Knowledge', count: 11 },
-      { id: 'II' as const, label: 'Living Memory', count: 4 },
-      { id: 'III' as const, label: 'The Eyes of the Forest', count: 5 },
-      { id: 'IV' as const, label: 'The Digital Logbook', count: 14 }
-    ],
-    dimensionLabels: {
-      I: 'The Throne of Knowledge',
-      II: 'Living Memory',
-      III: 'The Eyes of the Forest',
-      IV: 'The Digital Logbook'
-    }
+    faseLabel: 'Phase',
+    tabTodos: 'All',
+    tabCanal: 'Channel',
+    tabOutras: 'Other Sources'
   }
 };
 
@@ -103,92 +105,119 @@ const content = translations[locale as keyof typeof translations];
 <Layout locale={locale} title={content.title} description={content.subtitle}>
   <section class="py-16 px-6">
     <div class="max-w-6xl mx-auto">
-      {/* Header */}
-      <header class="mb-16">
-        <h1 class="font-serif text-4xl md:text-5xl font-semibold text-primary mb-4">
-          {content.title}
-        </h1>
-        <p class="text-lg text-secondary">
-          {content.subtitle}
-        </p>
+      <header class="mb-12">
+        <h1 class="font-serif text-4xl font-semibold text-primary mb-2">{content.title}</h1>
+        <p class="text-lg text-secondary">{content.subtitle}</p>
       </header>
 
-      {/* Timeline + Videos */}
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-        {/* Timeline Sidebar */}
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <aside class="lg:col-span-1">
-          <h2 class="text-xs font-medium uppercase tracking-wider text-secondary mb-6">
-            {content.timelineTitle}
-          </h2>
-          <Timeline nodes={content.timelineNodes} activeYear="2012" />
+          <h2 class="text-xs font-medium uppercase tracking-wider text-secondary mb-6">{content.timelineTitle}</h2>
+          
+          <div class="relative pl-6 border-l border-subtle">
+            {timelineFases.map((fase, fi) => (
+              <div class="mb-8">
+                <p class="text-xs font-medium text-accent-nature mb-2">{content.faseLabel} {fase.fase}: {fase.nome}</p>
+                {fase.eventos.map((evt, ei) => (
+                  <div class="relative mb-4">
+                    <div class={`absolute -left-[13px] w-2 h-2 rounded-full ${(fi === 2 && ei === 0) ? 'bg-accent-nature' : 'bg-primary'}`}></div>
+                    <p class="text-xs text-secondary mb-0.5">{evt.ano}</p>
+                    <p class="text-sm font-medium text-primary">{evt.evento}</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </aside>
 
-        {/* Videos Content */}
         <div class="lg:col-span-2">
-          <h2 class="font-serif text-2xl font-semibold text-primary mb-6">
-            {content.videosTitle} @pd.raimundononato3780
-          </h2>
+          <h2 class="font-serif text-2xl font-semibold text-primary mb-6">{content.videosTitle}</h2>
           
-          {/* All 18 Videos */}
-          <VideoCard dimension="all" />
+          <div class="flex gap-2 mb-6 border-b border-subtle pb-4">
+            <button data-filter="todos" class="video-tab active px-4 py-2 text-sm font-medium rounded-t-md transition-colors bg-primary/10 text-primary">
+              {content.tabTodos} ({archiveVideos.length})
+            </button>
+            <button data-filter="canal" class="video-tab px-4 py-2 text-sm font-medium rounded-t-md transition-colors text-secondary hover:text-primary">
+              {content.tabCanal} ({canalVideos.length})
+            </button>
+            <button data-filter="outro" class="video-tab px-4 py-2 text-sm font-medium rounded-t-md transition-colors text-secondary hover:text-primary">
+              {content.tabOutras} ({outroVideos.length})
+            </button>
+          </div>
+
+          <div id="videos-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {archiveVideos.map((video) => (
+              <a
+                data-source={video.source}
+                href={getVideoYoutubeUrl(video)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="video-card group bg-surface border border-subtle rounded-lg overflow-hidden hover:border-accent-nature/30"
+              >
+                <div class="relative aspect-video bg-canvas">
+                  <img
+                    src={getVideoThumbnailUrl(video)}
+                    alt={video.title}
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                    onerror="this.src='/images/video-placeholder.svg'"
+                  />
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
+                      <svg class="w-5 h-5 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-black/70 text-white text-xs rounded">{video.duration}</span>
+                </div>
+                <div class="p-4">
+                  <h4 class="font-serif text-base font-medium text-primary mb-1 line-clamp-2">{video.title}</h4>
+                  <p class="text-xs text-secondary">{formatViews(video.views)} - {video.year}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="https://www.youtube.com/@pd.raimundononato3780" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-700">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              Canal @pd.raimundononato3780
+            </a>
+          </div>
         </div>
-      </div>
-
-      {/* Dimension Tabs */}
-      <div class="mb-12">
-        <h2 class="text-xs font-medium uppercase tracking-wider text-secondary mb-6">
-          {content.dimensionsTitle}
-        </h2>
-        <DimensionTabs dimensions={content.dimensions} activeDimension="II" />
-      </div>
-
-      {/* Gallery Placeholder */}
-      <div class="mb-12">
-        <h2 class="font-serif text-2xl font-semibold text-primary mb-6">
-          {content.galleryTitle}
-        </h2>
-        <GalleryPlaceholder message="Galeria de fotos em desenvolvimento - implementação futura" />
-      </div>
-
-      {/* Dimension Content Info */}
-      <div class="bg-surface border border-subtle rounded-lg p-8">
-        <h3 class="font-serif text-xl font-semibold text-primary mb-4">
-          Sobre as Dimensões
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-secondary">
-          <div>
-            <h4 class="font-medium text-primary mb-2">I. O Trono do Saber</h4>
-            <p>Artigos acadêmicos, teses e estudos sobre o CEPSERIS. 11 itens de alta relevância acadêmica.</p>
-          </div>
-          <div>
-            <h4 class="font-medium text-primary mb-2">II. A Memória Viva</h4>
-            <p>Crônicas, blogs e registros históricos da comunidade. 4 itens narrativos fundamentais.</p>
-          </div>
-          <div>
-            <h4 class="font-medium text-primary mb-2">III. O Olhar da Floresta</h4>
-            <p>Conteúdo audiovisual - reportagens, vídeos e registros em mídia. 5 itens multimídia.</p>
-          </div>
-          <div>
-            <h4 class="font-medium text-primary mb-2">IV. A Bitácora Digital</h4>
-            <p>Presença em redes sociais - Facebook e Instagram. 14 itens de interação social.</p>
-          </div>
-        </div>
-      </div>
-
-      {/* YouTube Channel Link */}
-      <div class="mt-12 text-center">
-        <a 
-          href="https://www.youtube.com/@pd.raimundononato3780" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-          </svg>
-          Canal @pd.raimundononato3780 no YouTube
-        </a>
       </div>
     </div>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.video-tab');
+      const cards = document.querySelectorAll('.video-card');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const filter = tab.getAttribute('data-filter');
+          
+          tabs.forEach(t => {
+            t.classList.remove('active', 'bg-primary/10', 'text-primary');
+            t.classList.add('text-secondary');
+          });
+          tab.classList.add('active', 'bg-primary/10', 'text-primary');
+          tab.classList.remove('text-secondary');
+          
+          cards.forEach(card => {
+            const source = card.getAttribute('data-source');
+            if (filter === 'todos' || source === filter) {
+              (card as HTMLElement).style.display = '';
+            } else {
+              (card as HTMLElement).style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
 </Layout>

@@ -115,13 +115,13 @@ Fallback: placeholder si no carga.
 
 ## Success Criteria
 
-- [ ] Timeline funcional con 6 nodos (2007-2025)
-- [ ] 4 dimensiones navegables con tabs
-- [ ] Grid de videos con thumbnails de YouTube
-- [ ] Galería de fotos - placeholder listo (implementación posterior)
-- [ ] Archive links unificados en un solo archivo .md
-- [ ] Build successful (107+ páginas)
-- [ ] Deploy preview en Vercel
+- [x] Timeline funcional con 6 nodos (2007-2025)
+- [x] 4 dimensiones navegables con tabs
+- [x] Grid de videos con thumbnails de YouTube (los 18 videos)
+- [x] Galería de fotos - placeholder listo (implementación posterior)
+- [x] Archive links unificados en un solo archivo .md (~67 enlaces)
+- [x] Build successful (107+ páginas)
+- [ ] Deploy preview en Vercel (pendiente push)
 
 ## Timeline del Proyecto
 
