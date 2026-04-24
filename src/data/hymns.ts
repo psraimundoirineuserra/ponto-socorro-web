@@ -22,9 +22,9 @@ export const cadernos: Caderno[] = [
 ];
 
 export const hymns: Hymn[] = [
-  { slug: 'gloria-a-ti', title: 'Gloria a Ti Señor', titleEn: 'Glory to You Lord', titlePt: 'Glória a Ti Senhor', author: 'Mestre Irineu', caderno: 'fundacional', duration: '3:45', durationSeconds: 225 },
-  { slug: 'voz-del-cielo', title: 'Voz del Cielo', titleEn: 'Voice of Heaven', titlePt: 'Voz do Céu', author: 'Tradicional', caderno: 'cura', duration: '4:12', durationSeconds: 252 },
-  { slug: 'llegada-del-espiritu', title: 'Llegada del Espíritu', titleEn: 'Coming of the Spirit', titlePt: 'Chegada do Espírito', author: 'Comunidad', caderno: 'cura', duration: '3:28', durationSeconds: 208 },
+  { slug: 'o-mensageiro', title: 'O Mensageiro', titleEn: 'The Messenger', titlePt: 'O Mensageiro', author: 'Maria Damião', caderno: 'fundacional', duration: '3:45', durationSeconds: 225 },
+  { slug: 'linha-de-arrochim', title: 'Linha de Arrochim', titleEn: 'Linha de Arrochim', titlePt: 'Linha de Arrochim', author: 'Padrinho Wilson', caderno: 'cura', duration: '4:12', durationSeconds: 252 },
+  { slug: 'o-peregrino', title: 'O Peregrino', titleEn: 'The Pilgrim', titlePt: 'O Peregrino', author: 'Padrinho Nonato', caderno: 'cura', duration: '3:28', durationSeconds: 208 },
   { slug: 'caminho-da-cura', title: 'Caminho da Cura', titleEn: 'Path of Healing', titlePt: 'Caminho da Cura', author: 'Mestre Irineu', caderno: 'cura', duration: '4:55', durationSeconds: 295 },
   { slug: 'oracion-de-la-manana', title: 'Oración de la Mañana', titleEn: 'Morning Prayer', titlePt: 'Oração da Manhã', author: 'Tradicional', caderno: 'instrucciones', duration: '2:30', durationSeconds: 150 },
   { slug: 'fuego-interno', title: 'Fuego Interno', titleEn: 'Internal Fire', titlePt: 'Fogo Interno', author: 'Comunidad', caderno: 'especial', duration: '5:10', durationSeconds: 310 },

@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '@/i18n';
+import { Flame, Home, MapPin, Leaf } from 'lucide-react';
 
 interface Props {
   locale: 'pt' | 'es' | 'en';
@@ -17,22 +18,35 @@ const t = useTranslations(locale);
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
       <div>
-        <p class="font-serif text-4xl font-semibold text-primary">1987</p>
+        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
+          <Flame class="w-6 h-6 text-primary" />
+        </div>
+        <p class="font-serif text-4xl font-semibold text-primary">1966</p>
+        <p class="text-sm text-secondary mt-2">{t.home.coordinates.mandato}</p>
+      </div>
+
+      <div>
+        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
+          <Home class="w-6 h-6 text-primary" />
+        </div>
+        <p class="font-serif text-4xl font-semibold text-primary">1997</p>
         <p class="text-sm text-secondary mt-2">{t.home.coordinates.founded}</p>
       </div>
 
       <div>
-        <p class="font-serif text-4xl font-semibold text-primary">🌍</p>
-        <p class="text-sm text-secondary mt-2">{t.home.coordinates.location}</p>
+        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
+          <MapPin class="w-6 h-6 text-primary" />
+        </div>
+        <p class="font-serif text-3xl font-semibold text-primary">Rio Branco</p>
+        <p class="text-sm text-secondary mt-2">AC, Brasil</p>
+        <p class="text-xs text-secondary mt-1">{t.home.coordinates.location}</p>
       </div>
 
       <div>
+        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
+          <Leaf class="w-6 h-6 text-primary" />
+        </div>
         <p class="font-serif text-4xl font-semibold text-primary">3</p>
-        <p class="text-sm text-secondary mt-2">{t.home.coordinates.languages}</p>
-      </div>
-
-      <div>
-        <p class="font-serif text-4xl font-semibold text-primary">∞</p>
         <p class="text-sm text-secondary mt-2">{t.home.coordinates.community}</p>
       </div>
     </div>
