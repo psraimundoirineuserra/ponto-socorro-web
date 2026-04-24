@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '@/i18n';
-import { Flame, Church, MapPin, Leaf, Bird, Feather, Flower2 } from 'lucide-react';
+import { Flame, Sun, Church, MapPin, Flower2 } from 'lucide-react';
 
 interface Props {
   locale: 'pt' | 'es' | 'en';
@@ -18,8 +18,13 @@ const t = useTranslations(locale);
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
       <div>
-        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
-          <Flame class="w-6 h-6 text-primary" />
+        <div class="flex gap-2 mb-4">
+          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center">
+            <Flame class="w-5 h-5 text-primary" />
+          </div>
+          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center">
+            <Sun class="w-5 h-5 text-primary" />
+          </div>
         </div>
         <p class="font-serif text-4xl font-semibold text-primary">1966</p>
         <p class="text-sm text-secondary mt-2">{t.home.coordinates.mandato}</p>
@@ -43,19 +48,8 @@ const t = useTranslations(locale);
       </div>
 
       <div>
-        <div class="flex gap-3 mb-4">
-          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center" title="Leaf">
-            <Leaf class="w-5 h-5 text-primary" />
-          </div>
-          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center" title="Bird">
-            <Bird class="w-5 h-5 text-primary" />
-          </div>
-          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center" title="Feather">
-            <Feather class="w-5 h-5 text-primary" />
-          </div>
-          <div class="w-10 h-10 rounded-full bg-canvas flex items-center justify-center" title="Flower">
-            <Flower2 class="w-5 h-5 text-primary" />
-          </div>
+        <div class="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-4">
+          <Flower2 class="w-6 h-6 text-primary" />
         </div>
         <p class="font-serif text-3xl font-semibold text-primary">Linha de Arrochim</p>
         <p class="text-sm text-secondary mt-2">{t.home.coordinates.cura}</p>
