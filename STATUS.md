@@ -3,7 +3,7 @@
 **Project**: CEPSERIS - Centro e Pronto Socorro Espiritual Raimundo Irineu Serra
 **Path**: /Users/calderonjosue_/clientes/ponto-socorro/protosocorro/
 **Stack**: Astro 6.x + Tailwind v4 + Nanostores + i18n PT/ES/EN
-**Updated**: 2026-04-23
+**Updated**: 2026-04-24
 
 ---
 
@@ -41,6 +41,26 @@
 | Footer con dirección | ✅ | Rio Branco - AC, Brasil |
 | Footer redes sociales | ✅ | Facebook, Instagram, Google |
 | **SEO Implementation** | ✅ | ReligiousOrganization schema, BaseSeo, MetaSocial, sitemap, robots.txt |
+| **Home Coordinates (2026-04-24)** | ✅ | 4 columns with Lucide icons |
+| **Home Manifesto (2026-04-24)** | ✅ | New CEPSERIS founding story text |
+
+---
+
+## Home Coordinates (Final - 2026-04-24)
+
+| Column | Icon | Value | Label |
+|--------|------|-------|-------|
+| 1 | ⭐ Star | 1966 | Mandato do Mestre |
+| 2 | ⛪ Church | 1997 | Fundação da Sede |
+| 3 | 📍 MapPin | Rio Branco, Acre, Brasil | Localização |
+| 4 | 🌺 Flower2 | Linha de Arrochim | Método de Cura |
+
+**Files changed:**
+- `src/components/home/Coordinates.astro` - Icons and layout
+- `src/i18n/pt.json` - Labels (mandato, founded, location, cura)
+- `src/i18n/content/home/content-pt.json` - Manifesto body text
+
+**Note (for future review):** Column 3 has subtitle "Acre, Brasil" but other columns don't have subtitles. Inconsistency to address later.
 
 ---
 
@@ -63,6 +83,7 @@
 | Foundation content expansion | 🟡 Media |
 | Archive external resources | 🟡 Media |
 | Mobile menu polish | 🟢 Baja |
+| Coordinates column 3 subtitle consistency | 🟢 Baja |
 
 ---
 
@@ -131,8 +152,8 @@ See `redes-sociais-cepseris.md` for:
 
 | Branch | Commit | Status |
 |--------|--------|--------|
-| main | fa489f5 | Al día |
-| develop | fa489f5 | Al día |
+| main | fe92d0d | Al día |
+| develop | fe92d0d | Al día |
 
 **Sync**: main and develop are synchronized.
 
@@ -145,3 +166,29 @@ See `redes-sociais-cepseris.md` for:
 | @type | Removed ReligiousOrganization → ["Organization", "Church"] |
 | URL cleaning | .replace(/\/$/, '') → .slice(0, -1) for robust trailing slash removal |
 | Deploy | Vercel production ✅ cepseris.org |
+
+---
+
+## Vercel Deploy (2026-04-24)
+
+| Environment | URL | Status |
+|-------------|-----|--------|
+| Preview | https://protosocorro-hce7jir8i-calderonjosue.vercel.app | ✅ |
+| Production | https://cepseris.org | ✅ Live |
+| Alias | https://protosocorro-1pyp41och-calderonjosue.vercel.app | ✅ |
+
+**Commits in last deploy:**
+- `9713c1b` - update manifesto body and final icon selections
+- `fe92d0d` - fix AC → Acre in coordinates column 3
+- `697b993` - update coordinates labels and Mandato icon
+- `67afd5e` - add Star icon to Mandato column
+- `2e0bdb0` - coordinates with 4 icon options for Cura selection
+- `9c5603c` - fix: remove singular from manifesto, add Music icon
+- `7a56cca` - feat: update home with real CEPSERIS data
+
+---
+
+## Notes
+
+- **Coordinates consistency:** Column 3 has subtitle "Acre, Brasil" but columns 1,2,4 don't. Future task to review.
+- **pt.json cleanup:** `community` and `languages` keys were removed from coordinates (were unused after changes).
