@@ -182,6 +182,7 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
         },
         events: {
           onReady: (event) => {
+            event.target.setPlaybackQuality('hd1080');
             event.target.mute();
             event.target.playVideo();
 
@@ -192,6 +193,10 @@ const { videoId = 'CYlTJPG2vK0' } = Astro.props;
           },
           onStateChange: (event) => {
             if (event.data === YT.PlayerState.PLAYING) {
+              const currentQuality = event.target.getPlaybackQuality();
+              if (currentQuality !== 'hd1080') {
+                event.target.setPlaybackQuality('hd1080');
+              }
               if (isMuted) {
                 player.mute();
               } else {
