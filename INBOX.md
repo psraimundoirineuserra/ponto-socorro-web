@@ -24,9 +24,8 @@
 
 | # | Bug | Severity | Notes |
 |---|-----|----------|-------|
-| 1 | **Archive filter NOT working** | 🔴 Alta | JS click handler no filtra videos |
-| 2 | Manifesto text mixed ES/EN | 🟢 Baja | Texto inconsistente |
-| 3 | Hymn counts incorrect | 🟢 Baja | Cadernos dicen 40, hay 10 |
+| 1 | Manifesto text mixed ES/EN | 🟢 Baja | Texto inconsistente |
+| 2 | Hymn counts incorrect | 🟢 Baja | Cadernos dicen 40, hay 10 |
 
 ---
 
@@ -36,16 +35,12 @@
 |---|------|--------|
 | 1 | Timeline (30 events) | ✅ Done |
 | 2 | 28 videos data (18 canal + 10 outro) | ✅ Done |
-| 3 | Source filter tabs | ❌ **PENDING - NO FUNCIONA** |
-| 4 | Tab counts correct (28/18/10) | ✅ Done |
-| 5 | Thumbnail hqdefault fallback | ✅ Done |
-| 6 | YouTube channel link | ✅ Done |
-
-**Files involved:**
-- `src/pages/pt/arquivo/index.astro` - Script de filtro (NO funciona)
-- `src/data/archive-videos.ts` - 28 videos con datos reales
-
-**Fix requerido:** El script JS en index.astro necesita ser re-escrito o debugging para que filtre correctamente.
+| 3 | Source filter tabs | ✅ Done |
+| 4 | Tab order: Canal / Outras Fontes / Todos | ✅ Done |
+| 5 | Sort by views (desc, 0 at end) | ✅ Done |
+| 6 | Thumbnail hqdefault fallback | ✅ Done |
+| 7 | Footer YouTube icon | ✅ Done |
+| 8 | Red button removed | ✅ Done |
 
 ---
 

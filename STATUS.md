@@ -71,10 +71,12 @@
 |---------|--------|-------|
 | Timeline (30 events) | ✅ | 3 fases: 1892-1971, 1972-2006, 2007-2026 |
 | 28 videos data | ✅ | 18 canal + 10 outro con datos reales |
-| Source filter tabs | ❌ | **PENDIENTE - NO FUNCIONA** |
-| Tab counts | ✅ | Todos (28), Canal (18), Outras (10) |
+| Source filter tabs | ✅ | Canal (18) / Outras Fontes (10) / Todos (28) - ordered |
+| Tab order | ✅ | 1. Canal, 2. Outras Fontes, 3. Todos |
+| Sort by views | ✅ | Descendente, videos con 0 views al final |
 | Thumbnail fallback | ✅ | hqdefault + SVG placeholder |
-| YouTube channel link | ✅ | @pd.raimundononato3780 |
+| Footer YouTube icon | ✅ | Icono junto a Google Maps |
+| Red button removed | ✅ | Botón rojo del canal eliminado |
 
 **Files:**
 - `src/data/archive-videos.ts` - 28 videos
@@ -90,7 +92,6 @@
 
 | Problem | Severity | Status |
 |---------|----------|--------|
-| **Archive filter NOT working** | 🔴 Alta | **PENDING - JS click handler no funciona** |
 | Audio player not connected to store | 🔴 Alta | Pending |
 | Shop filters not implemented | 🟡 Media | Pending |
 | Measurement form not created | 🟡 Media | Pending |
