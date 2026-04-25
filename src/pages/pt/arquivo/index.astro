@@ -193,29 +193,27 @@ const content = translations[locale as keyof typeof translations];
   </section>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabs = document.querySelectorAll('.video-tab');
-      const cards = document.querySelectorAll('.video-card');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const filter = tab.getAttribute('data-filter');
-          
-          tabs.forEach(t => {
-            t.classList.remove('active', 'bg-primary/10', 'text-primary');
-            t.classList.add('text-secondary');
-          });
-          tab.classList.add('active', 'bg-primary/10', 'text-primary');
-          tab.classList.remove('text-secondary');
-          
-          cards.forEach(card => {
-            const source = card.getAttribute('data-source');
-            if (filter === 'todos' || source === filter) {
-              (card as HTMLElement).style.display = '';
-            } else {
-              (card as HTMLElement).style.display = 'none';
-            }
-          });
+    const tabs = document.querySelectorAll('.video-tab');
+    const cards = document.querySelectorAll('.video-card');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+
+        tabs.forEach(t => {
+          t.classList.remove('active', 'bg-primary/10', 'text-primary');
+          t.classList.add('text-secondary');
+        });
+        tab.classList.add('active', 'bg-primary/10', 'text-primary');
+        tab.classList.remove('text-secondary');
+
+        cards.forEach(card => {
+          const source = card.getAttribute('data-source');
+          if (filter === 'todos' || source === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
         });
       });
     });

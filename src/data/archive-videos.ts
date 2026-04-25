@@ -12,7 +12,8 @@ export interface ArchiveVideo {
 }
 
 export const archiveVideos: ArchiveVideo[] = [
-  // VIDEOS DEL CANAL @pd.raimundononato3780 (Dimension II)
+  // VIDEOS DEL CANAL @pd.raimundononato3780 (18 videos)
+  // Hinário O Peregrino / Aconteceu (13)
   {
     id: 'academia-mestre-irineu',
     youtubeId: 'vMqyS2UTfKk',
@@ -169,14 +170,75 @@ export const archiveVideos: ArchiveVideo[] = [
     category: 'hinario',
     source: 'canal'
   },
+  // Memória e Homenagens (5) - AGREGADOS
+  {
+    id: 'lembranca-ceu-parana',
+    youtubeId: 'Na4Rhm2wl-8',
+    title: 'Lembrança Céu do Paraná',
+    views: 663,
+    year: 'hace 4 años',
+    duration: '1:17',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'canal'
+  },
+  {
+    id: 'limpando-maracuja',
+    youtubeId: 'I8dpdJGzODI',
+    title: 'limpando maracujá e maxixe peruano!',
+    views: 217,
+    year: 'hace 4 años',
+    duration: '2:17',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'canal'
+  },
+  {
+    id: 'centenario-vo-wilson',
+    youtubeId: 'swsy42l9Yg4',
+    title: 'Comemoração Centenário Vô Wilson',
+    views: 3500,
+    year: 'hace 5 años',
+    duration: '11:04',
+    dimension: 'II',
+    featured: true,
+    category: 'homenagem',
+    source: 'canal'
+  },
+  {
+    id: 'homenagem-wilson-carneiro',
+    youtubeId: 'SMo8SX02erE',
+    title: 'Homenagem ao Padrinho Wilson Carneiro',
+    views: 799,
+    year: 'hace 5 años',
+    duration: '2:27',
+    dimension: 'II',
+    featured: false,
+    category: 'homenagem',
+    source: 'canal'
+  },
+  {
+    id: 'homenagem-wilson-centenario',
+    youtubeId: 'wXo3InKr_DI',
+    title: 'Homenagem Padrinho Wilson Centenário',
+    views: 848,
+    year: 'hace 5 años',
+    duration: '3:10',
+    dimension: 'II',
+    featured: false,
+    category: 'homenagem',
+    source: 'canal'
+  },
 
-  // VIDEOS DE OTRAS FUENTES (Dimension II - Olhar da Floresta)
+  // VIDEOS DE OTRAS FUENTES (10) - CON DATOS REALES
   {
     id: 'historias-de-papai',
     youtubeId: 'CYlTJPG2vK0',
     title: 'Histórias de Papai – PD Wilson Carneiro',
-    views: 0,
-    year: 'hace años',
+    views: 5621,
+    year: 'hace 5 años',
     duration: '?',
     dimension: 'II',
     featured: false,
@@ -184,11 +246,23 @@ export const archiveVideos: ArchiveVideo[] = [
     source: 'outro'
   },
   {
+    id: 'hinario-aconteceu-nonato',
+    youtubeId: 'mbCj5xHjUhU',
+    title: 'ACONTECEU - Hinário do Padrinho Nonato',
+    views: 3169,
+    year: 'hace 10 años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
     id: 'live-centenario-wilson',
     youtubeId: 'rCnyIsR8yoY',
     title: 'Live Centenário do Padrinho Wilson Carneiro',
-    views: 0,
-    year: 'hace años',
+    views: 3055,
+    year: 'hace 5 años',
     duration: '?',
     dimension: 'II',
     featured: false,
@@ -199,68 +273,8 @@ export const archiveVideos: ArchiveVideo[] = [
     id: 'cura-linha-arrochim',
     youtubeId: 'VvrZBpQ6RJI',
     title: 'Cura – Linha de Arrochim',
-    views: 0,
-    year: 'hace años',
-    duration: '?',
-    dimension: 'II',
-    featured: false,
-    category: 'memoria',
-    source: 'outro'
-  },
-  {
-    id: 'hinario-chave-ouro',
-    youtubeId: 'rw6Qa5Q2bhk',
-    title: 'Hinário Chave de Ouro – Pad. Wilson + Nonato',
-    views: 0,
-    year: 'hace años',
-    duration: '?',
-    dimension: 'II',
-    featured: false,
-    category: 'hinario',
-    source: 'outro'
-  },
-  {
-    id: 'pronto-socorro-reportaje',
-    youtubeId: 'xpkVctGrVuk',
-    title: 'Pronto-Socorro Raimundo Irineu Serra, do Raimundo Nonato',
-    views: 0,
-    year: 'hace años',
-    duration: '?',
-    dimension: 'II',
-    featured: false,
-    category: 'memoria',
-    source: 'outro'
-  },
-  {
-    id: 'hinario-peregrino-nonato',
-    youtubeId: 'nwib8pY9k0I',
-    title: 'Hinário O Peregrino – Padrinho Nonato',
-    views: 0,
-    year: 'hace años',
-    duration: '?',
-    dimension: 'II',
-    featured: false,
-    category: 'hinario',
-    source: 'outro'
-  },
-  {
-    id: 'hinario-aconteceu-nonato',
-    youtubeId: 'mbCj5xHjUhU',
-    title: 'Hinário Aconteceu – Padrinho Nonato',
-    views: 0,
-    year: 'hace años',
-    duration: '?',
-    dimension: 'II',
-    featured: false,
-    category: 'hinario',
-    source: 'outro'
-  },
-  {
-    id: 'centro-pronto-socorro-ris',
-    youtubeId: 'vP57ECXK6mc',
-    title: 'Centro e Pronto Socorro de Cura Espiritual R.I.S.',
-    views: 0,
-    year: 'hace años',
+    views: 1566,
+    year: 'hace 2 años',
     duration: '?',
     dimension: 'II',
     featured: false,
@@ -271,8 +285,44 @@ export const archiveVideos: ArchiveVideo[] = [
     id: 'pronto-socorro-acre-2012',
     youtubeId: 'Mbi_gZ_dD_8',
     title: 'PRONTO SOCORRO - ACRE em 18 de julho de 2012',
-    views: 0,
+    views: 688,
     year: '2012',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
+    source: 'outro'
+  },
+  {
+    id: 'hinario-chave-ouro',
+    youtubeId: 'rw6Qa5Q2bhk',
+    title: 'Hinário Chave de Ouro, Pad. Wilson Carneiro',
+    views: 299,
+    year: 'hace 9 meses',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
+    id: 'hinario-peregrino-nonato',
+    youtubeId: 'nwib8pY9k0I',
+    title: 'Hinário O Peregrino do Padrinho Nonato',
+    views: 202,
+    year: 'hace 2 años',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'hinario',
+    source: 'outro'
+  },
+  {
+    id: 'pronto-socorro-reportaje',
+    youtubeId: 'xpkVctGrVuk',
+    title: 'Pronto-Socorro Raimundo Irineu Serra',
+    views: 139,
+    year: 'hace 1 año',
     duration: '?',
     dimension: 'II',
     featured: false,
@@ -283,12 +333,24 @@ export const archiveVideos: ArchiveVideo[] = [
     id: 'hinos-novos-presidente',
     youtubeId: 'Jw6dAxtm2dQ',
     title: 'Hinos Novos com nosso Presidente',
-    views: 0,
-    year: 'hace años',
+    views: 124,
+    year: 'hace 10 meses',
     duration: '?',
     dimension: 'II',
     featured: false,
     category: 'oficio',
+    source: 'outro'
+  },
+  {
+    id: 'centro-pronto-socorro-ris',
+    youtubeId: 'vP57ECXK6mc',
+    title: 'Centro e Pronto Socorro de Cura Espiritual R.I.S.',
+    views: 0,
+    year: '-',
+    duration: '?',
+    dimension: 'II',
+    featured: false,
+    category: 'memoria',
     source: 'outro'
   }
 ];
@@ -302,7 +364,7 @@ export function getFeaturedVideos(): ArchiveVideo[] {
 }
 
 export function getVideoThumbnailUrl(video: ArchiveVideo): string {
-  return `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
+  return `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`;
 }
 
 export function getVideoYoutubeUrl(video: ArchiveVideo): string {

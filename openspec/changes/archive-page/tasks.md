@@ -1,90 +1,85 @@
-# Tasks: archive-page
+# Tasks: archive-page (Update - Fix Filtro + Completar 28 Videos)
 
-## Deprecation Note
-
-- **Mantener** `/pt/arquivo/index.astro` existente como placeholder inactivo
-- **No eliminar** - el archivo existe pero no se usará para la nueva implementación
+## Status: IN PROGRESS
 
 ---
 
-## Implementation Tasks
+## New Tasks (v2)
 
-### Phase 1: Setup + Data
+### Phase Fix: Filtro JS
 
-- [ ] 1.1 Crear `src/data/archive-videos.ts` con 18 videos (✅ Ya creado)
-- [ ] 1.2 Crear translations `src/i18n/content/archive/pt.json`
-- [ ] 1.3 Crear translations `src/i18n/content/archive/es.json` (placeholder)
-- [ ] 1.4 Crear translations `src/i18n/content/archive/en.json` (placeholder)
+- [ ] 1.1 Fix filtro en `src/pages/pt/arquivo/index.astro` - cambiar `card as HTMLElement` a `card.style.display`
+- [ ] 1.2 Verificar que el script cargue correctamente
+- [ ] 1.3 Test clicks en tabs "Canal" y "Outras Fontes"
 
-### Phase 2: Components
+### Phase Data: Completar 28 Videos
 
-- [ ] 2.1 Crear `src/components/archive/Timeline.astro`
-- [ ] 2.2 Crear `src/components/archive/DimensionTabs.astro`
-- [ ] 2.3 Crear `src/components/archive/VideoCard.astro`
-- [ ] 2.4 Crear `src/components/archive/GalleryPlaceholder.astro`
+#### 2.1 Agregar 5 videos faltantes del canal (Memória/Homenagens)
 
-### Phase 3: Page Implementation
+- [ ] 2.1.1 Agregar `lembranca-ceu-parana` (Na4Rhm2wl-8, 663 views, 1:17)
+- [ ] 2.1.2 Agregar `limpando-maracuja` (I8dpdJGzODI, 217 views, 2:17)
+- [ ] 2.1.3 Agregar `centenario-vo-wilson` (swsy42l9Yg4, 3500 views, 11:04, featured)
+- [ ] 2.1.4 Agregar `homenagem-wilson-carneiro` (SMo8SX02erE, 799 views, 2:27)
+- [ ] 2.1.5 Agregar `homenagem-wilson-centenario` (wXo3InKr_DI, 848 views, 3:10)
 
-- [ ] 3.1 Crear `src/pages/[lang]/archive/index.astro` (nueva página)
-- [ ] 3.2 Implementar Timeline con 6 nodos
-- [ ] 3.3 Implementar DimensionTabs con 4 tabs
-- [ ] 3.4 Implementar VideoGrid con 18 videos
-- [ ] 3.5 Implementar GalleryPlaceholder
+#### 2.2 Actualizar 10 videos externos con datos reales
 
-### Phase 4: Styling
+- [ ] 2.2.1 `historias-de-papai` → views: 5.621, year: "hace 5 años"
+- [ ] 2.2.2 `hinario-aconteceu-nonato` → views: 3.169, year: "hace 10 años"
+- [ ] 2.2.3 `live-centenario-wilson` → views: 3.055, year: "hace 5 años"
+- [ ] 2.2.4 `cura-linha-arrochim` → views: 1.566, year: "hace 2 años"
+- [ ] 2.2.5 `pronto-socorro-acre-2012` → views: 688, year: "2012"
+- [ ] 2.2.6 `hinario-chave-ouro` → views: 299, year: "hace 9 meses"
+- [ ] 2.2.7 `hinario-peregrino-nonato` → views: 202, year: "hace 2 años"
+- [ ] 2.2.8 `pronto-socorro-reportaje` → views: 139, year: "hace 1 año"
+- [ ] 2.2.9 `hinos-novos-presidente` → views: 124, year: "hace 10 meses"
+- [ ] 2.2.10 `centro-pronto-socorro-ris` → views: 0 (mantener "-"), year: "-"
 
-- [ ] 4.1 Aplicar design system tokens
-- [ ] 4.2 Responsive breakpoints
-- [ ] 4.3 Hover animations
+### Phase UI: Thumbnail Fallback
 
-### Phase 5: Content + Unificación
+- [ ] 3.1 Cambiar `getVideoThumbnailUrl` de `maxresdefault` a `hqdefault`
+- [ ] 3.2 Mantener fallback SVG para thumbnails unavailable
 
-- [ ] 5.1 Unificar `links-wilson-pronto-socorro.md` → `cepsesis-pronto-socorro-links.md.md`
-- [ ] 5.2 Agregar canal YouTube @pd.raimundononato3780
-- [ ] 5.3 Agregar 18 videos a la lista de enlaces
+### Phase Build
 
-### Phase 6: Build + Deploy
+- [ ] 4.1 `npm run build` - verificar 107+ páginas
+- [ ] 4.2 Commit + push (pendiente cuando usuario se reconecte)
+- [ ] 4.3 Deploy preview Vercel
 
-- [ ] 6.1 Build local - verificar 107+ páginas
-- [ ] 6.2 Commit + push develop
-- [ ] 6.3 Deploy preview Vercel
+---
+
+## Old Tasks (completados)
+
+- [x] 1.1 Crear `src/data/archive-videos.ts` con 18 videos
+- [x] 1.2 Crear translations
+- [x] 2.1 Crear Timeline component
+- [x] 2.2 Crear DimensionTabs component
+- [x] 2.3 Crear VideoCard component
+- [x] 2.4 Crear GalleryPlaceholder component
+- [x] 3.1 Crear `/pt/arquivo/index.astro`
+- [x] 4.1 Aplicar design system tokens
+- [x] 5.1 Unificar links.md
+- [x] 5.3 Agregar canal YouTube
+- [x] 6.1 Build local exitoso
 
 ---
 
 ## Dependencies
 
 - Design System V2 tokens
-- Lucide React icons
 - Tailwind CSS v4
+- Astro static build
+
+## Files to Modify
+
+```
+src/data/archive-videos.ts    → Agregar 5 + actualizar 10
+src/pages/pt/arquivo/index.astro  → Fix filtro JS
+```
 
 ## Estimated Time
 
-- Phase 1-3: 3-4 horas
-- Phase 4-5: 1 hora
-- Phase 6: 30 min
-- **Total: 4-5 horas**
-
----
-
-## Files to Create/Modify
-
-### New Files
-```
-src/data/archive-videos.ts           ✅ Created
-src/components/archive/Timeline.astro
-src/components/archive/DimensionTabs.astro
-src/components/archive/VideoCard.astro
-src/components/archive/GalleryPlaceholder.astro
-src/pages/[lang]/archive/index.astro
-src/i18n/content/archive/content-pt.json
-src/i18n/content/archive/content-es.json
-src/i18n/content/archive/content-en.json
-openspec/changes/archive-page/tasks.md   ✅ Created
-```
-
-### Existing Files (Keep as-is)
-```
-src/pages/pt/arquivo/index.astro         ← Mantener, no usar
-src/pages/es/archivo/index.astro         ← Mantener, no usar
-src/pages/[lang]/archive.astro           ← Mantener, no usar
-```
+- Fase Fix: 15 min
+- Fase Data: 30 min
+- Fase Build: 10 min
+- **Total: ~55 min**
