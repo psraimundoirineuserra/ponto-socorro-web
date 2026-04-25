@@ -39,10 +39,11 @@
 | i18n URLs PT/ES/EN | ✅ | All pages translated |
 | SDD configured | ✅ | openspec + engram (hybrid) |
 | Footer con dirección | ✅ | Rio Branco - AC, Brasil |
-| Footer redes sociales | ✅ | Facebook, Instagram, Google |
+| Footer redes sociales | ✅ | Facebook, Instagram, Google, YouTube |
 | **SEO Implementation** | ✅ | ReligiousOrganization schema, BaseSeo, MetaSocial, sitemap, robots.txt |
 | **Home Coordinates (2026-04-24)** | ✅ | 4 columns with Lucide icons |
 | **Home Manifesto (2026-04-24)** | ✅ | New CEPSERIS founding story text |
+| **Archive 28 videos** | ✅ | 18 canal + 10 outro (data only, filter pending) |
 
 ---
 
@@ -64,10 +65,32 @@
 
 ---
 
+## Archive Page (2026-04-24)
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Timeline (30 events) | ✅ | 3 fases: 1892-1971, 1972-2006, 2007-2026 |
+| 28 videos data | ✅ | 18 canal + 10 outro con datos reales |
+| Source filter tabs | ❌ | **PENDIENTE - NO FUNCIONA** |
+| Tab counts | ✅ | Todos (28), Canal (18), Outras (10) |
+| Thumbnail fallback | ✅ | hqdefault + SVG placeholder |
+| YouTube channel link | ✅ | @pd.raimundononato3780 |
+
+**Files:**
+- `src/data/archive-videos.ts` - 28 videos
+- `src/pages/pt/arquivo/index.astro` - Page con filtro (NO funciona)
+- `openspec/changes/archive-page/` - SDD artifacts
+
+**Video adicional pendiente:**
+- "QUE FORÇA É ESTA - LUCIANO SANCHES" - ID duplicado con centro-pronto-socorro-ris
+
+---
+
 ## Problems Known
 
 | Problem | Severity | Status |
 |---------|----------|--------|
+| **Archive filter NOT working** | 🔴 Alta | **PENDING - JS click handler no funciona** |
 | Audio player not connected to store | 🔴 Alta | Pending |
 | Shop filters not implemented | 🟡 Media | Pending |
 | Measurement form not created | 🟡 Media | Pending |
@@ -114,6 +137,7 @@ See `redes-sociais-cepseris.md` for:
 - Dirección: 010, KM04, Ramal 5, R. da Vila dos Carneiros, 000, Rio Branco - AC, Brasil
 - Facebook: https://www.facebook.com/ProntoSocorrroEspiritual/
 - Instagram: https://www.instagram.com/ps.raimundoirineuserra/
+- YouTube: https://www.youtube.com/@pd.raimundononato3780
 - Google: https://share.google/8FMQmaWrE8rfLZFtu
 
 ---
@@ -153,19 +177,9 @@ See `redes-sociais-cepseris.md` for:
 | Branch | Commit | Status |
 |--------|--------|--------|
 | main | fe92d0d | Al día |
-| develop | fe92d0d | Al día |
+| develop | c274918 | 4 commits ahead of origin |
 
-**Sync**: main and develop are synchronized.
-
----
-
-## Schema Zero Errors (2026-04-23)
-
-| Fix | Details |
-|-----|---------|
-| @type | Removed ReligiousOrganization → ["Organization", "Church"] |
-| URL cleaning | .replace(/\/$/, '') → .slice(0, -1) for robust trailing slash removal |
-| Deploy | Vercel production ✅ cepseris.org |
+**Pending push to origin/develop**
 
 ---
 
@@ -177,14 +191,11 @@ See `redes-sociais-cepseris.md` for:
 | Production | https://cepseris.org | ✅ Live |
 | Alias | https://protosocorro-1pyp41och-calderonjosue.vercel.app | ✅ |
 
-**Commits in last deploy:**
-- `9713c1b` - update manifesto body and final icon selections
-- `fe92d0d` - fix AC → Acre in coordinates column 3
-- `697b993` - update coordinates labels and Mandato icon
-- `67afd5e` - add Star icon to Mandato column
-- `2e0bdb0` - coordinates with 4 icon options for Cura selection
-- `9c5603c` - fix: remove singular from manifesto, add Music icon
-- `7a56cca` - feat: update home with real CEPSERIS data
+**Commits pending deploy (after git push):**
+- `c274918` - fix(archive): filter works + 28 videos (NOT YET - filter NOT working)
+- `293ad85` - feat(archive): add 10 external videos with source filter tabs
+- `fbe5e3e` - feat(archive): add youtube icon to footer
+- `c9c014c` - feat(archive): add timeline to arquivo page
 
 ---
 
@@ -192,3 +203,5 @@ See `redes-sociais-cepseris.md` for:
 
 - **Coordinates consistency:** Column 3 has subtitle "Acre, Brasil" but columns 1,2,4 don't. Future task to review.
 - **pt.json cleanup:** `community` and `languages` keys were removed from coordinates (were unused after changes).
+- **Archive filter:** JS click handler in index.astro needs fix - currently not filtering videos on click.
+- **Video duplicate:** "QUE FORÇA É ESTA" uses same YouTube ID as "Centro e Pronto Socorro R.I.S." - necesita confirmación.

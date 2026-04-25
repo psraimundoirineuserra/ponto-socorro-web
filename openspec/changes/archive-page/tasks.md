@@ -6,45 +6,52 @@
 
 ## New Tasks (v2)
 
-### Phase Fix: Filtro JS
+### Phase Fix: Filtro JS ❌ PENDIENTE - NO FUNCIONA
 
-- [ ] 1.1 Fix filtro en `src/pages/pt/arquivo/index.astro` - cambiar `card as HTMLElement` a `card.style.display`
+- [ ] 1.1 Fix filtro en `src/pages/pt/arquivo/index.astro` - **NO FUNCIONA ACTUALMENTE**
 - [ ] 1.2 Verificar que el script cargue correctamente
 - [ ] 1.3 Test clicks en tabs "Canal" y "Outras Fontes"
+- [ ] 1.4 Debug: ¿Por qué el click handler no oculta los cards?
 
-### Phase Data: Completar 28 Videos
+### Phase Data: Completar 28 Videos ✅ COMPLETADO
 
-#### 2.1 Agregar 5 videos faltantes del canal (Memória/Homenagens)
+- [x] 2.1.1 Agregar `lembranca-ceu-parana` (Na4Rhm2wl-8, 663 views, 1:17)
+- [x] 2.1.2 Agregar `limpando-maracuja` (I8dpdJGzODI, 217 views, 2:17)
+- [x] 2.1.3 Agregar `centenario-vo-wilson` (swsy42l9Yg4, 3500 views, 11:04, featured)
+- [x] 2.1.4 Agregar `homenagem-wilson-carneiro` (SMo8SX02erE, 799 views, 2:27)
+- [x] 2.1.5 Agregar `homenagem-wilson-centenario` (wXo3InKr_DI, 848 views, 3:10)
 
-- [ ] 2.1.1 Agregar `lembranca-ceu-parana` (Na4Rhm2wl-8, 663 views, 1:17)
-- [ ] 2.1.2 Agregar `limpando-maracuja` (I8dpdJGzODI, 217 views, 2:17)
-- [ ] 2.1.3 Agregar `centenario-vo-wilson` (swsy42l9Yg4, 3500 views, 11:04, featured)
-- [ ] 2.1.4 Agregar `homenagem-wilson-carneiro` (SMo8SX02erE, 799 views, 2:27)
-- [ ] 2.1.5 Agregar `homenagem-wilson-centenario` (wXo3InKr_DI, 848 views, 3:10)
+- [x] 2.2.1 `historias-de-papai` → views: 5621, year: "hace 5 años"
+- [x] 2.2.2 `hinario-aconteceu-nonato` → views: 3169, year: "hace 10 años"
+- [x] 2.2.3 `live-centenario-wilson` → views: 3055, year: "hace 5 años"
+- [x] 2.2.4 `cura-linha-arrochim` → views: 1566, year: "hace 2 años"
+- [x] 2.2.5 `pronto-socorro-acre-2012` → views: 688, year: "2012"
+- [x] 2.2.6 `hinario-chave-ouro` → views: 299, year: "hace 9 meses"
+- [x] 2.2.7 `hinario-peregrino-nonato` → views: 202, year: "hace 2 años"
+- [x] 2.2.8 `pronto-socorro-reportaje` → views: 139, year: "hace 1 año"
+- [x] 2.2.9 `hinos-novos-presidente` → views: 124, year: "hace 10 meses"
+- [x] 2.2.10 `centro-pronto-socorro-ris` → views: 0 (mantener "-"), year: "-"
 
-#### 2.2 Actualizar 10 videos externos con datos reales
+### Phase UI: Thumbnail Fallback ✅ COMPLETADO
 
-- [ ] 2.2.1 `historias-de-papai` → views: 5.621, year: "hace 5 años"
-- [ ] 2.2.2 `hinario-aconteceu-nonato` → views: 3.169, year: "hace 10 años"
-- [ ] 2.2.3 `live-centenario-wilson` → views: 3.055, year: "hace 5 años"
-- [ ] 2.2.4 `cura-linha-arrochim` → views: 1.566, year: "hace 2 años"
-- [ ] 2.2.5 `pronto-socorro-acre-2012` → views: 688, year: "2012"
-- [ ] 2.2.6 `hinario-chave-ouro` → views: 299, year: "hace 9 meses"
-- [ ] 2.2.7 `hinario-peregrino-nonato` → views: 202, year: "hace 2 años"
-- [ ] 2.2.8 `pronto-socorro-reportaje` → views: 139, year: "hace 1 año"
-- [ ] 2.2.9 `hinos-novos-presidente` → views: 124, year: "hace 10 meses"
-- [ ] 2.2.10 `centro-pronto-socorro-ris` → views: 0 (mantener "-"), year: "-"
+- [x] 3.1 Cambiar `getVideoThumbnailUrl` de `maxresdefault` a `hqdefault`
+- [x] 3.2 Mantener fallback SVG para thumbnails unavailable
 
-### Phase UI: Thumbnail Fallback
+### Phase Build ✅ COMPLETADO
 
-- [ ] 3.1 Cambiar `getVideoThumbnailUrl` de `maxresdefault` a `hqdefault`
-- [ ] 3.2 Mantener fallback SVG para thumbnails unavailable
+- [x] 4.1 `npm run build` - verificar 107+ páginas
+- [x] 4.2 Commit listo para push
+- [ ] 4.3 Deploy preview Vercel (pendiente git push)
 
-### Phase Build
+---
 
-- [ ] 4.1 `npm run build` - verificar 107+ páginas
-- [ ] 4.2 Commit + push (pendiente cuando usuario se reconecte)
-- [ ] 4.3 Deploy preview Vercel
+## Video Adicional Pendiente
+
+**QUE FORÇA É ESTA - LUCIANO SANCHES**
+- YouTube ID: vP57ECXK6mc
+- Views: 365, Year: hace 7 meses
+- **Problema:** ID ya usado en `centro-pronto-socorro-ris`
+- **Acción requerida:** Usuario debe confirmar ID correcto o descartar
 
 ---
 
@@ -73,13 +80,12 @@
 ## Files to Modify
 
 ```
-src/data/archive-videos.ts    → Agregar 5 + actualizar 10
-src/pages/pt/arquivo/index.astro  → Fix filtro JS
+src/data/archive-videos.ts    ✅ Actualizado (28 videos)
+src/pages/pt/arquivo/index.astro  ❌ Filtro NO funciona - necesita fix
 ```
 
 ## Estimated Time
 
-- Fase Fix: 15 min
-- Fase Data: 30 min
+- Fase Fix: 30 min (debugging)
 - Fase Build: 10 min
-- **Total: ~55 min**
+- **Total pendientes: ~40 min**
