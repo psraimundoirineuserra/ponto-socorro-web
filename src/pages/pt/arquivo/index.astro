@@ -20,7 +20,7 @@ const timelineFases = [
       { ano: '1920', data: '02 Jan', evento: 'Deslocamento para Rio Branco', desc: 'Ingresso na Guarda Territorial. Alcancou grau de cabo em 1932.' },
       { ano: '1930', data: '-', evento: 'Fundacao do CRF', desc: 'Centro de Regeneracao e Fe em Brasilia. Primeira estrutura organizativa.' },
       { ano: '1935', data: '23 Jun', evento: 'Primeiro Hinario Oficial', desc: 'Na casa de Maria Damiao. Oito hinos cantados ate meia-noite.' },
-      { ano: '1945', data: '-', evento: 'Estabelecimento no Alto Santo', desc: 'Terras doadas pelo governador Guiomard dos Santos para assentamento agricola.' },
+      { ano: '1945', data: '-', evento: 'Estabelecimento no Alto Santo', desc: 'Terras doadas pelo gobernador Guiomard dos Santos para assentamento agricola.' },
       { ano: '1954', data: '-', evento: 'Falecimento de Joao Pereira', desc: 'General do Conforto. Autor do hinario Seis de Janeiro.' },
       { ano: '1956', data: '15 Set', evento: 'Casamento Civil', desc: 'Peregrina Gomes Serra. Custodia administrativa do Alto Santo.' },
       { ano: '1962', data: '23 Jun', evento: 'Ingresso de Wilson Carneiro de Souza', desc: 'Busca cura para seu filho Jose e saude pulmonar. Cura confirmada.' },
@@ -63,15 +63,16 @@ const timelineFases = [
   }
 ];
 
-const canalVideos = archiveVideos.filter(v => v.source === 'canal');
-const outroVideos = archiveVideos.filter(v => v.source === 'outro');
+const canalVideos = archiveVideos.filter(v => v.source === 'canal').sort((a, b) => b.views - a.views || (b.views === 0 ? 1 : -1));
+const outroVideos = archiveVideos.filter(v => v.source === 'outro').sort((a, b) => b.views - a.views || (b.views === 0 ? 1 : -1));
+const allVideosSorted = [...archiveVideos].sort((a, b) => b.views - a.views || (b.views === 0 ? 1 : -1));
 
 const translations = {
   pt: {
     title: 'Arquivo',
     subtitle: 'Preservacao e Memoria',
     timelineTitle: 'O Fio da Memoria',
-    videosTitle: 'Videos do Canal',
+    videosTitle: 'Videos',
     faseLabel: 'Fase',
     tabTodos: 'Todos',
     tabCanal: 'Canal',
@@ -81,7 +82,7 @@ const translations = {
     title: 'Archivo',
     subtitle: 'Preservacion y Memoria',
     timelineTitle: 'El Hilo de la Memoria',
-    videosTitle: 'Videos del Canal',
+    videosTitle: 'Videos',
     faseLabel: 'Fase',
     tabTodos: 'Todos',
     tabCanal: 'Canal',
@@ -91,7 +92,7 @@ const translations = {
     title: 'Archive',
     subtitle: 'Preservation and Memory',
     timelineTitle: 'The Thread of Memory',
-    videosTitle: 'Channel Videos',
+    videosTitle: 'Videos',
     faseLabel: 'Phase',
     tabTodos: 'All',
     tabCanal: 'Channel',
@@ -134,14 +135,14 @@ const content = translations[locale as keyof typeof translations];
           <h2 class="font-serif text-2xl font-semibold text-primary mb-6">{content.videosTitle}</h2>
           
           <div class="flex gap-2 mb-6 border-b border-subtle pb-4">
-            <button data-filter="todos" class="video-tab active px-4 py-2 text-sm font-medium rounded-t-md transition-colors bg-primary/10 text-primary">
-              {content.tabTodos} ({archiveVideos.length})
-            </button>
-            <button data-filter="canal" class="video-tab px-4 py-2 text-sm font-medium rounded-t-md transition-colors text-secondary hover:text-primary">
+            <button data-filter="canal" class="video-tab active px-4 py-2 text-sm font-medium rounded-t-md transition-colors bg-primary/10 text-primary">
               {content.tabCanal} ({canalVideos.length})
             </button>
             <button data-filter="outro" class="video-tab px-4 py-2 text-sm font-medium rounded-t-md transition-colors text-secondary hover:text-primary">
               {content.tabOutras} ({outroVideos.length})
+            </button>
+            <button data-filter="todos" class="video-tab px-4 py-2 text-sm font-medium rounded-t-md transition-colors text-secondary hover:text-primary">
+              {content.tabTodos} ({archiveVideos.length})
             </button>
           </div>
 
@@ -149,6 +150,7 @@ const content = translations[locale as keyof typeof translations];
             {archiveVideos.map((video) => (
               <a
                 data-source={video.source}
+                data-views={video.views}
                 href={getVideoYoutubeUrl(video)}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -178,15 +180,6 @@ const content = translations[locale as keyof typeof translations];
               </a>
             ))}
           </div>
-
-          <div class="mt-8 text-center">
-            <a href="https://www.youtube.com/@pd.raimundononato3780" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-700">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              Canal @pd.raimundononato3780
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -195,18 +188,46 @@ const content = translations[locale as keyof typeof translations];
   <script>
     const tabs = document.querySelectorAll('.video-tab');
     const cards = document.querySelectorAll('.video-card');
+    
+    let currentFilter = 'canal';
+
+    function sortCards(filter) {
+      const visibleCards = Array.from(cards).filter(card => {
+        const source = card.getAttribute('data-source');
+        return filter === 'todos' || source === filter;
+      });
+      
+      const hiddenCards = Array.from(cards).filter(card => {
+        const source = card.getAttribute('data-source');
+        return filter !== 'todos' && source !== filter;
+      });
+
+      const grid = document.getElementById('videos-grid');
+      
+      visibleCards.sort((a, b) => {
+        const viewsA = parseInt(a.getAttribute('data-views') || '0');
+        const viewsB = parseInt(b.getAttribute('data-views') || '0');
+        return viewsB - viewsA;
+      });
+
+      visibleCards.forEach(card => grid.appendChild(card));
+      hiddenCards.forEach(card => grid.appendChild(card));
+    }
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const filter = tab.getAttribute('data-filter');
-
+        
         tabs.forEach(t => {
           t.classList.remove('active', 'bg-primary/10', 'text-primary');
           t.classList.add('text-secondary');
         });
         tab.classList.add('active', 'bg-primary/10', 'text-primary');
         tab.classList.remove('text-secondary');
-
+        
+        currentFilter = filter;
+        sortCards(filter);
+        
         cards.forEach(card => {
           const source = card.getAttribute('data-source');
           if (filter === 'todos' || source === filter) {
@@ -217,5 +238,7 @@ const content = translations[locale as keyof typeof translations];
         });
       });
     });
+    
+    sortCards('canal');
   </script>
 </Layout>
