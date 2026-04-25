@@ -71,12 +71,11 @@
 |---------|--------|-------|
 | Timeline (30 events) | ✅ | 3 fases: 1892-1971, 1972-2006, 2007-2026 |
 | 28 videos data | ✅ | 18 canal + 10 outro con datos reales |
-| Source filter tabs | ✅ | Canal (18) / Outras Fontes (10) / Todos (28) - ordered |
-| Tab order | ✅ | 1. Canal, 2. Outras Fontes, 3. Todos |
+| Filter tabs | ✅ | Canal (18) / Outras Fontes (10) / Todos (28) - ordered |
 | Sort by views | ✅ | Descendente, videos con 0 views al final |
-| Thumbnail fallback | ✅ | hqdefault + SVG placeholder |
 | Footer YouTube icon | ✅ | Icono junto a Google Maps |
 | Red button removed | ✅ | Botón rojo del canal eliminado |
+| **4 Dimensões tabs** | ⏳ Pendente | Plan guardado en `openspec/changes/archive-dimensions-tabs/` |
 
 **Files:**
 - `src/data/archive-videos.ts` - 28 videos

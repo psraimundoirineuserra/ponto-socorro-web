@@ -10,7 +10,7 @@
 
 | # | Task | Severity | Notes |
 |---|------|----------|-------|
-| 1 | **Archive filter JS NOT working** | 🔴 Alta | Click en tabs no filtra videos |
+| 1 | **4 Dimensões tabs** | 🟡 Media | Plan guardado, implementar cuando haya más contenido |
 | 2 | Audio player connection | 🔴 Alta | Conectar UI del player al audioStore |
 | 3 | Audio player tapa footer | 🔴 Alta | z-index o margin-bottom para evitar solapamiento |
 | 4 | Shop filters | 🟡 Media | Category pills + URL params |
@@ -104,11 +104,13 @@
 | Date | Decision | Notes |
 |------|----------|-------|
 | 2026-04-24 | 28 videos totales | 18 canal + 10 outro |
-| 2026-04-24 | Source filter tabs | Todos/Canal/Outras Fontes |
-| 2026-04-24 | Tab counts | Todos (28), Canal (18), Outras (10) |
+| 2026-04-24 | Source filter tabs | Canal/Outras Fontes/Todos |
+| 2026-04-24 | Tab counts | Canal (18), Outras (10), Todos (28) |
 | 2026-04-24 | Thumbnail fallback | hqdefault + SVG placeholder |
-| 2026-04-24 | **Filter NOT working** | JS click handler no filtra videos |
-| 2026-04-24 | Video "QUE FORÇA É ESTA" | ID vP57ECXK6mc ya usado - necesita confirmación |
+| 2026-04-24 | Filter working | JS sort + filter por source |
+| 2026-04-24 | Filter sort | Descendente por views, 0 al final |
+| 2026-04-24 | Red button removed | Solo icon en footer |
+| 2026-04-24 | **4 Dimensões plan** | Plan guardado - NO implementar ainda |
 
 ---
 
