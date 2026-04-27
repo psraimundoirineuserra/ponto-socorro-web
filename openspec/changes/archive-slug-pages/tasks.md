@@ -53,6 +53,33 @@
 - [x] **7.2** Verificar nuevas páginas geradas
 - [ ] **7.3** Probar navegación en browser
 
+## 8. SEO & Sitemap Indexing (PENDIENTE)
+
+- [ ] **8.1** Verificar `dist/sitemap-0.xml` — 是否包含 18 slug pages?
+  - Inspect: `dist/sitemap-0.xml`
+  - Verificar si aparecen `/pt/arquivo/academico/*` y `/pt/arquivo/cronicas/*`
+
+- [ ] **8.2** Verificar `BaseSeo` en `Layout.astro`
+  - Inspect: `src/layouts/Layout.astro`
+  - Debe tener `<BaseSeo />` component
+
+- [ ] **8.3** Verificar `ReligiousOrganizationSchema` en páginas principales
+  - Verificar: `/pt/fundacion` e `/pt/arquivo`
+  - Deben tener `<ReligiousOrganizationSchema />`
+
+- [ ] **8.4** Verificar `BreadcrumbJsonLd` en páginas de detalle
+  - Verificar: `academico/[slug].astro` y `cronicas/[slug].astro`
+  - Breadcrumbs deben ser correctos (Arquivo > Acadêmico/Crônicas > Título)
+
+- [ ] **8.5** Generar lista de URLs para Google Search Console
+  - Principales: `https://cepseris.org/pt/fundacion`, `https://cepseris.org/pt/arquivo`
+  - Hash: `#academico`, `#visual`, `#cronicas`, `#redes`, `#fotografia`
+  - Slug pages: 18 URLs (9 académico + 9 crónicas)
+
+- [ ] **8.6** Registrar URLs en Google Search Console
+  - Submit `sitemap-index.xml` en "Sitemaps"
+  - "URL Inspection" para indexar principales
+
 ---
 
 ## Resumen de Estado
@@ -64,6 +91,7 @@
 | Contenido Crônicas | 4/6 | 2 items |
 | Contenido Académico | Placeholder | Mejorar resúmenes |
 | Filtros/Details | — | Verificar |
+| SEO & Sitemap | — | 6 items |
 
 ---
 
