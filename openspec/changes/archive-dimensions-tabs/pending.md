@@ -1,109 +1,88 @@
-# Plan: Archive - Dimensões Navigation (PENDENTE)
+# Plan: Archive - Dimensões Navigation (SDD COMPLETO)
 
 **Created**: 2026-04-24
-**Status**: PENDENTE - Não implementar ainda
-**Change**: archive-dimensions-tabs
+**Updated**: 2026-04-24
+**Status**: SDD COMPLETO - Aguardando apply
 
 ---
 
-## Objetivo
+## SDD Artifacts Created
 
-Adicionar navegação por 4 dimensões à página `/pt/arquivo`.
+| Artifact | Path | Status |
+|----------|------|--------|
+| Proposal | `openspec/changes/archive-dimensions-tabs/proposal.md` | ✅ |
+| Spec | `openspec/changes/archive-dimensions-tabs/spec.md` | ✅ |
+| Design | `openspec/changes/archive-dimensions-tabs/design.md` | ✅ |
+| Tasks | `openspec/changes/archive-dimensions-tabs/tasks.md` | ✅ |
+| State | `openspec/changes/archive-dimensions-tabs/state.yaml` | ✅ |
 
 ---
 
 ## Estrutura Proposta
 
-### Tabs de Navegação (4 dimensões)
-
 ```
-O Trono do Saber (I) | A Memória Viva (II) | Olhar da Floresta (III) | A Bitácora (IV)
-```
-
-| Dimensão | Nome | Conteúdo | Status |
-|----------|------|----------|--------|
-| I | O Trono do Saber | Artigos acadêmicos, teses | ⏳ Pendente |
-| II | A Memória Viva | 28 vídeos (Canal + Outras Fontes) | ✅ Implementado |
-| III | Olhar da Floresta | Blogs, crónicas | ⏳ Pendente |
-| IV | A Bitácora Digital | Posts Facebook/Instagram | ⏳ Pendente |
-
----
-
-## Implementação Detalhada
-
-### 1. Novos Tabs (替换 atual)
-
-**Antes (atual):**
-```
-Canal (18) | Outras Fontes (10) | Todos (28)
-```
-
-**Depois (proposto):**
-```
-I - O Trono do Saber | II - A Memória Viva | III - Olhar da Floresta | IV - A Bitácora
-```
-
-### 2. Sub-filtros em Dim II
-
-Dentro de Dim II, manter filtros actuales:
-```
-Canal (18) | Outras Fontes (10) | Todos (28)
-```
-
-### 3. Badges Visuais
-
-Agregar badge "Dim. II" nos cards de video (visual, sem filtro).
-
-### 4. Placeholder para Dimensões Vazias
-
-Para I, III, IV (sem conteúdo):
-```
-"Em desenvolvimento" + mensagem explicativa
+┌────────────────────────────────────────────────────┐
+│ [I - Tron...] [II - Mem...] [III - Olhar] [IV - Bitácora] │
+├────────────────────────────────────────────────────┤
+│ SUB-FILTROS VARÍAN según dimensão:                  │
+│                                                    │
+│ Dim I (Artigos acadêmicos):                         │
+│ [Artigos (2)] [Teses (4)] [Livros (2)]             │
+│                                                    │
+│ Dim II (Videos - YouTube):                         │
+│ [Canal (18)] [Outras (10)] [Todos (28)]           │
+│                                                    │
+│ Dim III (Blogs/Crónicas):                          │
+│ [Blogs (2)] [Crónicas (2)] [Artigos (1)]          │
+│                                                    │
+│ Dim IV (placeholder)                               │
+│ "Em desenvolvimento"                               │
+└────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Arquivos a Modificar
+## Content Data
+
+### Dim I - O Trono do Saber (8 items)
+
+| ID | Title | Type | Source |
+|----|-------|------|--------|
+| art-marupiara | As origens de uma casa de cura do Daime | article | Marupiara (UEA) |
+| art-kalagatos | Processos de saúde, doença e cura no Santo Daime | article | Kalágatos (UECE) |
+| thesis-usp | Controvérsia pública da ayahuasca no Brasil | thesis | USP/NEIP |
+| thesis-antunes-cura | Cura, religião e cultura | article | NEIP |
+| thesis-ufpr | O despertar da consciência | thesis | UFPR |
+| thesis-cetad | As Religiões da Ayahuasca | thesis | CETAD |
+| doc-censo | Censo comunitário Colônia Cinco Mil 2022 | document | UFAC |
+| profile-julia | Perfil de Julia Moura (UFAC) | profile | Academia.edu |
+
+### Dim III - Olhar da Floresta (5 items)
+
+| ID | Title | Type | Source |
+|----|-------|------|--------|
+| blog-ceu-boa-palavra | Padrinho Nonato | blog | ceudaboapalavra.blogspot.com |
+| blog-hinarios-peregrino | O Peregrino na residência do Padrinho Nonato | chronicle | hinarios.blogspot.com |
+| blog-hinarios-sao-francisco | São Francisco bem louvado na Vila Carneiro | chronicle | hinarios.blogspot.com |
+| article-santodaime | A Doutrina da Floresta (Seminário) | article | SantoDaime.org |
+
+---
+
+## Files to Create/Modify
 
 ```
-src/pages/pt/arquivo/index.astro    → Novos tabs + sub-filtros
-src/data/archive-videos.ts         → Badge info (opcional)
+src/data/archive-dimensions.ts     (create)
+src/pages/pt/arquivo/index.astro   (modify)
 openspec/changes/archive-dimensions-tabs/
-├── proposal.md
-├── spec.md
-├── design.md
-└── tasks.md
+  proposal.md ✅
+  spec.md      ✅
+  design.md   ✅
+  tasks.md    ✅
+  state.yaml   ✅
 ```
 
 ---
 
-## URL (sem mudança)
+## Next Step
 
-```
-/pt/arquivo  → Una página con tabs de dimensão
-```
-
----
-
-## Alternativa Futura (quando houver conteúdo)
-
-Migrar para sub-páginas:
-```
-/pt/arquivo              → Visão geral
-/pt/arquivo/trono        → Dim I
-/pt/arquivo/memoria      → Dim II (atual)
-/pt/arquivo/floresta     → Dim III
-/pt/arquivo/bitacora     → Dim IV
-```
-
----
-
-## Status
-
-- [ ] proposal.md
-- [ ] spec.md
-- [ ] design.md
-- [ ] tasks.md
-- [ ] implementar
-
-**Nota**: Aguardar usuário confirmar antes de implementar.
+`sdd-apply` - Implementar según tasks.md
