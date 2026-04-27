@@ -1,69 +1,102 @@
 # Tasks: archive-dimensions-tabs
 
-## Status: PENDENTE - Aguardando implementação
+## Status: COMPLETADO
 
 ---
 
 ## Implementation Tasks
 
-### Phase 1: Data
+### Phase 1: Data ✅ COMPLETADO
 
-- [ ] 1.1 Criar `src/data/archive-dimensions.ts`
-  - [ ] 1.1.1 Extrair artigos de links.md (Dim I - 8 items)
-  - [ ] 1.1.2 Extrair blogs/crónicas de links.md (Dim III - 5 items)
-  - [ ] 1.1.3 Definir estrutura de dimensões com sub-filtros
+- [x] 1.1 Criar `src/data/archive-dimensions.ts`
+  - [x] 1.1.1 Extrair artigos de links.md (Dim I - 9 items)
+  - [x] 1.1.2 Extrair blogs/crónicas de links.md (Dim III - 6 items)
+  - [x] 1.1.3 Mover biografias para Dim III (3 items)
+  - [x] 1.1.4 Incluir posts de redes sociais (Dim IV - 9 items)
+  - [x] 1.1.5 Definir estrutura de dimensões com sub-filtros
+  - [x] 1.1.6 Guardar 7.2 (Doctrina) para depois (doctrina-pendente.md)
 
-- [ ] 1.2 Integrar com `archive-videos.ts` existente (Dim II)
+### Phase 2: UI - Tabs ✅ COMPLETADO
 
-### Phase 2: UI - Tabs
+- [x] 2.1 Modificar `index.astro` - estructura tabs
+  - [x] 2.1.1 Crear container para 4 tabs (I, II, III, IV)
+  - [x] 2.1.2 Aplicar estilos de tab ativo/inativo
+  - [x] 2.1.3 Agregar badge com count (los tabs muestran el nombre)
 
-- [ ] 2.1 Modificar `index.astro` - структура tabs
-  - [ ] 2.1.1 Crear container para 4 tabs (I, II, III, IV)
-  - [ ] 2.1.2 Aplicar estilos de tab ativo/inativo
-  - [ ] 2.1.3 Agregar badge com count
+### Phase 3: UI - Sub-Filtros ✅ COMPLETADO
 
-### Phase 3: UI - Sub-Filtros
+- [x] 3.1 Implementar sub-filtros dinâmicos
+  - [x] 3.1.1 Dim I: [Artigos (2)] [Teses (6)] [Livros (1)]
+  - [x] 3.1.2 Dim II: [Canal (18)] [Outras (10)] [Todos (28)]
+  - [x] 3.1.3 Dim III: [Blogs (2)] [Crónicas (4)] [Biografias (3)]
+  - [x] 3.1.4 Dim IV: [Facebook (4)] [Instagram (5)]
 
-- [ ] 3.1 Implementar sub-filtros dinâmicos
-  - [ ] 3.1.1 Dim I: [Artigos] [Teses] [Livros]
-  - [ ] 3.1.2 Dim II: [Canal] [Outras] [Todos]
-  - [ ] 3.1.3 Dim III: [Blogs] [Crónicas] [Artigos]
-  - [ ] 3.1.4 Dim IV: nenhum (placeholder)
+### Phase 4: UI - Content ✅ COMPLETADO
 
-### Phase 4: UI - Content
+- [x] 4.1 Renderizar cards de artigos (Dim I) - 9 items
+- [x] 4.2 Manter cards de videos existentes (Dim II) - 28 videos
+- [x] 4.3 Renderizar cards de blogs/crónicas/biografias (Dim III) - 9 items
+- [x] 4.4 Renderizar cards de posts (Dim IV) - 9 items
 
-- [ ] 4.1 Renderizar cards de artigos (Dim I)
-  - [ ] 4.1.1 Card com título, tipo, source, link
-  - [ ] 4.1.2 Badge de tipo (Artigo/Tese/Livro)
+### Phase 5: JavaScript ✅ COMPLETADO
 
-- [ ] 4.2 Manter cards de videos existentes (Dim II)
-  - [ ] 4.2.1 Já funciona - solo mantener
+- [x] 5.1 Tab switching logic - funciona
+- [x] 5.2 Sub-filter logic - funciona
 
-- [ ] 4.3 Renderizar cards de blogs (Dim III)
-  - [ ] 4.3.1 Card com título, tipo, source, link
-  - [ ] 4.3.2 Badge de tipo (Blog/Crónica/Artigo)
+### Phase 6: Build ✅ COMPLETADO
 
-- [ ] 4.4 Implementar placeholder para Dim IV
-  - [ ] 4.4.1 Mensaje "🔧 Em desenvolvimento"
-  - [ ] 4.4.2 Descrição "Esta dimensão ainda não possui conteúdo"
+- [x] 6.1 `npm run build` - 107 páginas
+- [ ] 6.2 Commit + push (pendiente)
+- [ ] 6.3 Deploy preview Vercel (pendiente)
 
-### Phase 5: JavaScript
+---
 
-- [ ] 5.1 Tab switching logic
-  - [ ] 5.1.1 Click tab → mostrar conteúdo da dimensão
-  - [ ] 5.1.2 Ocultar conteúdo de outras dimensões
-  - [ ] 5.1.3 Atualizar visual active state
+## Content Data (Actualizado)
 
-- [ ] 5.2 Sub-filter logic
-  - [ ] 5.2.1 Click sub-filter → filtrar items
-  - [ ] 5.2.2 Mostrar/ocultar sub-filtros según dimensão
-  - [ ] 5.2.3 Manter filter state por dimensão
+### Dim I - O Trono do Saber (9 items)
 
-### Phase 6: Build + Deploy
+| Type | Count | Items |
+|------|-------|-------|
+| Artigo | 2 | Marupiara, Kalágatos |
+| Tese | 6 | USP/NEIP, Antunes Cura, Paper UFAL, UFPR, CETAD, Censo |
+| Livro | 1 | El uso religioso de la ayahuasca |
 
-- [ ] 6.1 `npm run build` - verificar 107+ páginas
-- [ ] 6.2 Commit + push
-- [ ] 6.3 Deploy preview Vercel
+### Dim II - A Memória Viva (28 videos)
+
+| Type | Count | Items |
+|------|-------|-------|
+| Video (Canal) | 18 | Já implementado |
+| Video (Outras) | 10 | Já implementado |
+
+### Dim III - Olhar da Floresta (9 items)
+
+| Type | Count | Items |
+|------|-------|-------|
+| Blog | 2 | Céu da Boa Palavra (2) |
+| Crónica | 4 | Peregrino, São Francisco, Seminário, Julia Moura |
+| Biografia | 3 | Wilson (santodaime), Wilson (nextohm), Irineu (nextohm) |
+
+### Dim IV - A Bitácora Digital (9 items)
+
+| Type | Count | Items |
+|------|-------|-------|
+| Facebook | 4 | Página oficial, Álbum, Calendário 2016, Post doctrinal |
+| Instagram | 5 | Perfil, Location, Post 22/11, Reel Daime TV, Reel trabalho |
+
+---
+
+## Doctrina Pendente (não implementado)
+
+Ver arquivo: `openspec/changes/archive-dimensions-tabs/doctrina-pendente.md`
+
+Contém:
+- PDF Hinário Linha de Arrochim
+- Blog História do Hinário
+- Scribd traducción
+- Hinos do Santo Daime
+- Gráfica Rainha
+- ICP Apologética
+- SoundCloud playlist
 
 ---
 
@@ -72,36 +105,29 @@
 - Design System V2 tokens
 - Tailwind CSS v4
 - archive-videos.ts (existente)
-- links.md data extraída
+- archive-dimensions.ts (criado)
 
 ---
 
-## Files to Create/Modify
+## Files Created/Modified
 
 ```
-src/data/archive-dimensions.ts     (create)
-src/pages/pt/arquivo/index.astro   (modify)
+src/data/archive-dimensions.ts           ✅ Created/Updated
+src/pages/pt/arquivo/index.astro       ✅ Updated
 openspec/changes/archive-dimensions-tabs/
-  proposal.md ✅
-  spec.md      ✅
-  design.md   ✅
-  tasks.md    ✅ (this file)
+  proposal.md                         ✅
+  spec.md                              ✅
+  design.md                            ✅
+  tasks.md                             ✅ (this file)
+  state.yaml                           ✅
+  pending.md                           ✅
+  doctrina-pendente.md                 ✅ (new)
 ```
 
 ---
 
-## Estimated Time
+## Pending
 
-- Phase 1-3: 1-2 horas
-- Phase 4: 1 hora
-- Phase 5: 30 min
-- Phase 6: 15 min
-- **Total: 3-4 horas**
-
----
-
-## Not Implemented (after apply)
-
-- Content real para Dim IV (FB/IG posts)
-- Traduções ES/EN
-- Autenticação/comentários
+- [ ] git commit
+- [ ] git push
+- [ ] Deploy Vercel
