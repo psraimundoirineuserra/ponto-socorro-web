@@ -10,7 +10,7 @@ export interface DimensionItem {
 }
 
 export interface Dimension {
-  id: 'I' | 'II' | 'III' | 'IV';
+  id: 'I' | 'II' | 'III' | 'IV' | 'V';
   name: string;
   subtitle: string;
   subfilters: { id: string; label: string; count: number }[];
@@ -19,11 +19,11 @@ export interface Dimension {
 
 export const dimensions: Dimension[] = [
   // ============================================
-  // DIM I - O TRONO DO SABER (Artigos, teses, livros)
+  // DIM I - ACADÊMICO (Artigos, teses, livros)
   // ============================================
   {
     id: 'I',
-    name: 'O Trono do Saber',
+    name: 'Acadêmico',
     subtitle: 'Artigos acadêmicos e teses',
     subfilters: [
       { id: 'artigos', label: 'Artigos', count: 2 },
@@ -110,11 +110,11 @@ export const dimensions: Dimension[] = [
   },
 
   // ============================================
-  // DIM II - A MEMÓRIA VIVA (Videos)
+  // DIM II - VISUAL (Videos)
   // ============================================
   {
     id: 'II',
-    name: 'A Memória Viva',
+    name: 'Visual',
     subtitle: 'Videos do canal e outras fontes',
     subfilters: [
       { id: 'canal', label: 'Canal', count: 18 },
@@ -125,11 +125,11 @@ export const dimensions: Dimension[] = [
   },
 
   // ============================================
-  // DIM III - OLHAR DA FLORESTA (Blogs, Crónicas, Biografias)
+  // DIM III - CRÔNICAS (Blogs, Crónicas, Biografias)
   // ============================================
   {
     id: 'III',
-    name: 'Olhar da Floresta',
+    name: 'Crônicas',
     subtitle: 'Blogs, crónicas e biografias',
     subfilters: [
       { id: 'blogs', label: 'Blogs', count: 2 },
@@ -216,11 +216,11 @@ export const dimensions: Dimension[] = [
   },
 
   // ============================================
-  // DIM IV - A BITÁCORA DIGITAL (Redes sociais)
+  // DIM IV - REDES SOCIAIS (Redes sociais)
   // ============================================
   {
     id: 'IV',
-    name: 'A Bitácora Digital',
+    name: 'Redes sociais',
     subtitle: 'Posts de redes sociais',
     subfilters: [
       { id: 'facebook', label: 'Facebook', count: 4 },
@@ -302,21 +302,41 @@ export const dimensions: Dimension[] = [
         description: 'Reel sobre trabalho de cura.'
       }
     ]
+  },
+
+  // ============================================
+  // DIM V - FOTOGRAFIA (Encontronocc)
+  // ============================================
+  {
+    id: 'V',
+    name: 'Fotografia',
+    subtitle: 'Encontronocc',
+    subfilters: [],
+    items: [
+      {
+        id: 'foto-encontronocc-1',
+        title: 'Encontronocc 2024',
+        type: 'fotografia',
+        source: 'Arquivo CEPSERIS',
+        url: '#',
+        description: 'Registro fotográfico do Encontronocc 2024.'
+      }
+    ]
   }
 ];
 
 // Helper functions
-export function getDimensionItems(dimensionId: 'I' | 'II' | 'III' | 'IV'): DimensionItem[] {
+export function getDimensionItems(dimensionId: 'I' | 'II' | 'III' | 'IV' | 'V'): DimensionItem[] {
   const dim = dimensions.find(d => d.id === dimensionId);
   return dim ? dim.items : [];
 }
 
-export function getSubfilters(dimensionId: 'I' | 'II' | 'III' | 'IV') {
+export function getSubfilters(dimensionId: 'I' | 'II' | 'III' | 'IV' | 'V') {
   const dim = dimensions.find(d => d.id === dimensionId);
   return dim ? dim.subfilters : [];
 }
 
-export function getDimensionById(id: 'I' | 'II' | 'III' | 'IV'): Dimension | undefined {
+export function getDimensionById(id: 'I' | 'II' | 'III' | 'IV' | 'V'): Dimension | undefined {
   return dimensions.find(d => d.id === id);
 }
 
@@ -326,6 +346,7 @@ export function getDimensionCounts(): Record<string, number> {
     'I': dimensions.find(d => d.id === 'I')?.items.length || 0,
     'II': 28, // Videos from archive-videos.ts
     'III': dimensions.find(d => d.id === 'III')?.items.length || 0,
-    'IV': dimensions.find(d => d.id === 'IV')?.items.length || 0
+    'IV': dimensions.find(d => d.id === 'IV')?.items.length || 0,
+    'V': dimensions.find(d => d.id === 'V')?.items.length || 0
   };
 }
