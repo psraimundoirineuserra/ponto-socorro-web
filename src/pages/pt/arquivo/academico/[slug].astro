@@ -1,0 +1,83 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { dimensions } from '@/data/archive-dimensions';
+
+export function getStaticPaths() {
+  const academico = dimensions.find(d => d.id === 'I');
+  return academico?.items.map((item) => ({
+    params: { slug: item.id },
+    props: { item }
+  })) || [];
+}
+
+const { item } = Astro.props;
+
+const typeLabels: Record<string, string> = {
+  article: 'Artigo',
+  thesis: 'Tese',
+  book: 'Livro'
+};
+
+const typeColors: Record<string, string> = {
+  article: 'bg-accent-nature/20 text-accent-nature',
+  thesis: 'bg-blue-500/20 text-blue-500',
+  book: 'bg-purple-500/20 text-purple-500'
+};
+---
+
+<Layout locale="pt" title={item.title} description={item.description}>
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <nav class="text-sm text-secondary mb-6">
+        <a href="/pt/arquivo" class="hover:text-primary transition-colors">Arquivo</a>
+        <span class="mx-2">›</span>
+        <a href="/pt/arquivo#academico" class="hover:text-primary transition-colors">Acadêmico</a>
+        <span class="mx-2">›</span>
+        <span class="text-primary">{item.title}</span>
+      </nav>
+
+      <article>
+        <div class="mb-4">
+          <span class={`inline-block px-2 py-0.5 text-xs font-medium rounded ${typeColors[item.type] || 'bg-surface text-secondary'}`}>
+            {typeLabels[item.type] || item.type}
+          </span>
+        </div>
+
+        <h1 class="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4">
+          {item.title}
+        </h1>
+
+        <p class="text-lg text-secondary mb-8">
+          {item.source}
+          {item.year && ` • ${item.year}`}
+        </p>
+
+        <div class="prose prose-lg max-w-none mb-8">
+          <p class="text-primary leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+
+        <div class="border-t border-subtle pt-8">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-medium rounded-md hover:opacity-90 transition-opacity"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Baixar PDF
+          </a>
+        </div>
+
+        <div class="mt-8">
+          <a href="/pt/arquivo" class="text-sm text-secondary hover:text-primary transition-colors">
+            ← Voltar para Arquivo
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,210 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { dimensions } from '@/data/archive-dimensions';
+
+const cronicasContent: Record<string, { title: string; content: string }> = {
+  'blog-hinario-linha-arrochim': {
+    title: 'O Hinário de Cura "LINHA DE ARROCHIM"',
+    content: `O padrinho Wilson Carneiro de Souza, no final da década de 60, recebeu diretamente das mãos do Mestre Raimundo Irineu Serra a missão de amparar e cuidar dos doentes e necessitados que viessem a procurá-lo.
+
+Para tanto o Mestre Irineu entregou-lhe a zeladoria de seu pronto-socorro de cura, que em sua homenagem chamou-se: Pronto Socorro de Cura Raimundo Irineu Serra, localizado na Vila Carneiro próximo à Colônia Cinco Mil no Acre.
+
+Ao longo do tempo, padrinho Wilson Carneiro veio desenvolvendo o ritual de seu trabalho, e formando o Hinário de Cura "LINHA DE ARROCHIM". Após a passagem do padrinho Wilson os trabalhos no pronto socorro seguem sob o comando de seu filho padrinho Nonato, e presidência de padrinho Francisco (Pad Chiquinho).
+
+De acordo com a instrução do pad. Wilson Carneiro, não se toca nenhum instrumento, ou mesmo maracá durante o hinário de Cura Linha de Arrochim. Estes só serão introduzidos à partir dos hinos de encerramento.
+
+A corrente de cura exige total concentração e atenção no objetivo do trabalho para que os doentes possam se entregar com toda confiança no destrinchamento espiritual de suas visões sobre a doença, a compreensão das suas causas kármicas e as transformações exigidas para que a cura possa ocorrer e se manter.
+
+Os hinos são cadenciados, o que não significa "lento", segundo palavras do próprio pad. Wilson Carneiro, deve-se manter sempre o vigor no canto e na postura do trabalho.
+
+Conforme palavras do pad. Wilson, na assistência: homem cuida de homem, mulher cuida de mulher. Não se toca no doente, não se faz massagem durante o trabalho, uma vez que o Santo Daime está agindo e atuando na cura do beneficiado, não se toca neste de forma alguma mesmo que venha a perder os sentidos, deve-se apenas confortar eamparar para que não fique desconfortável, deixando que o próprio Daime manifeste na pessoa.`
+  },
+  'blog-ceu-boa-palavra-padrinho-nonato': {
+    title: 'Padrinho Nonato – Céu da Boa Palavra',
+    content: `Raimundo Nonato (nascido em Tarauacá - Acre, em 14 de Julho de 1949), filho do padrinho Wilson Carneiro, iniciou seus trabalhos no Santo Daime com a idade de 13 anos, havendo convivido com o Mestre Irineu por mais de 9 anos (de 1962 a 1971). Comerciante, é casado com dona Maria das Graças Nascimento, a Madrinha Graça, a quem chama carinhosamente de "minha companheira". Com ela teve seis filhos.
+
+Na força do Santo Daime de que se tornou feitor, eamparado pela força resplandecente de seu hinário, no ano de 1990 passou à administração da Colônia, cargo que ocupou por 7 anos, até pouco antes da passagem de seu pai. Hoje, desenvolve seus trabalhos com o Santo Daime na "Vila Carneiro", na Estrada da Colônia Cinco Mil, dirigindo o Pronto-Socorro Raimundo Irineu Serra que também abastece diversos centros daimistas fora do Acre ligados aos preceitos doutrinários deixados pelo Mestre Irineu e o Padrinho Sebastião.
+
+Padrinho Nonato, como é carinhosamente chamado por todos os que o conhecem, é um "Peregrino", levando para todos os cantos do Brasil, palavras de fé e esperança a todos os que o procuram.
+
+Reside na área rural de Rio Branco, onde juntamente com sua companheira, seus seis filhos, genros e netos, trabalham em benefício dos muitos doentes e aflitos que buscam na Doutrina do Santo Daime a cura para seus males.
+
+Amoroso, traz consigo os ensinamentos que obteve dos tempos de convivência com seu grande amigo padrinho Sebastião e está sempre disposto a nos contar alguma passagem desta época, buscando transmitir os ensinamentos deixados pelo padrinho e por nosso Mestre Irineu, de quem é um discípulo fiel.`
+  },
+  'cronica-peregrino': {
+    title: '"O Peregrino" na residência do Padrinho Nonato',
+    content: `Nonato Teixeira no velório do Mestre Irineu
+
+A devoção dos pais ao São Francisco das Chagas foi certamente determinante para que, anos mais tarde, seu filho caçula, Raimundo Nonato (nascido em Tarauacá - Acre, em 14 de Julho de 1949) desse a seu hinário o nome de "O Peregrino".
+
+O Padrinho Nonato iniciou seus trabalhos no Santo Daime com a idade de 13 anos, havendo convivido com o Mestre Irineu por mais de 9 anos (de 1962 a 1971). Comerciante, assim como o pai, o Padrinho Nonato se casou bem jovem com Maria das Graças Nascimento, a Madrinha Graça, já sendo homem casado e pai na época do falecimento do Mestre.
+
+Problemas de saúde o levaram a ir residir próximo aos pais na Colônia Cinco Mil, depois que estes se mudaram para lá, e na força do Santo Daime de que se tornou feitor, eamparado pela força resplandecente de seu hinário, no ano de 1990 passou à administração da Colônia, cargo que ocupou por 7 anos, até pouco antes da passagem de seu pai.
+
+Hoje, desenvolve seus trabalhos com o Santo Daime na "Vila Carneiro", na Estrada da Colônia Cinco Mil, dirigindo o Pronto-Socorro Raimundo Irineu Serra que também abastece diversos centros daimistas fora do Acre ligados aos preceitos doutrinários deixados pelo Mestre Irineu e o Padrinho Sebastião.
+
+A presente gravação é uma "lembrança" histórica - no dia 14 de julho de 1988, quando participei do hinário do Padrinho Nonato pela primeira vez, registrei alguns hinos em um cassete de 90 minutos que inclui os hinos do número 36 ao 69. Os instrumentos entram a partir do hino 53, ofertado à Regina Pereira, e se destaca o acordeon conduzido por Dionísio Viegas.
+
+A gravação é doméstica pois o hinário foi cantado na própria residência do casal Nonato e Graça, e os filhos ainda crianças cantam forte, e há uma curiosidade: se pode ouvir também o Padrinho Wilson, que estava dirigindo a sessão, em um determinado momento pedir para fecharem as janelas.`
+  },
+  'cronica-sao-francisco': {
+    title: 'São Francisco bem louvado na Vila Carneiro',
+    content: `São Francisco
+(hino 06 do Padrinho Nonato, ofertado à sua esposa a Madrinha Graça)
+
+Estou aqui, estou aqui, estou aqui
+Implorando a meu Salvador
+Que me dê a santa saúde
+Por vosso divino amor
+
+Oh! Minha Mãe aqui estou em vossos pés
+Implorando para me libertar
+Para quando chegar o dia
+Eu poder me apresentar
+
+Me apresentar perante a meu Pai
+Com firmeza e pureza em minha alma
+Pedindo sempre
+Vossa divina calma
+
+Esta calma é verdade e harmonia
+Que resplandece em nós todo o dia
+Para compreendermos que somos filhos
+Da Sempre Virgem Maria
+
+Oh! Meu Pai, Oh! Que dor no coração
+De ver tanta ingratidão
+Dentro deste jardim
+Que forma esta união
+
+Mas vou seguindo é com fé e com amor
+Na doutrina do meu Salvador
+Que dele eu recebi
+O meu prêmio de valor
+
+Oh! Meu Pai a Vós estou agradecendo
+Por tudo isto que estou entendendo
+Mas sempre peço a Vós
+Para eu ir compreendendo
+
+Compreendendo as lições do professor
+E seguindo com esperança no Senhor
+Que Vós é quem nos livra
+De todos esses terrores
+
+Sinto dor, sinto dor, eu sinto dor
+Quando lembro deste andor
+Que me relembra tudo
+Mas vigora o amor
+
+Mas é preciso se humilhar e consagrar
+Para poder enxergar
+Essa grande batalha
+Que temos que atravessar
+
+Oh! meu Pai aqui estou arrependido
+Por ter tanto lhe ofendido
+Mas sempre vos imploro
+Que eu não seja perdido
+
+São Francisco ele vai se apresentar
+Me dando força perante este altar
+Me reconciliando e sabendo
+Que somos todos iguais
+
+Estou aqui estou vendo clarear
+Sentindo fogo e meu corpo balançar
+Ouvindo a voz do céu
+Que me faz despertar.
+
+---
+
+Raimundo Nonato Teixeira de Souza, filho caçula do Padrinho Wilson Carneiro de Souza e da Madrinha Zilda Teixeira, nasceu em Tarauacá, município do estado do Acre, em 14 de Julho de 1949. Iniciou seus trabalhos no Santo Daime em 1962. No ano de 1990 passou à administração da Colônia Cinco Mil, cargo que ocupou por sete anos, até pouco antes da passagem de seu pai.
+
+Hoje, desenvolve seus trabalhos com o Santo Daime na Vila Carneiro, vizinho à Colônia Cinco Mil, zelando pelo Pronto Socorro de Cura Raimundo Irineu Serra e é um grande divulgador dos preceitos doutrinários deixados pelo Mestre Raimundo Irineu Serra e o Padrinho Sebastião Mota de Melo.
+
+Atual vice-presidente do Pronto-Socorro dando continuidade aos trabalhos realizados por seu pai Wilson Carneiro de Souza.`
+  }
+};
+
+export function getStaticPaths() {
+  const cronicas = dimensions.find(d => d.id === 'III');
+  return cronicas?.items.map((item) => ({
+    params: { slug: item.id },
+    props: { item }
+  })) || [];
+}
+
+const { item } = Astro.props;
+
+const content = cronicasContent[item.id]?.content || item.description || 'Em desenvolvimento';
+const pageTitle = cronicasContent[item.id]?.title || item.title;
+
+const typeLabels: Record<string, string> = {
+  blog: 'Blog',
+  chronicle: 'Crónica',
+  biography: 'Biografia'
+};
+
+const typeColors: Record<string, string> = {
+  blog: 'bg-accent-nature/20 text-accent-nature',
+  chronicle: 'bg-amber-500/20 text-amber-600',
+  biography: 'bg-blue-500/20 text-blue-500'
+};
+---
+
+<Layout locale="pt" title={pageTitle} description={item.description}>
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <nav class="text-sm text-secondary mb-6">
+        <a href="/pt/arquivo" class="hover:text-primary transition-colors">Arquivo</a>
+        <span class="mx-2">›</span>
+        <a href="/pt/arquivo#cronicas" class="hover:text-primary transition-colors">Crônicas</a>
+        <span class="mx-2">›</span>
+        <span class="text-primary">{pageTitle}</span>
+      </nav>
+
+      <article>
+        <div class="mb-4">
+          <span class={`inline-block px-2 py-0.5 text-xs font-medium rounded ${typeColors[item.type] || 'bg-surface text-secondary'}`}>
+            {typeLabels[item.type] || item.type}
+          </span>
+        </div>
+
+        <h1 class="font-serif text-3xl md:text-4xl font-semibold text-primary mb-4">
+          {pageTitle}
+        </h1>
+
+        <p class="text-lg text-secondary mb-8">
+          {item.source}
+        </p>
+
+        <div class="prose prose-lg max-w-none mb-8">
+          <div class="text-primary leading-relaxed whitespace-pre-line">
+            {content}
+          </div>
+        </div>
+
+        <div class="border-t border-subtle pt-8">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 border border-primary text-primary font-medium rounded-md hover:bg-primary hover:text-white transition-colors"
+          >
+            Ver fonte original
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="mt-8">
+          <a href="/pt/arquivo" class="text-sm text-secondary hover:text-primary transition-colors">
+            ← Voltar para Arquivo
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+</Layout>
